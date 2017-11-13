@@ -12,6 +12,9 @@ import Firebase
 class HelpLineViewController: UIViewController {
     var handle: AuthStateDidChangeListenerHandle?
     override func viewDidLoad() {
+        let originX = self.view.bounds.width/2
+        let originY = self.view.bounds.height/2
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
