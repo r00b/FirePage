@@ -1,27 +1,26 @@
 //
-//  CustomButton.swift
+//  CustomRadioButton.swift
 //  FirePage
 //
-//  Created by Theodore Franceschi on 11/8/17.
+//  Created by Theodore Franceschi on 11/12/17.
 //  Copyright © 2017 Theodore Franceschi. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class CustomButton: UIButton{
+class CustomRadioButton: UIButton{
     var toggleImage: UIImage?
+    var clicked = false
     required init(frame: CGRect, title:String) {
         super.init(frame:frame)
-        backgroundColor = UIColor.red
-        setTitleColor(UIColor.white, for: .normal)
+        backgroundColor = UIColor.white
+        self.layer.borderWidth = 2
+        self.layer.cornerRadius = 5
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        setTitleColor(UIColor.lightGray, for: .normal)
         setTitle(title, for: .normal)
-        layer.cornerRadius = frame.height/4
-    }
-    
-    required init(frame: CGRect, image:UIImage){
-        super.init(frame:frame)
-        setImage(image, for: .normal)
+        layer.cornerRadius = frame.height/8
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,8 +39,9 @@ class CustomButton: UIButton{
         self.isUserInteractionEnabled = true
     }
     
-    func toggleImageDisplayed(){
-        setImage(toggleImage, for: .normal)
+    func clickButton(){
+        self.clicked = !self.clicked
     }
+    
     
 }

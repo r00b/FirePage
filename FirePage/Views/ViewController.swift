@@ -82,10 +82,22 @@ class ViewController: UIViewController{
         Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
             // ...
         }
-        self.performSegue(withIdentifier: "signedIn", sender: self)
+        if Auth.auth().currentUser != nil {
+            print("signed in")
+            self.performSegue(withIdentifier: "signedIn", sender: self)
+        } else {
+            print("Invalid Password or Account")
+        }
+        
     }
     
     @objc private func signUpAction(){
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
         self.performSegue(withIdentifier: "loginToSignUp", sender: self)
     }
     
