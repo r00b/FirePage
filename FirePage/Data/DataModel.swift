@@ -52,3 +52,17 @@ class Account{
         return keyNum
     }
 }
+
+struct PhoneCall{
+    private var subject = "none"
+    private var caller: String
+    private var campus: String
+    private var dorm: String
+    
+    init(_ subj:String,_ calling:String,_ camp:String,_ dorm:String) {
+        self.subject = subj
+        self.caller = calling
+        self.campus = camp
+        self.dorm = dorm
+    }
+}
