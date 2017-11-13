@@ -26,7 +26,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1215" y="278"/>
+            <point key="canvasLocation" x="-1365" y="360"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="mWP-s0-aVs">
@@ -47,7 +47,7 @@
         <!--Item 1-->
         <scene sceneID="3Ab-l7-WHI">
             <objects>
-                <viewController id="T16-5U-Etc" sceneMemberID="viewController">
+                <viewController id="T16-5U-Etc" customClass="HelpLineViewController" customModule="FirePage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jvm-u9-uFD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
