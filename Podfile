@@ -18,5 +18,9 @@ target 'FirePage' do
     inherit! :search_paths
     # Pods for testing
   end
+  
+  # Pod for JTAppleCalendar
+  
+  pod 'JTAppleCalendar', '~> 7.0'
 
 end
