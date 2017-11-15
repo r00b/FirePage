@@ -13,12 +13,20 @@ class CalendarViewController: UIViewController {
     
     let formatter = DateFormatter()
     
-    
-    
-    let outsideMonthColor = UIColor(red:0.88, green:0.89, blue:0.91, alpha:1.0) // #E0E3E7
-    let unselectedMonthColor = UIColor(red:0.48, green:0.52, blue:0.64, alpha:1.0) // #7B85A3
-    let selectedMonthColor = UIColor(red:0.96, green:0.96, blue:0.97, alpha:1.0) // #F6F6F8
+    // color of date label when selected
     let selectedDayColor = UIColor(red:0.96, green:0.96, blue:0.97, alpha:1.0) // #F6F6F8
+
+    // color of date label when not selected and current month
+    let insideMonthColor = UIColor(red:0.48, green:0.52, blue:0.64, alpha:1.0) // #7B85A3
+
+    // color of date label when not selected and not current month
+    let outsideMonthColor = UIColor(red:0.88, green:0.89, blue:0.91, alpha:1.0) // #E0E3E7
+    
+    // #8C8AFF
+    let insideMonthViewColor = UIColor(red:0.55, green:0.54, blue:1.00, alpha:1.0)
+    
+    // #C5C4FF
+    let outsideMonthViewColor = UIColor(red:0.77, green:0.77, blue:1.00, alpha:1.0);
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     
@@ -37,6 +45,11 @@ class CalendarViewController: UIViewController {
         guard let validCell = view as? CalendarCell else { return }
         if validCell.isSelected {
             validCell.selectedView.isHidden = false
+            if (cellState.dateBelongsTo == .thisMonth) {
+                validCell.selectedView.backgroundColor = insideMonthViewColor
+            } else {
+                validCell.selectedView.backgroundColor = outsideMonthViewColor
+            }
         } else {
             validCell.selectedView.isHidden = true
             
@@ -49,7 +62,7 @@ class CalendarViewController: UIViewController {
             validCell.dateLabel.textColor = selectedDayColor
         } else {
             if cellState.dateBelongsTo == .thisMonth {
-                validCell.dateLabel.textColor = unselectedMonthColor
+                validCell.dateLabel.textColor = insideMonthColor
             } else {
                 validCell.dateLabel.textColor = outsideMonthColor
             }
