@@ -15,10 +15,10 @@ class CalendarViewController: UIViewController {
     
     
     
-    let outsideMonthColor = UIColor(hexString: "#E0E3E7")
-    let unselectedMonthColor = UIColor(hexString: "#7B85A3")
-    let selectedMonthColor = UIColor(hexString: "#F6F6F8")
-    let selectedDayColor = UIColor(hexString: "#F6F6F8")
+    let outsideMonthColor = UIColor(red:0.88, green:0.89, blue:0.91, alpha:1.0) // #E0E3E7
+    let unselectedMonthColor = UIColor(red:0.48, green:0.52, blue:0.64, alpha:1.0) // #7B85A3
+    let selectedMonthColor = UIColor(red:0.96, green:0.96, blue:0.97, alpha:1.0) // #F6F6F8
+    let selectedDayColor = UIColor(red:0.96, green:0.96, blue:0.97, alpha:1.0) // #F6F6F8
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     

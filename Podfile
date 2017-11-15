@@ -23,7 +23,4 @@ target 'FirePage' do
     
     pod 'JTAppleCalendar', '~> 7.0'
     
-    # UIColor+Hex
-    pod 'UIColor_Hex_Swift', '~> 4.0.0'
-    
 end
