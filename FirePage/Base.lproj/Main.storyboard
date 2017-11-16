@@ -59,48 +59,30 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVE-pI-1n8">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftButtonGray" translatesAutoresizingMaskIntoConstraints="NO" id="l1h-jZ-PGc">
                                                 <rect key="frame" x="8" y="18" width="25" height="25"/>
-                                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="dJW-cW-GVA"/>
-                                                    <constraint firstAttribute="width" constant="25" id="m3Z-a6-ok6"/>
+                                                    <constraint firstAttribute="width" constant="25" id="72x-7C-Dmo"/>
+                                                    <constraint firstAttribute="height" constant="25" id="BUy-7c-EV9"/>
                                                 </constraints>
-                                                <state key="normal">
-                                                    <color key="titleColor" red="0.99073892831802368" green="0.1786051725881129" blue="0.17153986638589941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fl6-GJ-bHv">
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightButtonGray" translatesAutoresizingMaskIntoConstraints="NO" id="U7H-UZ-eni">
                                                 <rect key="frame" x="287" y="18" width="25" height="25"/>
-                                                <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="4yS-H6-vd5"/>
-                                                    <constraint firstAttribute="width" constant="25" id="Tpn-F3-4Go"/>
+                                                    <constraint firstAttribute="width" constant="25" id="pk4-9k-Bk6"/>
+                                                    <constraint firstAttribute="height" constant="25" id="x61-i3-4Ml"/>
                                                 </constraints>
-                                                <state key="normal">
-                                                    <color key="titleColor" red="0.99073892829999999" green="0.1786051726" blue="0.17153986639999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Gpp-Cx-8dP" firstAttribute="centerX" secondItem="o9K-20-0jz" secondAttribute="centerX" id="0xn-ij-bm1"/>
-                                            <constraint firstAttribute="trailing" secondItem="Fl6-GJ-bHv" secondAttribute="trailing" constant="8" id="6VC-L4-OPS"/>
-                                            <constraint firstItem="Fl6-GJ-bHv" firstAttribute="centerY" secondItem="o9K-20-0jz" secondAttribute="centerY" id="aYD-su-14m"/>
+                                            <constraint firstAttribute="trailing" secondItem="U7H-UZ-eni" secondAttribute="trailing" constant="8" id="3CI-zC-AWc"/>
+                                            <constraint firstItem="U7H-UZ-eni" firstAttribute="centerY" secondItem="o9K-20-0jz" secondAttribute="centerY" id="LIB-7z-Yx7"/>
+                                            <constraint firstItem="l1h-jZ-PGc" firstAttribute="centerY" secondItem="o9K-20-0jz" secondAttribute="centerY" id="NYf-3Z-CWc"/>
+                                            <constraint firstItem="l1h-jZ-PGc" firstAttribute="leading" secondItem="o9K-20-0jz" secondAttribute="leading" constant="8" id="XyE-ly-9Kq"/>
                                             <constraint firstItem="Gpp-Cx-8dP" firstAttribute="centerY" secondItem="o9K-20-0jz" secondAttribute="centerY" id="cy2-zh-0Gh"/>
                                             <constraint firstAttribute="height" constant="60" id="dGb-QM-u07"/>
-                                            <constraint firstItem="EVE-pI-1n8" firstAttribute="leading" secondItem="o9K-20-0jz" secondAttribute="leading" constant="8" id="iAj-S3-5DA"/>
-                                            <constraint firstItem="EVE-pI-1n8" firstAttribute="centerY" secondItem="o9K-20-0jz" secondAttribute="centerY" id="yfF-Em-coB"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-Og-z6f">
@@ -229,6 +211,8 @@
                     <tabBarItem key="tabBarItem" title="Item 2" id="XtV-59-hLa"/>
                     <connections>
                         <outlet property="calendarView" destination="ENZ-dv-e6E" id="QhQ-QW-XBs"/>
+                        <outlet property="monthLabel" destination="fhP-dj-EKy" id="hss-y8-UWM"/>
+                        <outlet property="yearLabel" destination="C06-t2-rdO" id="zL7-hU-tu3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8om-iN-LkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -301,6 +285,10 @@
             <point key="canvasLocation" x="-1215" y="-502"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="leftButtonGray" width="41" height="44"/>
+        <image name="rightButtonGray" width="41" height="44"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0jE-Gz-nkS"/>
     </inferredMetricsTieBreakers>
