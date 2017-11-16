@@ -72,6 +72,7 @@ class CalendarViewController: UIViewController {
     func initCalendarView() {
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
+        calendarView.scrollingMode = .stopAtEachCalendarFrame
     }
     
     
