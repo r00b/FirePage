@@ -9,8 +9,6 @@
 import Foundation
 import JTAppleCalendar
 
-// https://www.youtube.com/watch?v=Qd_Gc67xzlw
-
 extension CalendarViewController: JTAppleCalendarViewDataSource {
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
@@ -18,10 +16,10 @@ extension CalendarViewController: JTAppleCalendarViewDataSource {
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
         
-        let startDate = formatter.date(from: "2017 01 01")!
-        let endDate = formatter.date(from: "2017 12 31")!
+        startDate = Calendar.current.date(byAdding: .year, value: -1, to: Date())
+        endDate = Calendar.current.date(byAdding: .year, value: 1, to: Date())
         
-        let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
+        let parameters = ConfigurationParameters(startDate: startDate!, endDate: endDate!)
         return parameters
     }
 

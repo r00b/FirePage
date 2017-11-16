@@ -33,6 +33,9 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     
+    var startDate: Date!
+    var endDate: Date!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initCalendarView()
@@ -77,14 +80,11 @@ class CalendarViewController: UIViewController {
         calendarView.minimumInteritemSpacing = 0
         calendarView.scrollingMode = .stopAtEachCalendarFrame
         
-        let visibleDates = calendarView.visibleDates()
-        
         calendarView.visibleDates { (visibleDates) in
             self.initViewsOfCalendar(from: visibleDates)
         }
         
-        
-        
+        calendarView.scrollToDate(Date(), animateScroll: false)
     }
     
     func initViewsOfCalendar(from visibleDates: DateSegmentInfo) {
@@ -97,15 +97,43 @@ class CalendarViewController: UIViewController {
         monthLabel.text = formatter.string(from: date)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    @IBAction func scrollLeft(_ sender: UIButton) {
+        let currDate = calendarView.visibleDates().monthDates.first!.date
+        let newDate = Calendar.current.date(byAdding: .month, value: -1, to: currDate)
+        
+        let startMonth = Calendar.current.component(.month, from: startDate)
+        let newMonth = Calendar.current.component(.month, from: newDate!)
+        let startYear = Calendar.current.component(.year, from: startDate)
+        let newYear = Calendar.current.component(.year, from: newDate!)
+        if newMonth < startMonth && newYear <= startYear {
+            
+            let alert = UIAlertController(title: "Earliest Month Reached", message: "You've reached the earliest stored month.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        } else {
+            calendarView.scrollToDate(newDate!)
+        }
+    }
+    
+    @IBAction func scrollRight(_ sender: UIButton) {
+        let currDate = calendarView.visibleDates().monthDates.first!.date
+        let newDate = Calendar.current.date(byAdding: .month, value: 1, to: currDate)
+        
+        let endMonth = Calendar.current.component(.month, from: endDate)
+        let newMonth = Calendar.current.component(.month, from: newDate!)
+        let endYear = Calendar.current.component(.year, from: endDate)
+        let newYear = Calendar.current.component(.year, from: newDate!)
+        if newMonth > endMonth && newYear >= endYear {
+            
+            let alert = UIAlertController(title: "Farthest Month Reached", message: "You've reached the farthest stored month.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        } else {
+            calendarView.scrollToDate(newDate!)
+        }
+    }
     
 }
 

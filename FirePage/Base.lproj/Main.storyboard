@@ -59,30 +59,38 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftButtonGray" translatesAutoresizingMaskIntoConstraints="NO" id="l1h-jZ-PGc">
-                                                <rect key="frame" x="8" y="18" width="25" height="25"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UM2-rG-fHs">
+                                                <rect key="frame" x="8" y="17.5" width="25" height="25"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="25" id="72x-7C-Dmo"/>
-                                                    <constraint firstAttribute="height" constant="25" id="BUy-7c-EV9"/>
+                                                    <constraint firstAttribute="height" constant="25" id="Jnz-17-Iqb"/>
+                                                    <constraint firstAttribute="width" constant="25" id="jer-SB-FS7"/>
                                                 </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightButtonGray" translatesAutoresizingMaskIntoConstraints="NO" id="U7H-UZ-eni">
-                                                <rect key="frame" x="287" y="18" width="25" height="25"/>
+                                                <state key="normal" title="Button" image="leftButtonGray"/>
+                                                <connections>
+                                                    <action selector="scrollLeft:" destination="6eG-tU-NfT" eventType="touchUpInside" id="6R0-hT-rW3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3V-Hg-lK0">
+                                                <rect key="frame" x="287" y="17.5" width="25" height="25"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="25" id="pk4-9k-Bk6"/>
-                                                    <constraint firstAttribute="height" constant="25" id="x61-i3-4Ml"/>
+                                                    <constraint firstAttribute="width" constant="25" id="JKg-e1-Pym"/>
+                                                    <constraint firstAttribute="height" constant="25" id="oYT-3v-T9w"/>
                                                 </constraints>
-                                            </imageView>
+                                                <state key="normal" title="Button" image="rightButtonGray"/>
+                                                <connections>
+                                                    <action selector="scrollRight:" destination="6eG-tU-NfT" eventType="touchUpInside" id="N3f-Ph-MAr"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Gpp-Cx-8dP" firstAttribute="centerX" secondItem="o9K-20-0jz" secondAttribute="centerX" id="0xn-ij-bm1"/>
-                                            <constraint firstAttribute="trailing" secondItem="U7H-UZ-eni" secondAttribute="trailing" constant="8" id="3CI-zC-AWc"/>
-                                            <constraint firstItem="U7H-UZ-eni" firstAttribute="centerY" secondItem="o9K-20-0jz" secondAttribute="centerY" id="LIB-7z-Yx7"/>
-                                            <constraint firstItem="l1h-jZ-PGc" firstAttribute="centerY" secondItem="o9K-20-0jz" secondAttribute="centerY" id="NYf-3Z-CWc"/>
-                                            <constraint firstItem="l1h-jZ-PGc" firstAttribute="leading" secondItem="o9K-20-0jz" secondAttribute="leading" constant="8" id="XyE-ly-9Kq"/>
+                                            <constraint firstItem="UM2-rG-fHs" firstAttribute="centerY" secondItem="o9K-20-0jz" secondAttribute="centerY" id="26T-Dl-GVg"/>
                                             <constraint firstItem="Gpp-Cx-8dP" firstAttribute="centerY" secondItem="o9K-20-0jz" secondAttribute="centerY" id="cy2-zh-0Gh"/>
                                             <constraint firstAttribute="height" constant="60" id="dGb-QM-u07"/>
+                                            <constraint firstItem="UM2-rG-fHs" firstAttribute="leading" secondItem="o9K-20-0jz" secondAttribute="leading" constant="8" id="f3K-Xu-EUR"/>
+                                            <constraint firstAttribute="trailing" secondItem="i3V-Hg-lK0" secondAttribute="trailing" constant="8" id="t4b-gd-zxr"/>
+                                            <constraint firstItem="i3V-Hg-lK0" firstAttribute="centerY" secondItem="o9K-20-0jz" secondAttribute="centerY" id="tyJ-n3-biV"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-Og-z6f">
