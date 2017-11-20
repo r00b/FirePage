@@ -66,7 +66,12 @@ class HelpLineViewController: UIViewController {
         self.view.addSubview(subjectField)
     }
     
-
+    @IBAction func onCalendarButtonPressed(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "CalendarController") as! CalendarViewController
+        self.present(controller, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
