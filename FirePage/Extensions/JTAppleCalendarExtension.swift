@@ -15,10 +15,8 @@ extension CalendarViewController: JTAppleCalendarViewDataSource {
         formatter.dateFormat = "yyyy MM dd"
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
-        
         startDate = Calendar.current.date(byAdding: .year, value: -1, to: Date())
         endDate = Calendar.current.date(byAdding: .year, value: 1, to: Date())
-        
         let parameters = ConfigurationParameters(startDate: startDate!, endDate: endDate!)
         return parameters
     }
@@ -26,6 +24,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource {
 }
 
 extension CalendarViewController: JTAppleCalendarViewDelegate {
+    
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         let customCell = cell as! CalendarCell
         customCell.dateLabel.text = cellState.text
@@ -34,7 +33,6 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
         cell.dateLabel.text = cellState.text
-        
         handleCellSelected(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
         return cell

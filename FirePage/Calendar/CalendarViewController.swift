@@ -15,21 +15,14 @@ class CalendarViewController: UIViewController {
     
     // color of date label when selected
     let selectedDayColor = UIColor(red:0.96, green:0.96, blue:0.97, alpha:1.0) // #F6F6F8
-    
     // color of date label when not selected and current month
     let insideMonthColor = UIColor(red:0.48, green:0.52, blue:0.64, alpha:1.0) // #7B85A3
-    
     // color of date label when not selected and not current month
     let outsideMonthColor = UIColor(red:0.88, green:0.89, blue:0.91, alpha:1.0) // #E0E3E7
-    
-    // #8C8AFF
-    let insideMonthViewColor = UIColor(red:0.55, green:0.54, blue:1.00, alpha:1.0)
-    
-    // #C5C4FF
-    let outsideMonthViewColor = UIColor(red:0.77, green:0.77, blue:1.00, alpha:1.0);
+    let insideMonthViewColor = UIColor(red:0.55, green:0.54, blue:1.00, alpha:1.0) // #8C8AFF
+    let outsideMonthViewColor = UIColor(red:0.77, green:0.77, blue:1.00, alpha:1.0); // #C5C4FF
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
-    
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     
@@ -39,12 +32,6 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initCalendarView()
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
@@ -89,10 +76,8 @@ class CalendarViewController: UIViewController {
     
     func initViewsOfCalendar(from visibleDates: DateSegmentInfo) {
         let date = visibleDates.monthDates.first!.date
-        
         formatter.dateFormat = "yyyy"
         yearLabel.text = formatter.string(from: date)
-        
         formatter.dateFormat = "MMMM"
         monthLabel.text = formatter.string(from: date)
     }
@@ -106,7 +91,6 @@ class CalendarViewController: UIViewController {
         let startYear = Calendar.current.component(.year, from: startDate)
         let newYear = Calendar.current.component(.year, from: newDate!)
         if newMonth < startMonth && newYear <= startYear {
-            
             let alert = UIAlertController(title: "Earliest Month Reached", message: "You've reached the earliest stored month.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
