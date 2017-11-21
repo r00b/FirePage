@@ -45,7 +45,7 @@ class CalendarViewController: UIViewController {
     var userColors = [String : UIColor]()
     var activeUsers = [String : Bool]() // users that are currently highlighted
     var selectedUser = ""
-
+    
     let ref : DatabaseReference! = Database.database().reference()
     
     
@@ -55,6 +55,8 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var onCallGroupLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var footerView: UIView!
     
     
     // MARK: Override functions
@@ -62,6 +64,10 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initCalendarView()
+        
+        // set up "Show All" footer button in table view
+        let footerGesture = UITapGestureRecognizer(target: self, action: #selector(resetActiveUsers))
+        footerView.addGestureRecognizer(footerGesture)
         
         // get names of all OnCallGroups
         ref.child("OnCallGroup").observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
@@ -81,7 +87,7 @@ class CalendarViewController: UIViewController {
     
     
     // MARK: Private functions
- 
+    
     // set basic properties on the calendar UI, only called once
     func initCalendarView() {
         calendarView.minimumLineSpacing = 0
@@ -104,13 +110,17 @@ class CalendarViewController: UIViewController {
     
     // populate cells with colors for the selected OnCallGroup
     func renderUserData() {
+        // clear out data structures
         userDates = [Date : String]()
         userColors = [String : UIColor]()
+        activeUsers = [String : Bool]()
+        
         self.onCallGroupLabel.text = self.currOnCallGroup
         self.ref.child("OnCallGroup").child(self.currOnCallGroup!).child("Calendar").observe(DataEventType.value, with: { (snapshot) in
             let dates = snapshot.value as? [String : String] ?? [:]
             self.storeUserData(dates: dates)
             self.calendarView.reloadData()
+            self.tableView.reloadData()
         })
     }
     
@@ -136,6 +146,26 @@ class CalendarViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    // designate a user with userName as selected
+    func selectUser(userName: String) {
+        selectedUser = userName
+        _ = activeUsers.map({ (user: String, Bool) in
+            // only selectedUser should be active
+            activeUsers[user] = (user == selectedUser)
+        })
+        calendarView.reloadData() // push changes to calendar view
+        tableView.reloadData() // push changes to table view
+    }
+    
+    // reset all users to be active/selected
+    @objc func resetActiveUsers() {
+        selectedUser = ""
+        // user already selected, go to default view (select all)
+        activeUsers = activeUsers.mapValues({(Bool) -> Bool in return true})
+        calendarView.reloadData()
+        tableView.reloadData()
     }
     
     
@@ -190,5 +220,5 @@ class CalendarViewController: UIViewController {
         currOnCallGroup = onCallGroups![nextGroupIdx]
         renderUserData()
     }
-
+    
 }
