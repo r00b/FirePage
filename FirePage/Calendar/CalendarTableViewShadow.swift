@@ -8,10 +8,10 @@
 
 import UIKit
 
-class CalendarTableViewFooter: UIView {
+class CalendarTableViewShadow: UIView {
 
     override func draw(_ rect: CGRect) {
-        // draw shado on inner view
+        // draw shadow on inner view
         let shadowPath = UIBezierPath(rect: layer.bounds)
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
