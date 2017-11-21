@@ -68,7 +68,7 @@ class HelpLineViewController: UIViewController {
     
     @IBAction func onCalendarButtonPressed(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "CalendarController") as! CalendarViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "CalendarNavigationController") as! UINavigationController
         self.present(controller, animated: true, completion: nil)
     }
     

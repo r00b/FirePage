@@ -64,19 +64,8 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initCalendarView()
-        
-        // set up "Show All" footer button in table view
-        let footerGesture = UITapGestureRecognizer(target: self, action: #selector(resetActiveUsers))
-        footerView.addGestureRecognizer(footerGesture)
-        
-        // get names of all OnCallGroups
-        ref.child("OnCallGroup").observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
-            let groups = snapshot.value as? [String : AnyObject] ?? [:]
-            self.onCallGroups = Array(groups.keys)
-            // default group set to first in list from database
-            self.currOnCallGroup = self.onCallGroups?[0]
-            self.renderUserData()
-        })
+        initTableView()
+        initDatabase()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,6 +86,28 @@ class CalendarViewController: UIViewController {
             self.setCalendarViewHeader(from: visibleDates)
         }
         calendarView.scrollToDate(Date(), animateScroll: false)
+    }
+    
+    func initTableView() {
+        // set navigation bar background and text color
+        navigationController?.navigationBar.barTintColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
+        let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        // set up "Show All" footer button in table view
+        let footerGesture = UITapGestureRecognizer(target: self, action: #selector(resetActiveUsers))
+        footerView.addGestureRecognizer(footerGesture)
+    }
+    
+    // set up initial listeners on OnCallGroup
+    func initDatabase() {
+        // get names of all OnCallGroups
+        ref.child("OnCallGroup").observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+            let groups = snapshot.value as? [String : AnyObject] ?? [:]
+            self.onCallGroups = Array(groups.keys)
+            // default group set to first in list from database
+            self.currOnCallGroup = self.onCallGroups?[0]
+            self.renderUserData()
+        })
     }
     
     // sets month and year labels in calendar header, called on calendar scroll
