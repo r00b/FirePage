@@ -12,8 +12,11 @@ import FirebaseDatabase
 
 class CalendarViewController: UIViewController {
     
+    // MARK: Instance variables
+    
     let formatter = DateFormatter()
     
+    // NOTE: more than 10 users in an OnCallGroup will trigger an ArrayIndexOutOfBounds
     let colors: [UIColor] = [
         UIColor(red:1.00, green:0.69, blue:0.00, alpha:1.0),
         UIColor(red:0.36, green:0.91, blue:0.40, alpha:1.0),
@@ -27,97 +30,71 @@ class CalendarViewController: UIViewController {
         UIColor(red:0.89, green:0.71, blue:0.02, alpha:1.0)
     ]
     
-    // color of date label when selected
-    let selectedDayColor = UIColor(red:0.96, green:0.96, blue:0.97, alpha:1.0) // #F6F6F8
-    // color of date label when not selected and current month
-    let insideMonthColor = UIColor(red:0.48, green:0.52, blue:0.64, alpha:1.0) // #7B85A3
-    // color of date label when not selected and not current month
-    let outsideMonthColor = UIColor(red:0.69, green:0.70, blue:0.72, alpha:1.0) // #B0B3B7
-    
+    let selectedDayLabelColor = UIColor(red:0.96, green:0.96, blue:0.97, alpha:1.0) // #F6F6F8
+    let insideMonthLabelColor = UIColor(red:0.48, green:0.52, blue:0.64, alpha:1.0) // #7B85A3
+    let outsideMonthLabelColor = UIColor(red:0.69, green:0.70, blue:0.72, alpha:1.0) // #B0B3B7
     let insideMonthViewColor = UIColor(red:0.55, green:0.54, blue:1.00, alpha:1.0) // #8C8AFF
     let outsideMonthViewColor = UIColor(red:0.77, green:0.77, blue:1.00, alpha:1.0); // #C5C4FF
+    
+    var startDate: Date!
+    var endDate: Date!
+    
+    var onCallGroups: [String]?
+    var currOnCallGroup: String?
+    var userDates = [Date : String]()
+    var userColors = [String : UIColor]()
+    var activeUsers = [String : Bool]() // users that are currently highlighted
+    var selectedUser = ""
+
+    let ref : DatabaseReference! = Database.database().reference()
+    
+    
+    // MARK: IBOutlets
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var onCallGroupLabel: UILabel!
     
-    var startDate: Date!
-    var endDate: Date!
+    
+    // MARK: Override functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initCalendarView()
         
-        let ref : DatabaseReference! = Database.database().reference()
-        ref.child("OnCallGroup").child("BlackwellGroup").child("Calendar").observe(DataEventType.value, with: { (snapshot) in
-            let dates = snapshot.value as? [String : String] ?? [:]
-            self.renderDates(dates: dates)
+        // get names of all OnCallGroups
+        ref.child("OnCallGroup").observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+            let groups = snapshot.value as? [String : AnyObject] ?? [:]
+            self.onCallGroups = Array(groups.keys)
+            // default group set to first in list from database
+            self.currOnCallGroup = self.onCallGroups?[0]
+            self.renderUserData()
         })
-        
     }
     
-    var userDates = [Date : String]()
-    var userColors = [String : UIColor]()
-    
-    func renderDates(dates: [String : String]) {
-        for (date, userName) in dates {
-            formatter.dateFormat = "MM-dd-yyyy"
-            let generatedDate = formatter.date(from: date)
-            userDates[generatedDate!] = userName
-            if userColors[userName] == nil {
-                userColors[userName] = colors[userColors.count]
-            }
-        }
-        calendarView.reloadData()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // clean up observers
+        ref.child("OnCallGroup").child(currOnCallGroup!).child("Calendar").removeAllObservers()
     }
     
-    func renderCell(view: JTAppleCell?, cellState: CellState) {
-        guard let validCell = view as? CalendarCell else { return }
-        if let userName = userDates[cellState.date] {
-            validCell.selectedView.isHidden = false
-            
-            
-            if cellState.dateBelongsTo == .thisMonth {
-                validCell.selectedView.backgroundColor = userColors[userName]
-                validCell.dateLabel.textColor = selectedDayColor
-            } else {
-                validCell.selectedView.backgroundColor = userColors[userName]?.withAlphaComponent(0.5)
-                validCell.dateLabel.textColor = outsideMonthColor
-            }
-        } else {
-            if cellState.dateBelongsTo == .thisMonth {
-                validCell.dateLabel.textColor = insideMonthColor
-            } else {
-                validCell.dateLabel.textColor = outsideMonthColor
-            }
-        }
-        //        if validCell.isSelected {
-        //            validCell.selectedView.isHidden = false
-        //            let userName = userDates[cellState.date]
-        //            validCell.selectedView.backgroundColor = userColors[userName]
-        ////            if (cellState.dateBelongsTo == .thisMonth) {
-        ////                validCell.selectedView.backgroundColor = insideMonthViewColor
-        ////            } else {
-        ////                validCell.selectedView.backgroundColor = outsideMonthViewColor
-        ////            }
-        //        } else {
-        //            validCell.selectedView.isHidden = true
-        //
-        //        }
-    }
     
+    // MARK: Private functions
+ 
+    // set basic properties on the calendar UI, only called once
     func initCalendarView() {
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
         calendarView.scrollingMode = .stopAtEachCalendarFrame
         calendarView.visibleDates { (visibleDates) in
-            self.initViewsOfCalendar(from: visibleDates)
+            self.setCalendarViewHeader(from: visibleDates)
         }
-        
         calendarView.scrollToDate(Date(), animateScroll: false)
     }
     
-    func initViewsOfCalendar(from visibleDates: DateSegmentInfo) {
+    // sets month and year labels in calendar header, called on calendar scroll
+    func setCalendarViewHeader(from visibleDates: DateSegmentInfo) {
         let date = visibleDates.monthDates.first!.date
         formatter.dateFormat = "yyyy"
         yearLabel.text = formatter.string(from: date)
@@ -125,7 +102,46 @@ class CalendarViewController: UIViewController {
         monthLabel.text = formatter.string(from: date)
     }
     
-    @IBAction func scrollLeft(_ sender: UIButton) {
+    // populate cells with colors for the selected OnCallGroup
+    func renderUserData() {
+        userDates = [Date : String]()
+        userColors = [String : UIColor]()
+        self.onCallGroupLabel.text = self.currOnCallGroup
+        self.ref.child("OnCallGroup").child(self.currOnCallGroup!).child("Calendar").observe(DataEventType.value, with: { (snapshot) in
+            let dates = snapshot.value as? [String : String] ?? [:]
+            self.storeUserData(dates: dates)
+            self.calendarView.reloadData()
+        })
+    }
+    
+    // store user data from the database in accessible data structures
+    func storeUserData(dates: [String : String]) {
+        for (date, userName) in dates {
+            // create Date object and store it
+            formatter.dateFormat = "MM-dd-yyyy"
+            let generatedDate = formatter.date(from: date)
+            userDates[generatedDate!] = userName
+            
+            // denote user as highlighted
+            activeUsers[userName] = true
+            
+            // assign a color to the user
+            if userColors[userName] == nil { // don't reassign colors
+                userColors[userName] = colors[userColors.count]
+            }
+        }
+    }
+    
+    func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: IBActions
+    
+    @IBAction func scrollCalendarLeft(_ sender: UIButton) {
         let currDate = calendarView.visibleDates().monthDates.first!.date
         let newDate = Calendar.current.date(byAdding: .month, value: -1, to: currDate)
         
@@ -134,16 +150,13 @@ class CalendarViewController: UIViewController {
         let startYear = Calendar.current.component(.year, from: startDate)
         let newYear = Calendar.current.component(.year, from: newDate!)
         if newMonth < startMonth && newYear <= startYear {
-            let alert = UIAlertController(title: "Earliest Month Reached", message: "You've reached the earliest stored month.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            
+            presentAlert(title: "Earliest Month Reached", message: "You've reached the earliest stored month.")
         } else {
             calendarView.scrollToDate(newDate!)
         }
     }
     
-    @IBAction func scrollRight(_ sender: UIButton) {
+    @IBAction func scrollCalendarRight(_ sender: UIButton) {
         let currDate = calendarView.visibleDates().monthDates.first!.date
         let newDate = Calendar.current.date(byAdding: .month, value: 1, to: currDate)
         
@@ -152,15 +165,30 @@ class CalendarViewController: UIViewController {
         let endYear = Calendar.current.component(.year, from: endDate)
         let newYear = Calendar.current.component(.year, from: newDate!)
         if newMonth > endMonth && newYear >= endYear {
-            
-            let alert = UIAlertController(title: "Farthest Month Reached", message: "You've reached the farthest stored month.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            
+            presentAlert(title: "Farthest Month Reached", message: "You've reached the farthest stored month.")
         } else {
             calendarView.scrollToDate(newDate!)
         }
     }
     
-}
+    @IBAction func scrollOnCallGroupLeft(_ sender: UIButton) {
+        ref.child("OnCallGroup").child(self.currOnCallGroup!).child("Calendar").removeAllObservers()
+        var nextGroupIdx = onCallGroups!.index(of: currOnCallGroup!)! - 1
+        if nextGroupIdx == -1 {
+            nextGroupIdx = onCallGroups!.count - 1
+        }
+        currOnCallGroup = onCallGroups![nextGroupIdx]
+        renderUserData()
+    }
+    
+    @IBAction func scrollOnCallGroupRight(_ sender: UIButton) {
+        ref.child("OnCallGroup").child(self.currOnCallGroup!).child("Calendar").removeAllObservers()
+        var nextGroupIdx = onCallGroups!.index(of: currOnCallGroup!)! + 1
+        if nextGroupIdx == onCallGroups!.count {
+            nextGroupIdx = 0
+        }
+        currOnCallGroup = onCallGroups![nextGroupIdx]
+        renderUserData()
+    }
 
+}

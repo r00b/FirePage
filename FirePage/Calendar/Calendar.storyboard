@@ -23,8 +23,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DN1-ZN-8tW">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alspaugh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxX-A0-G6W">
-                                                <rect key="frame" x="124.5" y="10.5" width="72" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxX-A0-G6W">
+                                                <rect key="frame" x="123" y="10.5" width="75" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.98431372549999996" green="0.98823529409999999" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -36,6 +36,9 @@
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="25" id="Kmu-ox-Zks"/>
                                                 </constraints>
                                                 <state key="normal" image="leftButtonRed"/>
+                                                <connections>
+                                                    <action selector="scrollOnCallGroupLeft:" destination="s72-5O-6hX" eventType="touchUpInside" id="WlH-5F-Cv7"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cl-Hi-NvJ">
                                                 <rect key="frame" x="287" y="8" width="25" height="25"/>
@@ -44,6 +47,9 @@
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="25" id="swS-60-o0M"/>
                                                 </constraints>
                                                 <state key="normal" image="rightButtonRed"/>
+                                                <connections>
+                                                    <action selector="scrollOnCallGroupRight:" destination="s72-5O-6hX" eventType="touchUpInside" id="8Tq-jy-cWp"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.88235294119999996" green="0.2901960784" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
@@ -85,7 +91,7 @@
                                                 </constraints>
                                                 <state key="normal" image="leftButtonGray"/>
                                                 <connections>
-                                                    <action selector="scrollLeft:" destination="s72-5O-6hX" eventType="touchUpInside" id="u5b-I0-RDx"/>
+                                                    <action selector="scrollCalendarLeft:" destination="s72-5O-6hX" eventType="touchUpInside" id="u5b-I0-RDx"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RR5-lN-Ozd">
@@ -96,7 +102,7 @@
                                                 </constraints>
                                                 <state key="normal" image="rightButtonGray"/>
                                                 <connections>
-                                                    <action selector="scrollRight:" destination="s72-5O-6hX" eventType="touchUpInside" id="dZd-Fx-GOY"/>
+                                                    <action selector="scrollCalendarRight:" destination="s72-5O-6hX" eventType="touchUpInside" id="dZd-Fx-GOY"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -243,6 +249,7 @@
                     <connections>
                         <outlet property="calendarView" destination="rHW-sM-Zcf" id="s1d-Oz-lyh"/>
                         <outlet property="monthLabel" destination="ihO-qB-kSj" id="SGB-YO-fZP"/>
+                        <outlet property="onCallGroupLabel" destination="RxX-A0-G6W" id="JHw-cX-Yya"/>
                         <outlet property="yearLabel" destination="x4w-BM-GJm" id="1b7-c7-k05"/>
                     </connections>
                 </viewController>
