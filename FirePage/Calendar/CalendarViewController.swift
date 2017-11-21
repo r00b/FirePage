@@ -65,6 +65,12 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         initCalendarView()
         
+        navigationController?.navigationBar.barTintColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
+
+        let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+    
+        
         // set up "Show All" footer button in table view
         let footerGesture = UITapGestureRecognizer(target: self, action: #selector(resetActiveUsers))
         footerView.addGestureRecognizer(footerGesture)

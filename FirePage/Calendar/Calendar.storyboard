@@ -18,8 +18,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAN-hl-mkB">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <color key="barTintColor" red="0.85098039215686272" green="0.10588235294117647" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Calendar" id="Qej-Dv-ePm">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="PI4-vO-U2N"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HyP-nw-uDg">
-                                <rect key="frame" x="0.0" y="20" width="320" height="340.5"/>
+                                <rect key="frame" x="0.0" y="108" width="320" height="340.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DN1-ZN-8tW">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
@@ -238,7 +250,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ohb-8Z-msS">
-                                <rect key="frame" x="0.0" y="370.5" width="320" height="197.5"/>
+                                <rect key="frame" x="0.0" y="458" width="320" height="110"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.96078431372549022" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="MbA-hv-Gms">
                                     <rect key="frame" x="0.0" y="78" width="320" height="50"/>
@@ -344,15 +356,20 @@
                         <constraints>
                             <constraint firstItem="Ohb-8Z-msS" firstAttribute="leading" secondItem="nce-ev-esv" secondAttribute="leading" id="0wr-Qz-mma"/>
                             <constraint firstItem="nce-ev-esv" firstAttribute="bottom" secondItem="Ohb-8Z-msS" secondAttribute="bottom" id="30N-7r-QTC"/>
-                            <constraint firstItem="HyP-nw-uDg" firstAttribute="top" secondItem="nce-ev-esv" secondAttribute="top" id="LFk-om-Tjq"/>
+                            <constraint firstItem="zAN-hl-mkB" firstAttribute="leading" secondItem="nce-ev-esv" secondAttribute="leading" id="6n5-zn-bzY"/>
+                            <constraint firstItem="zAN-hl-mkB" firstAttribute="trailing" secondItem="nce-ev-esv" secondAttribute="trailing" id="Gma-Q5-WYN"/>
                             <constraint firstItem="HyP-nw-uDg" firstAttribute="trailing" secondItem="nce-ev-esv" secondAttribute="trailing" id="SUJ-aB-b7D"/>
                             <constraint firstItem="HyP-nw-uDg" firstAttribute="leading" secondItem="nce-ev-esv" secondAttribute="leading" id="Y4Y-Ly-XX9"/>
                             <constraint firstItem="nce-ev-esv" firstAttribute="trailing" secondItem="Ohb-8Z-msS" secondAttribute="trailing" id="gyl-ew-42P"/>
                             <constraint firstItem="Ohb-8Z-msS" firstAttribute="top" secondItem="HyP-nw-uDg" secondAttribute="bottom" constant="10" id="hfJ-lN-QPZ"/>
+                            <constraint firstItem="HyP-nw-uDg" firstAttribute="top" secondItem="zAN-hl-mkB" secondAttribute="bottom" id="lvt-HJ-U81"/>
+                            <constraint firstItem="zAN-hl-mkB" firstAttribute="top" secondItem="nce-ev-esv" secondAttribute="top" id="upo-JU-hD7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nce-ev-esv"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="n4v-fy-hDf"/>
+                    <navigationItem key="navigationItem" title="Calendar" id="B5Z-zb-qFd">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="lnd-Db-9gX"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="calendarView" destination="rHW-sM-Zcf" id="s1d-Oz-lyh"/>
                         <outlet property="footerView" destination="MbA-hv-Gms" id="fi3-qI-9JM"/>
@@ -364,7 +381,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PeO-CQ-4jI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1194.375" y="-214.43661971830986"/>
+            <point key="canvasLocation" x="-399.375" y="-214.43661971830986"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wDf-iz-yn8">
+            <objects>
+                <navigationController storyboardIdentifier="CalendarNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CW8-4R-rAj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zSa-5k-S7v">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="s72-5O-6hX" kind="relationship" relationship="rootViewController" id="Gzj-qZ-xM7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fcr-IG-4bJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1074" y="-214"/>
         </scene>
     </scenes>
     <resources>
