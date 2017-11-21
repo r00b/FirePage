@@ -84,16 +84,10 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
         if let userName = userDates[cellState.date] {
             if selectedUser == userName {
-                selectedUser = ""
-                // user already selected, go to default view (select all)
-                activeUsers = activeUsers.mapValues({(Bool) -> Bool in return true})
+                resetActiveUsers()
             } else {
-                // user not selected
-                selectedUser = userName
-                _ = activeUsers.map({ (user: String, Bool) in
-                    // only selectedUser is active
-                    activeUsers[user] = (user == selectedUser)
-                })
+                // user not already selected
+                selectUser(userName: userName)
             }
         }
         calendarView.reloadData()
@@ -109,8 +103,6 @@ extension CalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarTableViewCell", for: indexPath) as! CalendarTableViewCell
         
-        
-        
         let user = Array(activeUsers.keys)[indexPath.row]
         cell.title.text = user
         cell.title.textColor = userColors[user]
@@ -125,10 +117,40 @@ extension CalendarViewController: UITableViewDataSource {
 extension CalendarViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.reloadData() // clear out previous selections
         let cell = tableView.cellForRow(at: indexPath) as! CalendarTableViewCell
-        selectedUser = cell.title.text!
-        cell.titleView.backgroundColor = userColors[selectedUser]
-        cell.title.textColor = UIColor.white
+        let chosenUser = cell.title.text!
+        
+        if selectedUser == chosenUser {
+            resetActiveUsers()
+            // color cell to show deselection
+            cell.titleView.backgroundColor = UIColor.white
+            cell.title.textColor = userColors[chosenUser]
+        } else {
+            // user not already selected
+            selectUser(userName: chosenUser)
+            // color cell to show selection
+            cell.titleView.backgroundColor = userColors[chosenUser]
+            cell.title.textColor = UIColor.white
+        }
+        calendarView.reloadData() // push changes to calendar view
     }
+    
+    // designate a user with userName as selected
+    func selectUser(userName: String) {
+        selectedUser = userName
+        _ = activeUsers.map({ (user: String, Bool) in
+            // only selectedUser should be active
+            activeUsers[user] = (user == selectedUser)
+        })
+    }
+    
+    // reset all users to be active/selected
+    func resetActiveUsers() {
+        selectedUser = ""
+        // user already selected, go to default view (select all)
+        activeUsers = activeUsers.mapValues({(Bool) -> Bool in return true})
+    }
+    
 }
 
