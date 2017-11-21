@@ -45,7 +45,7 @@ class CalendarViewController: UIViewController {
     var userColors = [String : UIColor]()
     var activeUsers = [String : Bool]() // users that are currently highlighted
     var selectedUser = ""
-
+    
     let ref : DatabaseReference! = Database.database().reference()
     
     
@@ -56,6 +56,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var onCallGroupLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var footerView: UIView!
     
     
     // MARK: Override functions
@@ -63,6 +64,10 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initCalendarView()
+        
+        // set up "Show All" footer button in table view
+        let footerGesture = UITapGestureRecognizer(target: self, action: #selector(resetActiveUsers))
+        footerView.addGestureRecognizer(footerGesture)
         
         // get names of all OnCallGroups
         ref.child("OnCallGroup").observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
@@ -77,12 +82,12 @@ class CalendarViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // clean up observers
-ref.child("OnCallGroup").child(currOnCallGroup!).child("Calendar").removeAllObservers()
+        ref.child("OnCallGroup").child(currOnCallGroup!).child("Calendar").removeAllObservers()
     }
     
     
     // MARK: Private functions
- 
+    
     // set basic properties on the calendar UI, only called once
     func initCalendarView() {
         calendarView.minimumLineSpacing = 0
@@ -143,6 +148,26 @@ ref.child("OnCallGroup").child(currOnCallGroup!).child("Calendar").removeAllObse
         self.present(alert, animated: true, completion: nil)
     }
     
+    // designate a user with userName as selected
+    func selectUser(userName: String) {
+        selectedUser = userName
+        _ = activeUsers.map({ (user: String, Bool) in
+            // only selectedUser should be active
+            activeUsers[user] = (user == selectedUser)
+        })
+        calendarView.reloadData() // push changes to calendar view
+        tableView.reloadData() // push changes to table view
+    }
+    
+    // reset all users to be active/selected
+    @objc func resetActiveUsers() {
+        selectedUser = ""
+        // user already selected, go to default view (select all)
+        activeUsers = activeUsers.mapValues({(Bool) -> Bool in return true})
+        calendarView.reloadData()
+        tableView.reloadData()
+    }
+    
     
     // MARK: IBActions
     
@@ -195,5 +220,5 @@ ref.child("OnCallGroup").child(currOnCallGroup!).child("Calendar").removeAllObse
         currOnCallGroup = onCallGroups![nextGroupIdx]
         renderUserData()
     }
-
+    
 }

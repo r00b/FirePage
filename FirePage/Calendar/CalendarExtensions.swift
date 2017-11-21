@@ -90,12 +90,15 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
                 selectUser(userName: userName)
             }
         }
-        calendarView.reloadData()
         tableView.reloadData()
     }
 }
 
+
+// MARK: UITableViewDataSource
+
 extension CalendarViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return activeUsers.count
     }
@@ -105,8 +108,14 @@ extension CalendarViewController: UITableViewDataSource {
         
         let user = Array(activeUsers.keys)[indexPath.row]
         cell.title.text = user
-        cell.title.textColor = userColors[user]
-        cell.titleView.backgroundColor = UIColor.white
+        
+        if user == selectedUser {
+            cell.title.textColor = UIColor.white
+            cell.titleView.backgroundColor = userColors[user]
+        } else {
+            cell.title.textColor = userColors[user]
+            cell.titleView.backgroundColor = UIColor.white
+        }
         cell.accentView.backgroundColor = userColors[user]
         return cell
     }
@@ -114,10 +123,12 @@ extension CalendarViewController: UITableViewDataSource {
     
 }
 
+
+// MARK: UITableViewDelegate
+
 extension CalendarViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.reloadData() // clear out previous selections
         let cell = tableView.cellForRow(at: indexPath) as! CalendarTableViewCell
         let chosenUser = cell.title.text!
         
@@ -133,23 +144,6 @@ extension CalendarViewController: UITableViewDelegate {
             cell.titleView.backgroundColor = userColors[chosenUser]
             cell.title.textColor = UIColor.white
         }
-        calendarView.reloadData() // push changes to calendar view
-    }
-    
-    // designate a user with userName as selected
-    func selectUser(userName: String) {
-        selectedUser = userName
-        _ = activeUsers.map({ (user: String, Bool) in
-            // only selectedUser should be active
-            activeUsers[user] = (user == selectedUser)
-        })
-    }
-    
-    // reset all users to be active/selected
-    func resetActiveUsers() {
-        selectedUser = ""
-        // user already selected, go to default view (select all)
-        activeUsers = activeUsers.mapValues({(Bool) -> Bool in return true})
     }
     
 }

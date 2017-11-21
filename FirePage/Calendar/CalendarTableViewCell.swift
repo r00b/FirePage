@@ -18,6 +18,7 @@ class CalendarTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        // add shadow to inner view
         let shadowPath = UIBezierPath(rect: titleView.layer.bounds)
         titleView.layer.masksToBounds = false
         titleView.layer.shadowColor = UIColor.black.cgColor
