@@ -55,6 +55,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var onCallGroupLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     
     // MARK: Override functions
@@ -76,7 +77,7 @@ class CalendarViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // clean up observers
-        ref.child("OnCallGroup").child(currOnCallGroup!).child("Calendar").removeAllObservers()
+ref.child("OnCallGroup").child(currOnCallGroup!).child("Calendar").removeAllObservers()
     }
     
     
@@ -104,13 +105,17 @@ class CalendarViewController: UIViewController {
     
     // populate cells with colors for the selected OnCallGroup
     func renderUserData() {
+        // clear out data structures
         userDates = [Date : String]()
         userColors = [String : UIColor]()
+        activeUsers = [String : Bool]()
+        
         self.onCallGroupLabel.text = self.currOnCallGroup
         self.ref.child("OnCallGroup").child(self.currOnCallGroup!).child("Calendar").observe(DataEventType.value, with: { (snapshot) in
             let dates = snapshot.value as? [String : String] ?? [:]
             self.storeUserData(dates: dates)
             self.calendarView.reloadData()
+            self.tableView.reloadData()
         })
     }
     

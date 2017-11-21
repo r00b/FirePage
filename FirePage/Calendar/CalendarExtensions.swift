@@ -9,6 +9,7 @@
 import Foundation
 import JTAppleCalendar
 
+
 // MARK: JTAppleCalendarViewDataSource
 
 extension CalendarViewController: JTAppleCalendarViewDataSource {
@@ -96,6 +97,38 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
             }
         }
         calendarView.reloadData()
+        tableView.reloadData()
+    }
+}
+
+extension CalendarViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return activeUsers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarTableViewCell", for: indexPath) as! CalendarTableViewCell
+        
+        
+        
+        let user = Array(activeUsers.keys)[indexPath.row]
+        cell.title.text = user
+        cell.title.textColor = userColors[user]
+        cell.titleView.backgroundColor = UIColor.white
+        cell.accentView.backgroundColor = userColors[user]
+        return cell
+    }
+    
+    
+}
+
+extension CalendarViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! CalendarTableViewCell
+        selectedUser = cell.title.text!
+        cell.titleView.backgroundColor = userColors[selectedUser]
+        cell.title.textColor = UIColor.white
     }
 }
 
