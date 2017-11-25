@@ -66,3 +66,38 @@ struct PhoneCall{
         self.dorm = dorm
     }
 }
+
+struct HelpRequest: CustomStringConvertible{
+    public var time: String
+    public var fromPerson: String
+    public var onCallGroup: String
+    public var date: String
+    public var location: String
+    public var isResolved: Bool
+    public var description: String
+    
+    init(dictionary: NSDictionary){
+        self.time = dictionary.object(forKey: "time") as! String
+        self.fromPerson = dictionary.object(forKey: "fromPerson") as! String
+        self.onCallGroup = dictionary.object(forKey: "onCallGroup") as! String
+        self.date = dictionary.object(forKey: "date") as! String
+        self.location = dictionary.object(forKey: "Location") as! String
+        if(dictionary.object(forKey: "date") as! String == "true"){
+            self.isResolved = true
+        }else{
+            self.isResolved = false
+        }
+        self.description = dictionary.object(forKey: "description") as! String
+    }
+    
+    init(){
+        self.time = ""
+        self.fromPerson = ""
+        self.onCallGroup = ""
+        self.date = ""
+        self.location = ""
+        self.isResolved = false
+        self.description = ""
+    }
+}
+

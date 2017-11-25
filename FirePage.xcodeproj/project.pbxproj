@@ -29,6 +29,8 @@
 		B77CCCBE1FB916A200ECAD81 /* HelpLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CCCBD1FB916A200ECAD81 /* HelpLineViewController.swift */; };
 		B77CCCC01FB93F2600ECAD81 /* CustomRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CCCBF1FB93F2600ECAD81 /* CustomRadioButton.swift */; };
 		B77CCCC21FB9414400ECAD81 /* RadioButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CCCC11FB9414400ECAD81 /* RadioButtonController.swift */; };
+		BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3AE4701FC61A8400A0470A /* Utilities.swift */; };
+		BB3AE4731FC7926B00A0470A /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3AE4721FC7926B00A0470A /* DB.swift */; };
 		E1658EF91FC27B2200DCAFD8 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1658EF81FC27B2200DCAFD8 /* Calendar.storyboard */; };
 		E1658EFA1FC27B2200DCAFD8 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1658EF81FC27B2200DCAFD8 /* Calendar.storyboard */; };
 		E1658EFB1FC27B2200DCAFD8 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1658EF81FC27B2200DCAFD8 /* Calendar.storyboard */; };
@@ -97,6 +99,9 @@
 		B77CCCBD1FB916A200ECAD81 /* HelpLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpLineViewController.swift; sourceTree = "<group>"; };
 		B77CCCBF1FB93F2600ECAD81 /* CustomRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRadioButton.swift; sourceTree = "<group>"; };
 		B77CCCC11FB9414400ECAD81 /* RadioButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonController.swift; sourceTree = "<group>"; };
+		BB3AE46F1FC619A100A0470A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		BB3AE4701FC61A8400A0470A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		BB3AE4721FC7926B00A0470A /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
 		D2117D8DE3849B4FE649D3B7 /* Pods-FirePageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirePageTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirePageTests/Pods-FirePageTests.release.xcconfig"; sourceTree = "<group>"; };
 		E1658EF81FC27B2200DCAFD8 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		E1658F081FC3F9E500DCAFD8 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
@@ -202,6 +207,7 @@
 				B75759651FAFE81D006845E9 /* Assets.xcassets */,
 				B75759671FAFE81D006845E9 /* LaunchScreen.storyboard */,
 				B757596A1FAFE81D006845E9 /* Info.plist */,
+				BB3AE46F1FC619A100A0470A /* BridgingHeader.h */,
 			);
 			path = FirePage;
 			sourceTree = "<group>";
@@ -240,6 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				B75759961FB230CD006845E9 /* DataModel.swift */,
+				BB3AE4701FC61A8400A0470A /* Utilities.swift */,
+				BB3AE4721FC7926B00A0470A /* DB.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -580,10 +588,12 @@
 				B75759971FB230CD006845E9 /* DataModel.swift in Sources */,
 				B7194FEE1FB36346000A954E /* CustomLabel.swift in Sources */,
 				B75759901FB22DF0006845E9 /* CustomTextField.swift in Sources */,
+				BB3AE4731FC7926B00A0470A /* DB.swift in Sources */,
 				B77CCCC21FB9414400ECAD81 /* RadioButtonController.swift in Sources */,
 				B77CCCBE1FB916A200ECAD81 /* HelpLineViewController.swift in Sources */,
 				E1658F091FC3F9E500DCAFD8 /* CalendarTableViewCell.swift in Sources */,
 				E1658F0D1FC4B81200DCAFD8 /* CalendarTableViewShadow.swift in Sources */,
+				BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */,
 				B75759611FAFE81D006845E9 /* ViewController.swift in Sources */,
 				E190751C1FBA90D30038F6E9 /* CalendarViewController.swift in Sources */,
 				B7194FF51FB38146000A954E /* CustomButton.swift in Sources */,
@@ -772,6 +782,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TheGargs.FirePage.rhs16;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = FirePage/BridgingHeader.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -788,6 +799,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TheGargs.FirePage.rhs16;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = FirePage/BridgingHeader.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

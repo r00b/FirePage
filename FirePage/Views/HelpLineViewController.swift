@@ -24,13 +24,28 @@ class HelpLineViewController: UIViewController {
     let fieldSpacing = 35
     
     override func viewDidLoad() {
+        
         originX = Int(self.view.bounds.width/2)
         originY = Int(self.view.bounds.height/2)
         buttonSpacing = Int(self.view.bounds.height/6)
         super.viewDidLoad()
         genButtons()
         genTextFields()
+        print("hello")
+        DB.getHelpRequests(onCallGroup: "N2Group", day: "11-12-2017", reloadFunction: printArray)
+        DB.getCalendar(onCallGroup: "N2Group", reloadFunction: printDic)
+        DB.getDaysOnCall(RA: "Darius", reloadFunction: printArray)
         // Do any additional setup after loading the view.
+    }
+    
+    func printDic(dictionary: [String: String]){
+        print(dictionary)
+    }
+    func printArray(array: [HelpRequest]){
+        print(array)
+    }
+    func printArray(array: [String]){
+        print(array)
     }
 
     override func didReceiveMemoryWarning() {
