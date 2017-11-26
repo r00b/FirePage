@@ -106,5 +106,15 @@ class DB{
         
     }
     
+    static func addHelpRequest(onCallGroup: String, day: String,  helpRequest: HelpRequest){
+        OnCallGroup.child(onCallGroup).child("HelpRequests").child(day).observeSingleEvent(of: .value, with: { snapshot in
+            var encodedHelpRequests = snapshot.value as? [String]
+            encodedHelpRequests!.append(helpRequest.getHash())
+            OnCallGroup.child(onCallGroup).child("HelpRequests").child(day).setValue(encodedHelpRequests)
+        })
+        HelpRequests.child(helpRequest.getHash()).setValue(helpRequest.getDictionary())
+        print(helpRequest.getHash())
+    }
+    
 
 }

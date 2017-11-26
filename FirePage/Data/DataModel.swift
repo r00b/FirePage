@@ -99,5 +99,22 @@ struct HelpRequest: CustomStringConvertible{
         self.isResolved = false
         self.description = ""
     }
+    
+    public func getHash() -> String{
+        var full: String = (self.time + self.fromPerson + self.onCallGroup + self.date + self.location + "\(self.isResolved)" + self.description)
+        return full.sha256()
+    }
+    
+    public func getDictionary() -> [String: String]{
+        var dictionary = [String: String]()
+        dictionary["time"] = self.time
+        dictionary["fromPerson"] = self.fromPerson
+        dictionary["onCallGroup"] = self.onCallGroup
+        dictionary["date"] = self.date
+        dictionary["Location"] = self.location
+        dictionary["isResolved"] = "\(self.isResolved)"
+        dictionary["description"] = self.description
+        return dictionary
+    }
 }
 

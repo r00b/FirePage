@@ -35,6 +35,15 @@ class HelpLineViewController: UIViewController {
         DB.getHelpRequests(onCallGroup: "N2Group", day: "11-12-2017", reloadFunction: printArray)
         DB.getCalendar(onCallGroup: "N2Group", reloadFunction: printDic)
         DB.getDaysOnCall(RA: "Darius", reloadFunction: printArray)
+        var dictionary = [String: String]()
+        dictionary["time"] = "23:32:23"
+        dictionary["fromPerson"] = "Ritwik"
+        dictionary["onCallGroup"] = "RandolphGroup"
+        dictionary["date"] = "11-12-2017"
+        dictionary["Location"] = "RN302"
+        dictionary["isResolved"] = "false"
+        dictionary["description"] = "poopie"
+        DB.addHelpRequest(onCallGroup: "RandolphGroup", day: "11-12-2017",helpRequest: HelpRequest(dictionary: dictionary as NSDictionary))
         // Do any additional setup after loading the view.
     }
     
