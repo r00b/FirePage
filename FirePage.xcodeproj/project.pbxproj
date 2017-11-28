@@ -16,6 +16,9 @@
 		B73083941FCCE83D000AD305 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73083921FCCE83D000AD305 /* GradientView.swift */; };
 		B73083951FCCE83D000AD305 /* FIreTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73083931FCCE83D000AD305 /* FIreTextField.swift */; };
 		B73083B11FCCE8F4000AD305 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73083B01FCCE8F4000AD305 /* UITextFieldExtensions.swift */; };
+		B73083B51FCCE969000AD305 /* DormCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73083B31FCCE969000AD305 /* DormCollectionViewCell.swift */; };
+		B73083B61FCCE969000AD305 /* HelplineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73083B41FCCE969000AD305 /* HelplineViewController.swift */; };
+		B73083B81FCCEA17000AD305 /* HelpLine.storyboad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B73083B71FCCEA17000AD305 /* HelpLine.storyboad.storyboard */; };
 		B757595F1FAFE81D006845E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B757595E1FAFE81D006845E9 /* AppDelegate.swift */; };
 		B75759611FAFE81D006845E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75759601FAFE81D006845E9 /* ViewController.swift */; };
 		B75759641FAFE81D006845E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B75759621FAFE81D006845E9 /* Main.storyboard */; };
@@ -83,6 +86,9 @@
 		B73083921FCCE83D000AD305 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B73083931FCCE83D000AD305 /* FIreTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIreTextField.swift; sourceTree = "<group>"; };
 		B73083B01FCCE8F4000AD305 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
+		B73083B31FCCE969000AD305 /* DormCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DormCollectionViewCell.swift; sourceTree = "<group>"; };
+		B73083B41FCCE969000AD305 /* HelplineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelplineViewController.swift; sourceTree = "<group>"; };
+		B73083B71FCCEA17000AD305 /* HelpLine.storyboad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HelpLine.storyboad.storyboard; sourceTree = "<group>"; };
 		B757595B1FAFE81D006845E9 /* FirePage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirePage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B757595E1FAFE81D006845E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B75759601FAFE81D006845E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +182,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		B73083B21FCCE931000AD305 /* HelpLine */ = {
+			isa = PBXGroup;
+			children = (
+				B73083B31FCCE969000AD305 /* DormCollectionViewCell.swift */,
+				B73083B41FCCE969000AD305 /* HelplineViewController.swift */,
+				B73083B71FCCEA17000AD305 /* HelpLine.storyboad.storyboard */,
+			);
+			path = HelpLine;
+			sourceTree = "<group>";
+		};
 		B75759521FAFE81D006845E9 = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +218,7 @@
 		B757595D1FAFE81D006845E9 /* FirePage */ = {
 			isa = PBXGroup;
 			children = (
+				B73083B21FCCE931000AD305 /* HelpLine */,
 				E19075151FBA90770038F6E9 /* Calendar */,
 				B7194FF11FB36567000A954E /* Extensions */,
 				B75759981FB23FC6006845E9 /* Views */,
@@ -398,6 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B73083B81FCCEA17000AD305 /* HelpLine.storyboad.storyboard in Resources */,
 				B75759691FAFE81D006845E9 /* LaunchScreen.storyboard in Resources */,
 				B75759661FAFE81D006845E9 /* Assets.xcassets in Resources */,
 				E1658EF91FC27B2200DCAFD8 /* Calendar.storyboard in Resources */,
@@ -599,11 +617,13 @@
 				B77CCCBE1FB916A200ECAD81 /* HelpLineViewController.swift in Sources */,
 				E1658F091FC3F9E500DCAFD8 /* CalendarTableViewCell.swift in Sources */,
 				E1658F0D1FC4B81200DCAFD8 /* CalendarTableViewShadow.swift in Sources */,
+				B73083B51FCCE969000AD305 /* DormCollectionViewCell.swift in Sources */,
 				B73083B11FCCE8F4000AD305 /* UITextFieldExtensions.swift in Sources */,
 				BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */,
 				B73083951FCCE83D000AD305 /* FIreTextField.swift in Sources */,
 				B75759611FAFE81D006845E9 /* ViewController.swift in Sources */,
 				E190751C1FBA90D30038F6E9 /* CalendarViewController.swift in Sources */,
+				B73083B61FCCE969000AD305 /* HelplineViewController.swift in Sources */,
 				B7194FF51FB38146000A954E /* CustomButton.swift in Sources */,
 				B757595F1FAFE81D006845E9 /* AppDelegate.swift in Sources */,
 				B7194FF31FB3658C000A954E /* UIViewControllerExtension.swift in Sources */,
