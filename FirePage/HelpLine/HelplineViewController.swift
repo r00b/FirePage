@@ -58,7 +58,6 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     @IBAction func dormClick(_ sender: Any) {
         self.dormClicked = !self.dormClicked
         self.dormMenu.isHidden = self.dormClicked
-        self.dormButton.imageView?.image = self.dormClicked ? #imageLiteral(resourceName: "contract") : #imageLiteral(resourceName: "expand")
         let newImage = self.dormClicked ? #imageLiteral(resourceName: "contract") : #imageLiteral(resourceName: "expand")
         dormButton.setImage(newImage, for: .normal)
     }

@@ -82,23 +82,23 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L19-cq-W8G">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L19-cq-W8G">
                                 <rect key="frame" x="111" y="40" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="H29-mZ-YIB"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="expand"/>
+                                <state key="normal" image="expand"/>
                                 <connections>
                                     <action selector="dormClick:" destination="SJL-Hi-oqQ" eventType="touchUpInside" id="4sR-BY-PFe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9t-p4-ayd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9t-p4-ayd">
                                 <rect key="frame" x="270" y="40" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="mYj-dT-55Q"/>
                                     <constraint firstAttribute="width" constant="40" id="oLb-oF-ZYB"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="expand"/>
+                                <state key="normal" image="expand"/>
                                 <connections>
                                     <action selector="campusClick:" destination="SJL-Hi-oqQ" eventType="touchUpInside" id="BrR-g3-hAC"/>
                                 </connections>
