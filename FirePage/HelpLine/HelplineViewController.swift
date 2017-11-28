@@ -115,7 +115,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         phoneList[0] = eastPhones[indexPath.row]
-        //print(eastDorms[indexPath.row])
+        print(eastDorms[indexPath.row])
     }
 
     override func didReceiveMemoryWarning() {
