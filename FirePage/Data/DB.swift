@@ -12,6 +12,7 @@ class DB{
     static var rootRef = Database.database().reference()
     static var HelpRequests = rootRef.child("HelpRequests")
     static var OnCallGroup = rootRef.child("OnCallGroup")
+    static var RA = rootRef.child("RA")
     
     static func testConnection(){
         rootRef.child("test").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -63,12 +64,50 @@ class DB{
                     helpRequests.append(helpRequest)
                 })
             }
-            let when = DispatchTime.now() + 0.05 // change 2 to desired number of seconds
+            let when = DispatchTime.now() + 0.1 // change 2 to desired number of seconds
             DispatchQueue.main.asyncAfter(deadline: when) {
                 reloadFunction(helpRequests)
             }
         })
     }
+    
+    static func getAllRAHelpRequests(RA: String, reloadFunction: @escaping ([String: [HelpRequest]]) -> Void){
+        self.RA.child(RA).child("DaysOnCall").observeSingleEvent(of: .value, with: { (snapshot) in
+            let daysOnCall = snapshot.value as? [String]
+            //print(daysOnCall)
+            var helpRequests = [String : [HelpRequest]]()
+            for day in daysOnCall!{
+            
+            self.RA.child(RA).child("onCallGroup").observeSingleEvent(of: .value, with: { (snapshot) in
+                let onCallGroup = snapshot.value as? String
+                helpRequests[day] = []
+                //print("\(onCallGroup!):\(day)")
+                    OnCallGroup.child(onCallGroup!).child("HelpRequests").child(day).observeSingleEvent(of: .value, with: { (snapshot) in
+                        //print(snapshot)
+                    let encodedHelpRequests = snapshot.value as? [String]
+                    for encodedHelpRequest in encodedHelpRequests!{
+                        
+                        HelpRequests.child(encodedHelpRequest).observeSingleEvent(of: .value, with: { (snapshot) in
+                            let value = snapshot.value as? NSDictionary
+                            let helpRequest = HelpRequest(dictionary: value!)
+                            helpRequests[day]!.append(helpRequest)
+                        })
+                    }
+                        
+                    
+                    })
+                })
+
+                }
+            let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                reloadFunction(helpRequests)
+            }
+            
+ 
+        })
+    }
+    
     
     static func addHelpRequest(onCallGroup: String, day: String,  helpRequest: HelpRequest){
         OnCallGroup.child(onCallGroup).child("HelpRequests").child(day).observeSingleEvent(of: .value, with: { snapshot in
@@ -79,6 +118,8 @@ class DB{
         HelpRequests.child(helpRequest.getHash()).setValue(helpRequest.getDictionary())
         print(helpRequest.getHash())
     }
+    
+    
     
 
 }
