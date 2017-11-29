@@ -103,8 +103,7 @@ class DB{
             DispatchQueue.main.asyncAfter(deadline: when) {
                 reloadFunction(helpRequests)
             }
-            
- 
+
         })
     }
     
