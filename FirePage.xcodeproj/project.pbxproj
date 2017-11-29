@@ -53,6 +53,11 @@
 		E19075281FBA977A0038F6E9 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19075261FBA97790038F6E9 /* CalendarCell.swift */; };
 		E19075291FBA977A0038F6E9 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19075261FBA97790038F6E9 /* CalendarCell.swift */; };
 		E190752A1FBA977A0038F6E9 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19075261FBA97790038F6E9 /* CalendarCell.swift */; };
+		E29D0A0A1FCEA81000E67B04 /* DemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D0A061FCEA81000E67B04 /* DemoCell.swift */; };
+		E29D0A0B1FCEA81000E67B04 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D0A071FCEA81000E67B04 /* MainTableViewController.swift */; };
+		E29D0A0C1FCEA81000E67B04 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E29D0A081FCEA81000E67B04 /* Info.plist */; };
+		E29D0A0D1FCEA81000E67B04 /* HelpRequests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E29D0A091FCEA81000E67B04 /* HelpRequests.storyboard */; };
+		E29D0A0F1FCEAA2F00E67B04 /* HelpRequestsDummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D0A0E1FCEAA2F00E67B04 /* HelpRequestsDummyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +124,11 @@
 		E19075161FBA90900038F6E9 /* CalendarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExtensions.swift; sourceTree = "<group>"; };
 		E190751A1FBA90D30038F6E9 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E19075261FBA97790038F6E9 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		E29D0A061FCEA81000E67B04 /* DemoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCell.swift; sourceTree = "<group>"; };
+		E29D0A071FCEA81000E67B04 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		E29D0A081FCEA81000E67B04 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E29D0A091FCEA81000E67B04 /* HelpRequests.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HelpRequests.storyboard; sourceTree = "<group>"; };
+		E29D0A0E1FCEAA2F00E67B04 /* HelpRequestsDummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRequestsDummyViewController.swift; sourceTree = "<group>"; };
 		F3620387EED78349E70D83C9 /* Pods-FirePageUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirePageUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirePageUITests/Pods-FirePageUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,6 +228,7 @@
 		B757595D1FAFE81D006845E9 /* FirePage */ = {
 			isa = PBXGroup;
 			children = (
+				E29D0A051FCEA81000E67B04 /* HelpRequests */,
 				B73083B21FCCE931000AD305 /* HelpLine */,
 				E19075151FBA90770038F6E9 /* Calendar */,
 				B7194FF11FB36567000A954E /* Extensions */,
@@ -282,6 +293,7 @@
 				B75759601FAFE81D006845E9 /* ViewController.swift */,
 				B757598C1FB22C28006845E9 /* AccountViewController.swift */,
 				B77CCCBD1FB916A200ECAD81 /* HelpLineViewController.swift */,
+				E29D0A0E1FCEAA2F00E67B04 /* HelpRequestsDummyViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,6 +309,17 @@
 				E1658F081FC3F9E500DCAFD8 /* CalendarTableViewCell.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		E29D0A051FCEA81000E67B04 /* HelpRequests */ = {
+			isa = PBXGroup;
+			children = (
+				E29D0A061FCEA81000E67B04 /* DemoCell.swift */,
+				E29D0A071FCEA81000E67B04 /* MainTableViewController.swift */,
+				E29D0A081FCEA81000E67B04 /* Info.plist */,
+				E29D0A091FCEA81000E67B04 /* HelpRequests.storyboard */,
+			);
+			path = HelpRequests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,9 +441,11 @@
 				B73083B81FCCEA17000AD305 /* HelpLine.storyboad.storyboard in Resources */,
 				B75759691FAFE81D006845E9 /* LaunchScreen.storyboard in Resources */,
 				B75759661FAFE81D006845E9 /* Assets.xcassets in Resources */,
+				E29D0A0D1FCEA81000E67B04 /* HelpRequests.storyboard in Resources */,
 				E1658EF91FC27B2200DCAFD8 /* Calendar.storyboard in Resources */,
 				B75759641FAFE81D006845E9 /* Main.storyboard in Resources */,
 				BB344B471FCA76D200BD890B /* GoogleService-Info.plist in Resources */,
+				E29D0A0C1FCEA81000E67B04 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +475,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FirePage/Pods-FirePage-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FoldingCell/FoldingCell.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
@@ -458,6 +484,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoldingCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
@@ -608,6 +635,8 @@
 				B73083941FCCE83D000AD305 /* GradientView.swift in Sources */,
 				E19075171FBA90900038F6E9 /* CalendarExtensions.swift in Sources */,
 				E19075281FBA977A0038F6E9 /* CalendarCell.swift in Sources */,
+				E29D0A0B1FCEA81000E67B04 /* MainTableViewController.swift in Sources */,
+				E29D0A0F1FCEAA2F00E67B04 /* HelpRequestsDummyViewController.swift in Sources */,
 				B77CCCC01FB93F2600ECAD81 /* CustomRadioButton.swift in Sources */,
 				B75759971FB230CD006845E9 /* DataModel.swift in Sources */,
 				B7194FEE1FB36346000A954E /* CustomLabel.swift in Sources */,
@@ -619,6 +648,7 @@
 				E1658F0D1FC4B81200DCAFD8 /* CalendarTableViewShadow.swift in Sources */,
 				B73083B51FCCE969000AD305 /* DormCollectionViewCell.swift in Sources */,
 				B73083B11FCCE8F4000AD305 /* UITextFieldExtensions.swift in Sources */,
+				E29D0A0A1FCEA81000E67B04 /* DemoCell.swift in Sources */,
 				BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */,
 				B73083951FCCE83D000AD305 /* FIreTextField.swift in Sources */,
 				B75759611FAFE81D006845E9 /* ViewController.swift in Sources */,
