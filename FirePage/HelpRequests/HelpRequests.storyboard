@@ -117,12 +117,12 @@
                                                             <rect key="frame" x="0.0" y="45" width="560" height="270"/>
                                                             <subviews>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Soi-HH-buq" userLabel="resfield">
-                                                                    <rect key="frame" x="14" y="164" width="532" height="67"/>
+                                                                    <rect key="frame" x="9" y="164" width="537" height="67"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="67" id="Kef-lu-joT"/>
                                                                     </constraints>
-                                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 </textView>
@@ -146,7 +146,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESOLUTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrf-lI-q3l">
-                                                                    <rect key="frame" x="19" y="155" width="76" height="14"/>
+                                                                    <rect key="frame" x="14" y="155" width="76" height="14"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                                     <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="0.49546030410000003" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -215,11 +215,11 @@
                                                                 <constraint firstItem="Ljh-NR-9yY" firstAttribute="leading" secondItem="aDG-wE-lpK" secondAttribute="trailing" constant="8" id="9au-Og-gzm"/>
                                                                 <constraint firstItem="Ljh-NR-9yY" firstAttribute="trailing" secondItem="Soi-HH-buq" secondAttribute="trailing" id="Cbi-bE-ivf"/>
                                                                 <constraint firstItem="FUZ-Do-fSJ" firstAttribute="leading" secondItem="tXR-qn-nOf" secondAttribute="leading" id="DY3-o3-dOv"/>
-                                                                <constraint firstItem="rrf-lI-q3l" firstAttribute="leading" secondItem="FUZ-Do-fSJ" secondAttribute="leading" constant="5" id="EFI-cZ-Cqm"/>
+                                                                <constraint firstItem="rrf-lI-q3l" firstAttribute="leading" secondItem="tXR-qn-nOf" secondAttribute="leading" id="EFI-cZ-Cqm"/>
                                                                 <constraint firstItem="tHR-l8-L6Q" firstAttribute="top" secondItem="Soi-HH-buq" secondAttribute="bottom" id="F93-PD-1gb"/>
                                                                 <constraint firstItem="oWz-yu-j0d" firstAttribute="top" secondItem="Jnn-JN-YGF" secondAttribute="bottom" constant="3" id="Ggf-2v-cUe"/>
                                                                 <constraint firstItem="Jnn-JN-YGF" firstAttribute="top" secondItem="tXR-qn-nOf" secondAttribute="top" id="IbT-Hi-TXO"/>
-                                                                <constraint firstItem="Soi-HH-buq" firstAttribute="leading" secondItem="DkK-Pc-hLo" secondAttribute="leading" id="JY9-32-Fe3"/>
+                                                                <constraint firstItem="Soi-HH-buq" firstAttribute="leading" secondItem="rrf-lI-q3l" secondAttribute="leading" constant="-5" id="JY9-32-Fe3"/>
                                                                 <constraint firstItem="aDG-wE-lpK" firstAttribute="top" secondItem="DkK-Pc-hLo" secondAttribute="bottom" constant="5" id="Lsf-ba-83w"/>
                                                                 <constraint firstItem="JGC-Cp-1wL" firstAttribute="top" secondItem="FUZ-Do-fSJ" secondAttribute="bottom" constant="8" id="PP1-Ag-i14"/>
                                                                 <constraint firstItem="aDG-wE-lpK" firstAttribute="bottom" secondItem="Ljh-NR-9yY" secondAttribute="bottom" constant="-13" id="RwO-fr-tuo"/>
@@ -287,9 +287,9 @@
                                     <outlet property="containerView" destination="CGm-93-iX0" id="gSm-z4-RdG"/>
                                     <outlet property="containerViewTop" destination="wys-AY-Zdw" id="Exs-1v-4Jn"/>
                                     <outlet property="expansionDescription" destination="Ljh-NR-9yY" id="84b-0l-rii"/>
-                                    <outlet property="expansionLocation" destination="Jnn-JN-YGF" id="Qzi-mA-vVC"/>
+                                    <outlet property="expansionLocation" destination="oWz-yu-j0d" id="2W7-hS-kpW"/>
                                     <outlet property="expansionOnCallGroup" destination="gKQ-G9-mIb" id="G8X-ZD-010"/>
-                                    <outlet property="expansionResolution" destination="rrf-lI-q3l" id="uFk-mH-Nno"/>
+                                    <outlet property="expansionResolution" destination="Soi-HH-buq" id="Zly-bq-xsn"/>
                                     <outlet property="expansionSender" destination="FUZ-Do-fSJ" id="RAR-0i-xzd"/>
                                     <outlet property="expansionTime" destination="WmU-FY-LDo" id="kYl-HG-B8i"/>
                                     <outlet property="foregroundDescription" destination="BUL-Of-nxF" id="l81-Gg-Sks"/>
