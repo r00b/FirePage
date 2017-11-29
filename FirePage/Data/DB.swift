@@ -13,44 +13,24 @@ class DB{
     static var HelpRequests = rootRef.child("HelpRequests")
     static var OnCallGroup = rootRef.child("OnCallGroup")
     
-    
-    
     static func testConnection(){
         rootRef.child("test").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
             let value = snapshot.value as? String
-            print(value)
-            
-            // ...
+            print(value!)
         }) { (error) in
             print(error.localizedDescription)
-        }
-    }
-    static func getHelpRequest(requestID: String, append: @escaping (HelpRequest) -> Void) {
-        HelpRequests.child(requestID).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            var helpRequest = HelpRequest(dictionary: value!)
-            append(helpRequest)
-            // ...
-        }) { (error) in
-            print(error.localizedDescription)
-            
         }
     }
     
-    static func getHelpRequest(requestID: String, array : inout [HelpRequest]) {
-        DispatchQueue.main.async {
-            var helpRequest = HelpRequest()
+    static func getHelpRequest(requestID: String, append: @escaping (HelpRequest) -> Void) {
         HelpRequests.child(requestID).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
             let value = snapshot.value as? NSDictionary
-            helpRequest = HelpRequest(dictionary: value!)
+            let helpRequest = HelpRequest(dictionary: value!)
+            append(helpRequest)
+        }) { (error) in
+            print(error.localizedDescription)
             
-            // ...
-        })
         }
-        
     }
     
     static func getDaysOnCall(RA: String, reloadFunction: @escaping ([String]) -> Void){
@@ -71,39 +51,23 @@ class DB{
     }
     
     static func getHelpRequests(onCallGroup: String, day: String, reloadFunction: @escaping ([HelpRequest]) -> Void){
-        /*
-        OnCallGroup.child(onCallGroup).child("HelpRequests").child(day).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            print(snapshot.value)
-            // ...
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        */
+
         var helpRequests = [HelpRequest]()
         OnCallGroup.child(onCallGroup).child("HelpRequests").child(day).observe(DataEventType.value, with: { (snapshot) in
-            var encodedHelpRequests = snapshot.value as? [String]
+            let encodedHelpRequests = snapshot.value as? [String]
             for encodedHelpRequest in encodedHelpRequests!{
                 
                 HelpRequests.child(encodedHelpRequest).observeSingleEvent(of: .value, with: { (snapshot) in
-                    // Get user value
                     let value = snapshot.value as? NSDictionary
-                    var helpRequest = HelpRequest(dictionary: value!)
+                    let helpRequest = HelpRequest(dictionary: value!)
                     helpRequests.append(helpRequest)
-                    // ...
                 })
-                
-                
             }
             let when = DispatchTime.now() + 0.05 // change 2 to desired number of seconds
             DispatchQueue.main.asyncAfter(deadline: when) {
                 reloadFunction(helpRequests)
             }
-            
-            // ...
         })
-        
-        
     }
     
     static func addHelpRequest(onCallGroup: String, day: String,  helpRequest: HelpRequest){
