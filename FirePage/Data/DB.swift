@@ -13,6 +13,7 @@ class DB{
     static var HelpRequests = rootRef.child("HelpRequests")
     static var OnCallGroup = rootRef.child("OnCallGroup")
     static var RA = rootRef.child("RA")
+
     
     static func testConnection(){
         rootRef.child("test").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -103,8 +104,6 @@ class DB{
             DispatchQueue.main.asyncAfter(deadline: when) {
                 reloadFunction(helpRequests)
             }
-            
- 
         })
     }
     
