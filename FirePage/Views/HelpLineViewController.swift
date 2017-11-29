@@ -32,9 +32,9 @@ class HelpLineViewController: UIViewController {
         genButtons()
         genTextFields()
         print("hello")
-        DB.getHelpRequests(onCallGroup: "N2Group", day: "11-12-2017", reloadFunction: printArray)
-        DB.getCalendar(onCallGroup: "N2Group", reloadFunction: printDic)
-        DB.getDaysOnCall(RA: "Darius", reloadFunction: printArray)
+        //DB.getHelpRequests(onCallGroup: "N2Group", day: "11-12-2017", reloadFunction: printArray)
+        //DB.getCalendar(onCallGroup: "N2Group", reloadFunction: printDic)
+        //DB.getDaysOnCall(RA: "Darius", reloadFunction: printArray)
         var dictionary = [String: String]()
         dictionary["time"] = "23:32:23"
         dictionary["fromPerson"] = "Ritwik"
@@ -43,11 +43,16 @@ class HelpLineViewController: UIViewController {
         dictionary["Location"] = "RN302"
         dictionary["isResolved"] = "false"
         dictionary["description"] = "poopie"
-        DB.addHelpRequest(onCallGroup: "RandolphGroup", day: "11-12-2017",helpRequest: HelpRequest(dictionary: dictionary as NSDictionary))
+        //DB.addHelpRequest(onCallGroup: "RandolphGroup", day: "11-12-2017",helpRequest: HelpRequest(dictionary: dictionary as NSDictionary))
+        //DB.getHelpRequests(onCallGroup: "N2Group", day: "11-12-2017", reloadFunction: printArray)
+        DB.getAllRAHelpRequests(RA: "Ritwik", reloadFunction: printHelpReq)
         // Do any additional setup after loading the view.
     }
     
     func printDic(dictionary: [String: String]){
+        print(dictionary)
+    }
+    func printHelpReq(dictionary: [String: [HelpRequest]]){
         print(dictionary)
     }
     func printArray(array: [HelpRequest]){

@@ -75,6 +75,7 @@ struct HelpRequest: CustomStringConvertible{
     public var location: String
     public var isResolved: Bool
     public var description: String
+    public var resolution: String?
     
     init(dictionary: NSDictionary){
         self.time = dictionary.object(forKey: "time") as! String
@@ -114,6 +115,9 @@ struct HelpRequest: CustomStringConvertible{
         dictionary["Location"] = self.location
         dictionary["isResolved"] = "\(self.isResolved)"
         dictionary["description"] = self.description
+        if(resolution != nil){
+            dictionary["resolution"] = self.resolution
+        }
         return dictionary
     }
 }
