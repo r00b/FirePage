@@ -12,6 +12,8 @@ import Firebase
 
 class HelplineViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
 
+    
+    
     // MARK: Global Variables
     private var cells = [DormCollectionViewCell]()
     private var dormDic = [String:String]()
@@ -79,6 +81,13 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
                 UIApplication.shared.openURL(url)
             }
         }
+        let date = getDate()
+        let group = dormDic[currDorm]
+        let time = getTime()
+        let status = false
+        let description = subjectField.text
+        let location = "\(currDorm) \(locationField.text)"
+        let username = getUserData()["email"]
         
         
         
@@ -111,7 +120,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     
     func setDormDic(dictionary: [String: String]){
         dormDic = dictionary
-        print(dictionary)
+        //print(dictionary)
         eastDorms = Array(dormDic.keys)
         dormMenu.reloadData()
         cells = [DormCollectionViewCell]()
@@ -133,8 +142,9 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         return eastDorms.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("reloaded")
+        //print("reloaded")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! DormCollectionViewCell
         cell.dorm = eastDorms[indexPath.row]
         cell.dormPhoto.image = #imageLiteral(resourceName: "Hot")
@@ -181,6 +191,41 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         for cell in cells{
             cell.dormPhoto.layer.borderWidth = 0
         }
+    }
+    
+    private func getDate()->String{
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        return formatter.string(from: date)
+    }
+    
+    private func getTime()->String{
+        let date = Date()
+        let calender = Calendar.current
+        let components = calender.dateComponents([.hour,.minute,.second], from: date)
+        
+        let hour = components.hour
+        let minute = components.minute
+        let second = components.second
+        
+        let today_string = String(String(hour!)  + ":" + String(minute!) + ":" +  String(second!))
+        return today_string
+    }
+    
+    private func getUserData()->[String:String]{
+        let user = Auth.auth().currentUser
+        var uid = ""
+        var email = ""
+        if let user = user {
+            // The user's ID, unique to the Firebase project.
+            // Do NOT use this value to authenticate with your backend server,
+            // if you have one. Use getTokenWithCompletion:completion: instead.
+            uid = user.uid
+            email = user.email!
+            // ...
+        }
+        return ["uid":uid,"email":email]
     }
     
 
