@@ -83,7 +83,12 @@ class AccountViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         underLineFields()
         consolidateFields()
-        // Do any additional setup after loading the view.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissBoard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissBoard(){
+        view.endEditing(true)
     }
     
     override func didReceiveMemoryWarning() {
