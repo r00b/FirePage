@@ -22,7 +22,6 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         
         
         let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "CalendarNavigationController") as! UINavigationController
         let controller1 = storyboard.instantiateViewController(withIdentifier: "CalendarNavigationController") as! UINavigationController
         let controller2 = storyboard.instantiateViewController(withIdentifier: "CalendarNavigationController") as! UINavigationController
         let storyboard2 = UIStoryboard(name: "HelpRequests", bundle: nil)
