@@ -42,8 +42,9 @@ class AccountViewController: UIViewController {
             Auth.auth().createUser(withEmail: username!, password: password!) { (user, error) in
                 // ...
             }
+            self.performSegue(withIdentifier: "returnSignin", sender: self)
         }
-        self.performSegue(withIdentifier: "returnSignin", sender: self)
+        
     }
     
     @IBAction func backAction(_ sender: Any) {
