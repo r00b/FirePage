@@ -102,7 +102,7 @@ struct HelpRequest: CustomStringConvertible{
     }
     
     public func getHash() -> String{
-        var full: String = (self.time + self.fromPerson + self.onCallGroup + self.date + self.location + "\(self.isResolved)" + self.description)
+        let full: String = (self.time + self.fromPerson + self.onCallGroup + self.date + self.location + "\(self.isResolved)" + self.description)
         return full.sha256()
     }
     
