@@ -17,6 +17,8 @@ class LoginViewController: UIViewController{
     
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var forgotPassword: UIButton!
+    @IBOutlet weak var forgotUsername: UIButton!
     
     // MARK: UI Actions
     
@@ -44,6 +46,15 @@ class LoginViewController: UIViewController{
         self.performSegue(withIdentifier: "loginToSignUp", sender: self)
     }
     
+    @IBAction func forgotPasswordClick(_ sender: Any) {
+        let email = usernameField.text
+        if email != ""{
+            Auth.auth().sendPasswordReset(withEmail: email!) { (error) in
+                // ...
+            }
+        }
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dismissKeyboard()
