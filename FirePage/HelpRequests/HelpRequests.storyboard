@@ -35,39 +35,39 @@
                                             <rect key="frame" x="15" y="7" width="570" height="35"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UhV-pr-kw4" userLabel="LeftView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="35"/>
+                                                    <rect key="frame" x="490" y="0.0" width="80" height="35"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:55 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ka-ho-kkM">
-                                                            <rect key="frame" x="9" y="8" width="72" height="19.5"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:55 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ka-ho-kkM">
+                                                            <rect key="frame" x="9" y="8.5" width="62" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.86136764287948608" green="0.31788986921310425" blue="0.3132159411907196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="90" id="79O-5u-rWy"/>
+                                                        <constraint firstAttribute="width" constant="80" id="79O-5u-rWy"/>
                                                         <constraint firstItem="9ka-ho-kkM" firstAttribute="centerY" secondItem="UhV-pr-kw4" secondAttribute="centerY" id="hph-dv-uVu"/>
                                                         <constraint firstAttribute="trailing" secondItem="9ka-ho-kkM" secondAttribute="trailing" constant="9" id="st2-U5-qHy"/>
                                                         <constraint firstItem="9ka-ho-kkM" firstAttribute="leading" secondItem="UhV-pr-kw4" secondAttribute="leading" constant="9" id="w3g-iI-fQL"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked roommate out of room for 7th time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUL-Of-nxF" userLabel="W 85th St, New York, 10024">
-                                                    <rect key="frame" x="99" y="8.5" width="462" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked roommate out of room for 7th time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BUL-Of-nxF" userLabel="W 85th St, New York, 10024">
+                                                    <rect key="frame" x="10" y="7.5" width="471" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.23921568627450979" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="BUL-Of-nxF" secondAttribute="trailing" constant="9" id="4lg-2h-z45"/>
+                                                <constraint firstItem="UhV-pr-kw4" firstAttribute="leading" secondItem="BUL-Of-nxF" secondAttribute="trailing" constant="9" id="4lg-2h-z45"/>
                                                 <constraint firstItem="BUL-Of-nxF" firstAttribute="centerY" secondItem="CQr-i9-7br" secondAttribute="centerY" id="5u8-Ss-y2D"/>
-                                                <constraint firstItem="UhV-pr-kw4" firstAttribute="leading" secondItem="CQr-i9-7br" secondAttribute="leading" id="HeC-4J-km5"/>
+                                                <constraint firstItem="UhV-pr-kw4" firstAttribute="trailing" secondItem="CQr-i9-7br" secondAttribute="trailing" id="HeC-4J-km5"/>
                                                 <constraint firstAttribute="bottom" secondItem="UhV-pr-kw4" secondAttribute="bottom" id="NLs-TX-v4X"/>
                                                 <constraint firstItem="UhV-pr-kw4" firstAttribute="top" secondItem="CQr-i9-7br" secondAttribute="top" id="V89-lD-fHB"/>
                                                 <constraint firstAttribute="height" constant="35" id="bfl-Uq-i0I"/>
-                                                <constraint firstItem="BUL-Of-nxF" firstAttribute="leading" secondItem="UhV-pr-kw4" secondAttribute="trailing" constant="9" id="cMW-cs-xh7"/>
+                                                <constraint firstItem="BUL-Of-nxF" firstAttribute="leading" secondItem="CQr-i9-7br" secondAttribute="leading" constant="10" id="cMW-cs-xh7"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGm-93-iX0" userLabel="Expansion">
@@ -80,37 +80,37 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="570" height="35"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cr-jD-Q8V" userLabel="LeftView">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="35"/>
+                                                                    <rect key="frame" x="490" y="0.0" width="80" height="35"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:55 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WmU-FY-LDo">
-                                                                            <rect key="frame" x="9" y="8" width="72" height="19.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:55 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WmU-FY-LDo">
+                                                                            <rect key="frame" x="9" y="9" width="62" height="18"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" secondItem="WmU-FY-LDo" secondAttribute="trailing" constant="9" id="1jH-yo-wF3"/>
-                                                                        <constraint firstAttribute="width" constant="90" id="3NN-N5-Myi"/>
+                                                                        <constraint firstAttribute="width" constant="80" id="3NN-N5-Myi"/>
                                                                         <constraint firstItem="WmU-FY-LDo" firstAttribute="centerY" secondItem="0cr-jD-Q8V" secondAttribute="centerY" id="PDR-bo-Q8I"/>
                                                                         <constraint firstItem="WmU-FY-LDo" firstAttribute="leading" secondItem="0cr-jD-Q8V" secondAttribute="leading" constant="9" id="jl2-XX-07g"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neighborhood 4: Randolph" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKQ-G9-mIb" userLabel="W 85th St, New York, 10024">
-                                                                    <rect key="frame" x="99" y="8.5" width="462" height="19.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neighborhood 4: Randolph" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gKQ-G9-mIb" userLabel="W 85th St, New York, 10024">
+                                                                    <rect key="frame" x="10" y="7.5" width="471" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="gKQ-G9-mIb" firstAttribute="centerY" secondItem="ZBD-HA-Sec" secondAttribute="centerY" id="1Wc-OD-xml"/>
-                                                                <constraint firstAttribute="trailing" secondItem="gKQ-G9-mIb" secondAttribute="trailing" constant="9" id="8BR-xZ-5Pc"/>
+                                                                <constraint firstAttribute="leading" secondItem="gKQ-G9-mIb" secondAttribute="leading" constant="-10" id="8BR-xZ-5Pc"/>
                                                                 <constraint firstItem="0cr-jD-Q8V" firstAttribute="top" secondItem="ZBD-HA-Sec" secondAttribute="top" id="Nho-ld-ysG"/>
-                                                                <constraint firstItem="0cr-jD-Q8V" firstAttribute="leading" secondItem="ZBD-HA-Sec" secondAttribute="leading" id="Y7h-G3-1uU"/>
+                                                                <constraint firstItem="0cr-jD-Q8V" firstAttribute="trailing" secondItem="ZBD-HA-Sec" secondAttribute="trailing" id="Y7h-G3-1uU"/>
                                                                 <constraint firstAttribute="bottom" secondItem="0cr-jD-Q8V" secondAttribute="bottom" id="jMu-UJ-Bsv"/>
                                                                 <constraint firstAttribute="height" constant="35" id="oUe-17-4fr"/>
-                                                                <constraint firstItem="gKQ-G9-mIb" firstAttribute="leading" secondItem="0cr-jD-Q8V" secondAttribute="trailing" constant="9" id="x8F-uO-0Dl"/>
+                                                                <constraint firstItem="gKQ-G9-mIb" firstAttribute="trailing" secondItem="0cr-jD-Q8V" secondAttribute="leading" constant="-9" id="x8F-uO-0Dl"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yV2-bA-oaS" userLabel="Info">
@@ -122,7 +122,6 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="67" id="Kef-lu-joT"/>
                                                                     </constraints>
-                                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 </textView>
@@ -196,7 +195,7 @@
                                                                         <constraint firstAttribute="height" constant="30" id="Cn1-wx-VAU"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                                    <state key="normal" title="RESOLVE">
+                                                                    <state key="normal">
                                                                         <color key="titleColor" red="0.27058823529999998" green="0.2156862745" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </state>
                                                                     <userDefinedRuntimeAttributes>
@@ -288,16 +287,23 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <outlet property="backgroundTimeLabel" destination="WmU-FY-LDo" id="uRR-eF-9HW"/>
+                                    <outlet property="barView" destination="oxa-Zu-WLe" id="aE8-fz-rcV"/>
                                     <outlet property="containerView" destination="CGm-93-iX0" id="gSm-z4-RdG"/>
                                     <outlet property="containerViewTop" destination="wys-AY-Zdw" id="Exs-1v-4Jn"/>
                                     <outlet property="expansionDescription" destination="Ljh-NR-9yY" id="84b-0l-rii"/>
+                                    <outlet property="expansionLabel" destination="gKQ-G9-mIb" id="d80-dB-CzC"/>
                                     <outlet property="expansionLocation" destination="oWz-yu-j0d" id="2W7-hS-kpW"/>
                                     <outlet property="expansionOnCallGroup" destination="gKQ-G9-mIb" id="G8X-ZD-010"/>
                                     <outlet property="expansionResolution" destination="Soi-HH-buq" id="Zly-bq-xsn"/>
                                     <outlet property="expansionSender" destination="FUZ-Do-fSJ" id="RAR-0i-xzd"/>
                                     <outlet property="expansionTime" destination="WmU-FY-LDo" id="kYl-HG-B8i"/>
+                                    <outlet property="foregroundBackground" destination="CQr-i9-7br" id="Aw4-gl-QOo"/>
                                     <outlet property="foregroundDescription" destination="BUL-Of-nxF" id="l81-Gg-Sks"/>
+                                    <outlet property="foregroundLabel" destination="BUL-Of-nxF" id="kig-s1-ycs"/>
                                     <outlet property="foregroundTime" destination="9ka-ho-kkM" id="bsb-dA-qVD"/>
+                                    <outlet property="foregroundTimeBackground" destination="UhV-pr-kw4" id="U8q-Ae-ciG"/>
+                                    <outlet property="foregroundTimeLabel" destination="9ka-ho-kkM" id="Jgl-0j-ICZ"/>
                                     <outlet property="foregroundView" destination="CQr-i9-7br" id="88q-9Z-PtA"/>
                                     <outlet property="foregroundViewTop" destination="9tL-QY-I0e" id="lRz-za-vwR"/>
                                     <outlet property="resolveButton" destination="tHR-l8-L6Q" id="PGk-yu-wOp"/>

@@ -82,7 +82,7 @@ class DB{
             self.RA.child(RA).child("onCallGroup").observeSingleEvent(of: .value, with: { (snapshot) in
                 let onCallGroup = snapshot.value as? String
                 helpRequests[day] = []
-                //print("\(onCallGroup!):\(day)")
+                print("\(onCallGroup!):\(day)")
                     OnCallGroup.child(onCallGroup!).child("HelpRequests").child(day).observeSingleEvent(of: .value, with: { (snapshot) in
                         //print(snapshot)
                     let encodedHelpRequests = snapshot.value as? [String]
@@ -93,7 +93,7 @@ class DB{
                             let value = snapshot.value as? NSDictionary
                             let helpRequest = HelpRequest(dictionary: value!)
                             helpRequests[day]!.append(helpRequest)
-                            reloadFunction(helpRequests)
+                            //reloadFunction(helpRequests)
                         })
                     }
                         
@@ -102,12 +102,12 @@ class DB{
                 })
 
                 }
-            /*
+            
             let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
             DispatchQueue.main.asyncAfter(deadline: when) {
                 reloadFunction(helpRequests)
             }
-            */
+            
 
         })
     }
@@ -124,9 +124,14 @@ class DB{
     
     
     static func addHelpRequests(onCallGroup: String, day: String,  helpRequests: [HelpRequest]){
+        print(helpRequests[4].getHash())
+        print(helpRequests[4].getDictionary())
+        print("Ritwikhi")
         for helpRequest in helpRequests{
             HelpRequests.child(helpRequest.getHash()).setValue(helpRequest.getDictionary())
         }
+
+        print(day)
         OnCallGroup.child(onCallGroup).child("HelpRequests").child(day).setValue(convertHelpRequests(helpRequests: helpRequests))
     }
     

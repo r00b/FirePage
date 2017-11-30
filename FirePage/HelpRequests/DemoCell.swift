@@ -23,6 +23,15 @@ class DemoCell: FoldingCell {
     @IBOutlet weak var expansionResolution: UITextView!
     @IBOutlet weak var resolveButton: UIButton!
     
+    @IBOutlet weak var foregroundBackground: UIView!
+    @IBOutlet weak var foregroundLabel: UILabel!
+    @IBOutlet weak var foregroundTimeBackground: UIView!
+    @IBOutlet weak var foregroundTimeLabel: UILabel!
+    
+    @IBOutlet weak var barView: UIView!
+    @IBOutlet weak var expansionLabel: UILabel!
+    @IBOutlet weak var backgroundTimeLabel: UILabel!
+    
     override func awakeFromNib() {
     //foregroundView.layer.cornerRadius = 10
     //foregroundView.layer.masksToBounds = true
