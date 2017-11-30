@@ -86,7 +86,12 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         subjectField.useUnderline()
         updateLabels()
         self.currPhone = phoneList[1]
+        DB.getDormsMap(reloadFunction: printDic)
         // Do any additional setup after loading the view.
+    }
+    
+    func printDic(dictionary: [String: String]){
+        print(dictionary)
     }
     
     private func updateLabels(){

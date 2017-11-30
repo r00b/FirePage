@@ -42,6 +42,7 @@ class MainTableViewController: UITableViewController {
         DB.getAllRAHelpRequests(RA: hardcodedRA, reloadFunction: reloadTableViewData)
         super.viewDidLoad()
         setup()
+        
     }
     
     private func setup() {

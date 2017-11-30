@@ -13,6 +13,7 @@ class DB{
     static var HelpRequests = rootRef.child("HelpRequests")
     static var OnCallGroup = rootRef.child("OnCallGroup")
     static var RA = rootRef.child("RA")
+    static var Dorms = rootRef.child("Dorms")
     
     static func testConnection(){
         rootRef.child("test").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -85,6 +86,7 @@ class DB{
                     OnCallGroup.child(onCallGroup!).child("HelpRequests").child(day).observeSingleEvent(of: .value, with: { (snapshot) in
                         //print(snapshot)
                     let encodedHelpRequests = snapshot.value as? [String]
+                    print(encodedHelpRequests)
                     for encodedHelpRequest in encodedHelpRequests!{
                         
                         HelpRequests.child(encodedHelpRequest).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -113,6 +115,16 @@ class DB{
             HelpRequests.child(helpRequest.getHash()).setValue(helpRequest.getDictionary())
         }
         OnCallGroup.child(onCallGroup).child("HelpRequests").child(day).setValue(convertHelpRequests(helpRequests: helpRequests))
+    }
+    
+    static func getDormsMap(reloadFunction: @escaping ([String: String]) -> Void){
+        Dorms.observeSingleEvent(of: .value, with: { (snapshot) in
+            let dormsMap = snapshot.value as? [String: String]
+            reloadFunction(dormsMap!)
+        }) { (error) in
+            print(error.localizedDescription)
+            
+        }
     }
     
     static func convertHelpRequests(helpRequests: [HelpRequest]) -> [String]{
