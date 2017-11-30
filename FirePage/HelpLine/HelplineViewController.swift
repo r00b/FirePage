@@ -19,6 +19,9 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     private var dormDic = [String:String]()
     private var currDorm = ""
     
+    //below will be replaced with db call
+    private var dormPhotos = [#imageLiteral(resourceName: "randolph"),#imageLiteral(resourceName: "epworth"),#imageLiteral(resourceName: "wilson"),#imageLiteral(resourceName: "aycock"),#imageLiteral(resourceName: "blackwell")]
+    
     
     // MARK: Horizontal Menu
     let cellID = "dormCell"
@@ -164,7 +167,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         //print("reloaded")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! DormCollectionViewCell
         cell.dorm = eastDorms[indexPath.row]
-        cell.dormPhoto.image = #imageLiteral(resourceName: "Hot")
+        cell.dormPhoto.image = dormPhotos[indexPath.row]
         cell.dormPhoto.layer.borderWidth = 0
         cell.dormPhoto.layer.masksToBounds = false
         cell.dormPhoto.layer.borderColor = UIColor.black.cgColor

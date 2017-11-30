@@ -701,4 +701,7 @@
         <image name="whitephone" width="512" height="512"/>
         <image name="whiteprofile-1" width="460" height="458"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="mha-aS-BqU"/>
+    </inferredMetricsTieBreakers>
 </document>
