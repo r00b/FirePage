@@ -130,6 +130,15 @@ class DB{
         OnCallGroup.child(onCallGroup).child("HelpRequests").child(day).setValue(convertHelpRequests(helpRequests: helpRequests))
     }
     
+    static func addHelpRequest(onCallGroup: String, day: String,  helpRequest: HelpRequest){
+        HelpRequests.child(helpRequest.getHash()).setValue(helpRequest.getDictionary())
+        OnCallGroup.child(onCallGroup).child("HelpRequests").child(day).observeSingleEvent(of: .value, with: { (snapshot) in
+            var helpRequests = snapshot.value as! [String]
+            helpRequests.append(helpRequest.getHash())
+            OnCallGroup.child(onCallGroup).child("HelpRequests").child(day).setValue(helpRequests)
+        })
+    }
+    
     static func getDormsMap(reloadFunction: @escaping ([String: String]) -> Void){
         Dorms.observeSingleEvent(of: .value, with: { (snapshot) in
             let dormsMap = snapshot.value as? [String: String]
