@@ -36,7 +36,7 @@ class MainTableViewController: UITableViewController {
     
     // TODO : Update hardcoded RA!
     // TODO : Cell heights bug
-    var hardcodedRA: String = "Ben"
+    var hardcodedRA: String = "Harshil"
     
     var myHelpRequests: [String: [HelpRequest]] = [:]
     var myHelpRequestsOrderedKeys: [String] = []
