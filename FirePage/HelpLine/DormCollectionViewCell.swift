@@ -12,6 +12,10 @@ class DormCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dormPhoto: UIImageView!
     
+    @IBOutlet weak var dormLabel: UILabel!
+    
+    
     var dorm = "Epworth"
     var cellNum = "5555555555"
+    
 }
