@@ -48,6 +48,7 @@ class LoginViewController: UIViewController{
         super.viewDidLoad()
         self.dismissKeyboard()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissBoard))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         usernameField.useUnderline()
         passwordField.useUnderline()

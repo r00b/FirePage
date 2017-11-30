@@ -37,8 +37,8 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     private var eastPhones = [String]()
     
     // MARK: Campus info
-    private var selectedCampus = "East Campus"
-    private var campusList = ["East Campus","West Campus"]
+    private var selectedCampus = "East"
+    private var campusList = ["East","West"]
     
     // MARK: Outlets
     @IBOutlet weak var slider: UISlider!
@@ -125,8 +125,9 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
          */
         dormMenu.reloadData()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissBoard))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
-        // Do any additional setup after loading the view.
+        //Do any additional setup after loading the view.
     }
     
     func setDormDic(dictionary: [String: String]){

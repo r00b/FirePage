@@ -84,6 +84,7 @@ class AccountViewController: UIViewController {
         underLineFields()
         consolidateFields()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissBoard))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     
