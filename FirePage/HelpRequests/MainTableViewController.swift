@@ -26,10 +26,13 @@ import FoldingCell
 
 class MainTableViewController: UITableViewController {
     
-    let kCloseCellHeight: CGFloat = 179 - 110 - 10
-    let kOpenCellHeight: CGFloat = 488 - 319 - 30 + 5 + 180
+    let kCloseCellHeight: CGFloat = 179 - 110 - 20 - 3
+    let kOpenCellHeight: CGFloat = 488 - 319 - 30 + 5 + 170 - 3
     let kRowsCount = 100
     var cellHeights: [CGFloat] = []
+    
+    var indexPathOfSelectedRow: IndexPath!
+    var selectedCell: DemoCell!
     
     // TODO : Update hardcoded RA!
     // TODO : Cell heights bug
@@ -38,6 +41,22 @@ class MainTableViewController: UITableViewController {
     var myHelpRequests: [String: [HelpRequest]] = [:]
     var myHelpRequestsOrderedKeys: [String] = []
     
+    @IBAction func resolvePage(_ sender: UIButton) {
+        print("cancer")
+        print(indexPathOfSelectedRow)
+        print(selectedCell != nil)
+        if (indexPathOfSelectedRow != nil && selectedCell != nil) {
+            var helpRequests: [HelpRequest] = myHelpRequests[myHelpRequestsOrderedKeys[indexPathOfSelectedRow.section]]!
+            print(helpRequests)
+            print(selectedCell.expansionResolution.text)
+            helpRequests[indexPathOfSelectedRow.row].isResolved = true
+            helpRequests[indexPathOfSelectedRow.row].resolution = selectedCell.expansionResolution.text
+            print(helpRequests[indexPathOfSelectedRow.row].onCallGroup)
+            print(myHelpRequestsOrderedKeys[indexPathOfSelectedRow.section])
+            print(helpRequests)
+            DB.addHelpRequests(onCallGroup: helpRequests[indexPathOfSelectedRow.row].onCallGroup, day: myHelpRequestsOrderedKeys[indexPathOfSelectedRow.section], helpRequests: helpRequests)
+        }
+    }
     override func viewDidLoad() {
         DB.getAllRAHelpRequests(RA: hardcodedRA, reloadFunction: reloadTableViewData)
         super.viewDidLoad()
@@ -49,13 +68,14 @@ class MainTableViewController: UITableViewController {
         cellHeights = Array(repeating: kCloseCellHeight, count: kRowsCount)
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
+        tableView.backgroundColor = UIColor.init(red: 239/255, green: 232/255, blue: 231/255, alpha: 255/255)
     }
     
     func reloadTableViewData(requests: [String: [HelpRequest]]){
         myHelpRequests = requests
         myHelpRequestsOrderedKeys = Array(myHelpRequests.keys)
         print(myHelpRequestsOrderedKeys)
+        print("reloading data table view")
         tableView.reloadData()
     }
     
@@ -108,6 +128,12 @@ extension MainTableViewController {
         let helpRequests: [HelpRequest] = myHelpRequests[myHelpRequestsOrderedKeys[indexPath.section]]!
         let helpRequest: HelpRequest = helpRequests[indexPath.row]
         
+        if (indexPath.section == 0 && indexPath.row == 0) {
+            print("bananas")
+            print(helpRequest.time)
+            print(helpRequest.description)
+        }
+        
         cell.foregroundTime.text = helpRequest.time
         cell.foregroundDescription.text = helpRequest.description
         cell.expansionTime.text = helpRequest.time
@@ -120,10 +146,12 @@ extension MainTableViewController {
             cell.expansionResolution.text = "Kill yourself"
         } else {
             cell.expansionResolution.text = helpRequest.resolution!
+            print("people")
         }
         
         if (helpRequest.isResolved) {
             cell.resolveButton.titleLabel?.text = "SAVE"
+            print("peoplx")
         } else {
             cell.resolveButton.titleLabel?.text = "RESOLVE"
         }
@@ -136,8 +164,11 @@ extension MainTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath) as! FoldingCell
+        indexPathOfSelectedRow = indexPath
         
+        let cell = tableView.cellForRow(at: indexPath) as! DemoCell
+        
+        selectedCell = cell
         if cell.isAnimating() {
             return
         }
