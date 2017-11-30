@@ -46,6 +46,7 @@ class HelpLineViewController: UIViewController {
         //DB.addHelpRequest(onCallGroup: "RandolphGroup", day: "11-12-2017",helpRequest: HelpRequest(dictionary: dictionary as NSDictionary))
         //DB.getHelpRequests(onCallGroup: "N2Group", day: "11-12-2017", reloadFunction: printArray)
         DB.getAllRAHelpRequests(RA: "Ritwik", reloadFunction: printHelpReq)
+        
         // Do any additional setup after loading the view.
     }
     
