@@ -93,6 +93,7 @@ class DB{
                             let value = snapshot.value as? NSDictionary
                             let helpRequest = HelpRequest(dictionary: value!)
                             helpRequests[day]!.append(helpRequest)
+                            reloadFunction(helpRequests)
                         })
                     }
                         
@@ -101,10 +102,12 @@ class DB{
                 })
 
                 }
+            /*
             let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
             DispatchQueue.main.asyncAfter(deadline: when) {
                 reloadFunction(helpRequests)
             }
+            */
 
         })
     }

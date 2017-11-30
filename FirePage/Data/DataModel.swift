@@ -83,10 +83,13 @@ struct HelpRequest: CustomStringConvertible{
         self.onCallGroup = dictionary.object(forKey: "onCallGroup") as! String
         self.date = dictionary.object(forKey: "date") as! String
         self.location = dictionary.object(forKey: "Location") as! String
-        if(dictionary.object(forKey: "date") as! String == "true"){
+        if(dictionary.object(forKey: "isResolved") as! String == "true"){
             self.isResolved = true
         }else{
             self.isResolved = false
+        }
+        if(dictionary.object(forKey: "resolution") != nil){
+            self.resolution = dictionary.object(forKey: "resolution") as! String
         }
         self.description = dictionary.object(forKey: "description") as! String
     }
