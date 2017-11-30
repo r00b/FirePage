@@ -19,6 +19,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     private var dormDic = [String:String]()
     private var currDorm = ""
     
+    
     // MARK: Horizontal Menu
     let cellID = "dormCell"
     @IBOutlet weak var dormMenu: UICollectionView!
@@ -123,6 +124,8 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         }
          */
         dormMenu.reloadData()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissBoard))
+        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
     
@@ -139,6 +142,10 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         campusLabel.text = self.selectedCampus
     }
     
+    @objc func dismissBoard(){
+        view.endEditing(true)
+    }
+    
     
     // MARK: Horizontal Menu functions
     
@@ -149,6 +156,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return eastDorms.count
     }
+    
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -243,7 +251,6 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         }
         return ["uid":uid,"email":email]
     }
-    
     
 
     /*

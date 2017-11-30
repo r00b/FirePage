@@ -47,8 +47,12 @@ class LoginViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dismissKeyboard()
-        usernameField.useUnderline()
-        passwordField.useUnderline()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissBoard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissBoard(){
+        view.endEditing(true)
     }
     /*
      // MARK: - Navigation
