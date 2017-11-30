@@ -17,22 +17,26 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         delegate = self
         self.tabBar.tintColor = .red
+        
+        
         let storyboardHelpLine = UIStoryboard(name: "Main", bundle: nil)
         let helpLineController = storyboardHelpLine.instantiateViewController(withIdentifier: "HelpLineViewController") as! UINavigationController
         
         
-        let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
-        let controller1 = storyboard.instantiateViewController(withIdentifier: "CalendarNavigationController") as! UINavigationController
-        let controller2 = storyboard.instantiateViewController(withIdentifier: "CalendarNavigationController") as! UINavigationController
-        let storyboard2 = UIStoryboard(name: "HelpRequests", bundle: nil)
-        let controller3 = storyboard2.instantiateViewController(withIdentifier: "MainTableViewController") as! MainTableViewController
-       
-        let controller4 = storyboard.instantiateViewController(withIdentifier: "CalendarNavigationController") as! UINavigationController
+        let storyboardCalendar = UIStoryboard(name: "Calendar", bundle: nil)
+        let calendarController = storyboardCalendar.instantiateViewController(withIdentifier: "CalendarNavigationController") as! UINavigationController
+        
+        let storyboardHelpRequests = UIStoryboard(name: "HelpRequests", bundle: nil)
+        let helpRequestsController = storyboardHelpRequests.instantiateViewController(withIdentifier: "MainTableViewController") as! MainTableViewController
+        let helpRequestsController2 = storyboardHelpRequests.instantiateViewController(withIdentifier: "MainTableViewController") as! MainTableViewController
+
+        
+        
         let Contact = helpLineController
-        let Calendar = controller1
-        let MyPages = controller2
-        let Accounto = controller3
-        let SuperPago = controller4
+        let Calendar = calendarController
+        let MyPages = helpRequestsController
+        let Accounto = helpRequestsController2
+//        let SuperPago = controller4
         
         let icon1 = UITabBarItem()
         
@@ -59,7 +63,7 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         Calendar.tabBarItem = icon2
         MyPages.tabBarItem = icon3
         Accounto.tabBarItem = icon4
-        SuperPago.tabBarItem = icon5
+//        SuperPago.tabBarItem = icon5
         
         var controllers = [UIViewController]()
         
