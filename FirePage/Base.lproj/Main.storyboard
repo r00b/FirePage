@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="isB-cz-X1C">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2GE-dP-gl1">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -254,11 +254,12 @@
                         <segue destination="RCQ-Ix-v3P" kind="show" identifier="loginToSignUp" id="iIn-m2-i4B">
                             <nil key="action"/>
                         </segue>
+                        <segue destination="isB-cz-X1C" kind="show" identifier="signedIn" id="GNj-dm-yDy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VyB-Rn-SE8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2304" y="436"/>
+            <point key="canvasLocation" x="-2432" y="364"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="ZYv-FI-mcy">
@@ -341,20 +342,19 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitelock"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djG-FX-h0L" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="114" y="468" width="93" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djG-FX-h0L" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
+                                <rect key="frame" x="40" y="467" width="240" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Back to Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="backAction:" destination="RCQ-Ix-v3P" eventType="touchUpInside" id="aJ4-GZ-fTd"/>
-                                    <action selector="backClicked:" destination="RCQ-Ix-v3P" eventType="touchUpInside" id="roB-Y3-u6b"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7o-Al-9TM" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="133" y="415" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7o-Al-9TM" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
+                                <rect key="frame" x="40" y="417" width="240" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -367,6 +367,7 @@
                         <constraints>
                             <constraint firstItem="M4W-4w-E8b" firstAttribute="top" secondItem="Vqm-rV-Nh0" secondAttribute="bottom" constant="20" id="1SI-m6-D1x"/>
                             <constraint firstItem="ER2-w7-Qhk" firstAttribute="trailing" secondItem="Vqm-rV-Nh0" secondAttribute="trailing" constant="20" id="1cf-Gn-zGh"/>
+                            <constraint firstItem="ER2-w7-Qhk" firstAttribute="trailing" secondItem="djG-FX-h0L" secondAttribute="trailing" constant="40" id="1gY-1a-dIx"/>
                             <constraint firstItem="1MZ-Zq-00I" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="20" id="5MG-R9-U2x"/>
                             <constraint firstItem="ER2-w7-Qhk" firstAttribute="trailing" secondItem="86n-II-mGd" secondAttribute="trailing" constant="20" id="6Qs-mG-k21"/>
                             <constraint firstItem="Hlv-mK-1Pz" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="20" id="78A-Ld-quP"/>
@@ -384,21 +385,26 @@
                             <constraint firstItem="M4W-4w-E8b" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="20" id="Oeq-0X-I1y"/>
                             <constraint firstItem="ER2-w7-Qhk" firstAttribute="trailing" secondItem="Hlv-mK-1Pz" secondAttribute="trailing" constant="20" id="RlI-hj-Q9G"/>
                             <constraint firstItem="Sss-zm-RW3" firstAttribute="bottom" secondItem="qKo-fI-umR" secondAttribute="bottom" id="VZA-jf-mAt"/>
+                            <constraint firstItem="djG-FX-h0L" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="40" id="W4I-Jn-vlv"/>
                             <constraint firstItem="Vqm-rV-Nh0" firstAttribute="top" secondItem="Hlv-mK-1Pz" secondAttribute="bottom" constant="20" id="X4P-H4-3hu"/>
                             <constraint firstItem="ER2-w7-Qhk" firstAttribute="trailing" secondItem="1MZ-Zq-00I" secondAttribute="trailing" constant="20" id="Xww-w7-0j0"/>
                             <constraint firstItem="1MZ-Zq-00I" firstAttribute="top" secondItem="anT-6Q-kv2" secondAttribute="top" constant="195" id="Y4t-E5-mso"/>
                             <constraint firstItem="86n-II-mGd" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="20" id="YMH-B8-2bM"/>
+                            <constraint firstItem="ER2-w7-Qhk" firstAttribute="trailing" secondItem="K7o-Al-9TM" secondAttribute="trailing" constant="40" id="a7O-bu-gah"/>
                             <constraint firstItem="Vqm-rV-Nh0" firstAttribute="trailing" secondItem="1MZ-Zq-00I" secondAttribute="trailing" id="eUX-GA-6Ve"/>
                             <constraint firstItem="Hlv-mK-1Pz" firstAttribute="top" secondItem="86n-II-mGd" secondAttribute="bottom" constant="20" id="ev8-QX-w7c"/>
                             <constraint firstItem="Vqm-rV-Nh0" firstAttribute="leading" secondItem="1MZ-Zq-00I" secondAttribute="leading" id="hk5-Bn-V1Z"/>
+                            <constraint firstItem="K7o-Al-9TM" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="40" id="kNZ-Nr-ipl"/>
                             <constraint firstItem="Sss-zm-RW3" firstAttribute="baseline" secondItem="qKo-fI-umR" secondAttribute="baseline" id="kga-K5-rFS"/>
                             <constraint firstItem="86n-II-mGd" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="20" id="lvq-ew-UMl"/>
                             <constraint firstItem="Vqm-rV-Nh0" firstAttribute="trailing" secondItem="Hlv-mK-1Pz" secondAttribute="trailing" id="oFo-Ju-lPc"/>
                             <constraint firstItem="86n-II-mGd" firstAttribute="top" secondItem="1MZ-Zq-00I" secondAttribute="bottom" constant="20" id="sJR-aa-yGG"/>
                             <constraint firstItem="Vqm-rV-Nh0" firstAttribute="leading" secondItem="M4W-4w-E8b" secondAttribute="leading" id="soA-xZ-AmT"/>
+                            <constraint firstItem="djG-FX-h0L" firstAttribute="top" secondItem="K7o-Al-9TM" secondAttribute="bottom" constant="20" id="wm8-Nl-HlZ"/>
                             <constraint firstItem="Vqm-rV-Nh0" firstAttribute="trailing" secondItem="M4W-4w-E8b" secondAttribute="trailing" id="xVI-jj-Wsk"/>
                             <constraint firstItem="Hlv-mK-1Pz" firstAttribute="top" secondItem="86n-II-mGd" secondAttribute="bottom" constant="20" id="yti-Kr-cGJ"/>
                             <constraint firstItem="ER2-w7-Qhk" firstAttribute="trailing" secondItem="M4W-4w-E8b" secondAttribute="trailing" constant="20" id="zRG-h8-X4v"/>
+                            <constraint firstItem="K7o-Al-9TM" firstAttribute="top" secondItem="M4W-4w-E8b" secondAttribute="bottom" constant="40" id="zhx-ED-nWU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ER2-w7-Qhk"/>
                         <userDefinedRuntimeAttributes>
@@ -417,717 +423,15 @@
                         <outlet property="keyField" destination="Hlv-mK-1Pz" id="Mn3-vX-rij"/>
                         <outlet property="lastnameField" destination="qKo-fI-umR" id="Bxz-A8-8gA"/>
                         <outlet property="login" destination="K7o-Al-9TM" id="j25-7W-Sox"/>
-                        <outlet property="loginClicked" destination="K7o-Al-9TM" id="3u2-Y1-jOZ"/>
                         <outlet property="passwordField" destination="Vqm-rV-Nh0" id="W9N-xk-c26"/>
                         <outlet property="phoneField" destination="86n-II-mGd" id="TeW-e3-C4c"/>
                         <outlet property="usernameField" destination="1MZ-Zq-00I" id="Yjp-k0-hYR"/>
-                        <segue destination="2GE-dP-gl1" kind="show" id="Ecg-Ed-vbc">
-                            <nil key="action"/>
-                        </segue>
+                        <segue destination="2GE-dP-gl1" kind="show" identifier="returnSignin" id="mha-aS-BqU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8rk-x5-kX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1564" y="-645"/>
-        </scene>
-        <!--Login View Controller-->
-        <scene sceneID="j7b-xu-i4w">
-            <objects>
-                <viewController id="GGa-vS-Tg1" customClass="LoginViewController" customModule="FirePage" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZMo-34-bav" customClass="GradientView" customModule="FirePage" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7nq-gL-HFu" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="240" width="280" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="ABm-6d-pdk"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whiteprofile-1"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qRB-Ay-Mmg" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="290" width="280" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="SqO-jX-07H"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="Vjk-Xw-ZtO"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitelock"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wp6-ky-KQt">
-                                <rect key="frame" x="181" y="265" width="119" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="e2H-9l-SIp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="forgot username?">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icW-dY-6YO">
-                                <rect key="frame" x="181" y="315" width="118" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="xP4-ih-Jg1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="forgot password?">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k70-e3-Zih" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="60" y="368" width="200" height="30"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginClick:" destination="GGa-vS-Tg1" eventType="touchUpInside" id="5AQ-10-hrw"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="firepage" translatesAutoresizingMaskIntoConstraints="NO" id="dtN-6y-2Fi">
-                                <rect key="frame" x="85" y="49" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjr-I5-fS3" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="60" y="434" width="200" height="30"/>
-                                <state key="normal" title="Signup">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="signupClick:" destination="GGa-vS-Tg1" eventType="touchUpInside" id="UlP-kB-xbc"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Tjr-I5-fS3" firstAttribute="top" secondItem="k70-e3-Zih" secondAttribute="bottom" constant="36" id="E3a-au-tl7"/>
-                            <constraint firstItem="Tjr-I5-fS3" firstAttribute="leading" secondItem="LxJ-pZ-P70" secondAttribute="leading" constant="60" id="Iv7-da-FVc"/>
-                            <constraint firstAttribute="bottom" secondItem="qRB-Ay-Mmg" secondAttribute="bottom" constant="253" id="XDO-Wu-BUx"/>
-                            <constraint firstItem="LxJ-pZ-P70" firstAttribute="bottom" secondItem="Tjr-I5-fS3" secondAttribute="bottom" constant="104" id="ayH-NK-HBN"/>
-                            <constraint firstItem="qRB-Ay-Mmg" firstAttribute="leading" secondItem="LxJ-pZ-P70" secondAttribute="leading" constant="20" id="bAB-4R-J1L"/>
-                            <constraint firstItem="qRB-Ay-Mmg" firstAttribute="centerX" secondItem="ZMo-34-bav" secondAttribute="centerX" id="ccT-5M-qLh"/>
-                            <constraint firstItem="qRB-Ay-Mmg" firstAttribute="centerX" secondItem="k70-e3-Zih" secondAttribute="centerX" id="dxV-O5-sQg"/>
-                            <constraint firstItem="icW-dY-6YO" firstAttribute="top" secondItem="qRB-Ay-Mmg" secondAttribute="bottom" id="hAz-RY-BYw"/>
-                            <constraint firstItem="7nq-gL-HFu" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Wp6-ky-KQt" secondAttribute="trailing" id="jCL-6I-fOv"/>
-                            <constraint firstItem="k70-e3-Zih" firstAttribute="leading" secondItem="LxJ-pZ-P70" secondAttribute="leading" constant="60" id="kf8-qR-NLr"/>
-                            <constraint firstAttribute="trailing" secondItem="icW-dY-6YO" secondAttribute="trailing" constant="21" id="l75-IH-MKI"/>
-                            <constraint firstItem="qRB-Ay-Mmg" firstAttribute="top" secondItem="Wp6-ky-KQt" secondAttribute="bottom" id="nQP-V0-nK6"/>
-                            <constraint firstItem="Wp6-ky-KQt" firstAttribute="top" secondItem="7nq-gL-HFu" secondAttribute="bottom" id="tmN-8b-6ap"/>
-                            <constraint firstItem="7nq-gL-HFu" firstAttribute="leading" secondItem="ZMo-34-bav" secondAttribute="leading" constant="20" id="u5E-lu-c16"/>
-                            <constraint firstItem="Wp6-ky-KQt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="icW-dY-6YO" secondAttribute="leading" id="ujj-VI-7t2"/>
-                            <constraint firstItem="qRB-Ay-Mmg" firstAttribute="centerX" secondItem="Tjr-I5-fS3" secondAttribute="centerX" id="v0w-27-AzP"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="LxJ-pZ-P70"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                <color key="value" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                <color key="value" red="0.57717373699999996" green="0.1156341212" blue="0.072292098420000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                    <connections>
-                        <outlet property="loginButton" destination="k70-e3-Zih" id="jWI-m8-hNi"/>
-                        <outlet property="passwordField" destination="qRB-Ay-Mmg" id="PoZ-fu-sNN"/>
-                        <outlet property="signupButton" destination="Tjr-I5-fS3" id="VXC-0b-Z84"/>
-                        <outlet property="usernameField" destination="7nq-gL-HFu" id="Wcr-jr-zcC"/>
-                        <segue destination="zEt-TJ-DVX" kind="show" identifier="loginToSignUp" id="Vyp-C8-C7U">
-                            <nil key="action"/>
-                        </segue>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cSj-sM-Ueh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2304" y="436"/>
-        </scene>
-        <!--Account View Controller-->
-        <scene sceneID="ijL-g3-5oL">
-            <objects>
-                <viewController id="zEt-TJ-DVX" customClass="AccountViewController" customModule="FirePage" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RCn-Z9-RGt" customClass="GradientView" customModule="FirePage" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Enn-c8-zbE" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="195" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whiteprofile-1"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="36p-dD-Vvh" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="233" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitephone"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="29I-y9-mKV" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="348" width="280" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitelock"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Re-enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wKF-28-S5q" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="384" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitelock"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zKf-z6-uJe" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="46" y="93" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bxb-Lm-34a" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="190" y="93" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Qa-80-Mbg" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="291" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitekey"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="vMr-6I-bfG"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                <color key="value" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                <color key="value" red="0.57717373699999996" green="0.1156341212" blue="0.072292098420000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                    <connections>
-                        <outlet property="confirmField" destination="wKF-28-S5q" id="NG9-n7-GHy"/>
-                        <outlet property="firstnameField" destination="zKf-z6-uJe" id="Gki-Do-yio"/>
-                        <outlet property="keyField" destination="4Qa-80-Mbg" id="pKb-Zu-WZl"/>
-                        <outlet property="lastnameField" destination="bxb-Lm-34a" id="wsl-eP-1ke"/>
-                        <outlet property="passwordField" destination="29I-y9-mKV" id="6nk-Yl-yb5"/>
-                        <outlet property="phoneField" destination="36p-dD-Vvh" id="hrY-vS-xWl"/>
-                        <outlet property="usernameField" destination="Enn-c8-zbE" id="BFn-pQ-0NL"/>
-                        <segue destination="GGa-vS-Tg1" kind="show" id="KeS-dU-Aeq">
-                            <nil key="action"/>
-                        </segue>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5sR-72-1vb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1564" y="-645"/>
-        </scene>
-        <!--Login View Controller-->
-        <scene sceneID="4xb-6Z-B7u">
-            <objects>
-                <viewController id="hWv-gy-UkB" customClass="LoginViewController" customModule="FirePage" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9Ye-uG-dbC" customClass="GradientView" customModule="FirePage" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M1Z-F1-Wg8" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="240" width="280" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="9qc-ME-E6b"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whiteprofile-1"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BnI-4G-0MO" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="290" width="280" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="F7I-hC-ydS"/>
-                                    <constraint firstAttribute="height" constant="25" id="Oc0-aT-nN5"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitelock"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X83-wR-Cwr">
-                                <rect key="frame" x="181" y="265" width="119" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="NIo-eR-Dsq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="forgot username?">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98Q-yY-P2B">
-                                <rect key="frame" x="181" y="315" width="118" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="jkM-Df-wdy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="forgot password?">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y88-WZ-rjg" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="60" y="368" width="200" height="30"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginClick:" destination="hWv-gy-UkB" eventType="touchUpInside" id="5DJ-hl-vie"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="firepage" translatesAutoresizingMaskIntoConstraints="NO" id="9kX-gt-fIl">
-                                <rect key="frame" x="85" y="49" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ovz-Bv-spM" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="60" y="434" width="200" height="30"/>
-                                <state key="normal" title="Signup">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="signupClick:" destination="hWv-gy-UkB" eventType="touchUpInside" id="1Kb-GH-8hQ"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Ovz-Bv-spM" firstAttribute="leading" secondItem="k32-K9-6Yd" secondAttribute="leading" constant="60" id="7bh-wp-kBe"/>
-                            <constraint firstItem="M1Z-F1-Wg8" firstAttribute="leading" secondItem="9Ye-uG-dbC" secondAttribute="leading" constant="20" id="HhG-HJ-Jb5"/>
-                            <constraint firstItem="98Q-yY-P2B" firstAttribute="top" secondItem="BnI-4G-0MO" secondAttribute="bottom" id="LuT-IH-2bN"/>
-                            <constraint firstItem="BnI-4G-0MO" firstAttribute="centerX" secondItem="Y88-WZ-rjg" secondAttribute="centerX" id="MTF-Sh-hY8"/>
-                            <constraint firstItem="Ovz-Bv-spM" firstAttribute="top" secondItem="Y88-WZ-rjg" secondAttribute="bottom" constant="36" id="N7n-6b-P7x"/>
-                            <constraint firstItem="X83-wR-Cwr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="98Q-yY-P2B" secondAttribute="leading" id="O80-nm-rEw"/>
-                            <constraint firstItem="k32-K9-6Yd" firstAttribute="bottom" secondItem="Ovz-Bv-spM" secondAttribute="bottom" constant="104" id="QFb-sX-zKX"/>
-                            <constraint firstItem="X83-wR-Cwr" firstAttribute="top" secondItem="M1Z-F1-Wg8" secondAttribute="bottom" id="TkX-A0-NCO"/>
-                            <constraint firstAttribute="bottom" secondItem="BnI-4G-0MO" secondAttribute="bottom" constant="253" id="UDf-uv-yxY"/>
-                            <constraint firstItem="BnI-4G-0MO" firstAttribute="centerX" secondItem="9Ye-uG-dbC" secondAttribute="centerX" id="b6y-XJ-8fV"/>
-                            <constraint firstAttribute="trailing" secondItem="98Q-yY-P2B" secondAttribute="trailing" constant="21" id="biI-Ra-gNx"/>
-                            <constraint firstItem="BnI-4G-0MO" firstAttribute="centerX" secondItem="Ovz-Bv-spM" secondAttribute="centerX" id="fmc-xF-377"/>
-                            <constraint firstItem="BnI-4G-0MO" firstAttribute="leading" secondItem="k32-K9-6Yd" secondAttribute="leading" constant="20" id="iSo-J5-MC5"/>
-                            <constraint firstItem="BnI-4G-0MO" firstAttribute="top" secondItem="X83-wR-Cwr" secondAttribute="bottom" id="ifO-d0-1OI"/>
-                            <constraint firstItem="M1Z-F1-Wg8" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="X83-wR-Cwr" secondAttribute="trailing" id="vS0-oM-eGE"/>
-                            <constraint firstItem="Y88-WZ-rjg" firstAttribute="leading" secondItem="k32-K9-6Yd" secondAttribute="leading" constant="60" id="wQx-hq-r1R"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="k32-K9-6Yd"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                <color key="value" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                <color key="value" red="0.57717373699999996" green="0.1156341212" blue="0.072292098420000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                    <connections>
-                        <outlet property="loginButton" destination="Y88-WZ-rjg" id="Hqk-3L-doP"/>
-                        <outlet property="passwordField" destination="BnI-4G-0MO" id="Vdy-dy-QCb"/>
-                        <outlet property="signupButton" destination="Ovz-Bv-spM" id="LPI-RG-RAC"/>
-                        <outlet property="usernameField" destination="M1Z-F1-Wg8" id="vhJ-kv-57G"/>
-                        <segue destination="WcF-kW-PDz" kind="show" identifier="loginToSignUp" id="c5b-Dl-7u4">
-                            <nil key="action"/>
-                        </segue>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rzh-JT-67W" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2304" y="436"/>
-        </scene>
-        <!--Account View Controller-->
-        <scene sceneID="oZj-Du-icM">
-            <objects>
-                <viewController id="WcF-kW-PDz" customClass="AccountViewController" customModule="FirePage" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Cty-zN-UXH" customClass="GradientView" customModule="FirePage" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MF2-pm-hhN" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="195" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whiteprofile-1"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ac4-kj-mpJ" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="233" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitephone"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yeY-rj-mPw" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="348" width="280" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitelock"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Re-enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B99-QV-iCR" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="384" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitelock"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vuZ-xd-gPO" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="46" y="93" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bCh-RY-uBs" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="190" y="93" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iuA-fU-iT9" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="291" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitekey"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="HUV-hA-WU6"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                <color key="value" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                <color key="value" red="0.57717373699999996" green="0.1156341212" blue="0.072292098420000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                    <connections>
-                        <outlet property="confirmField" destination="B99-QV-iCR" id="NTP-bj-qe8"/>
-                        <outlet property="firstnameField" destination="vuZ-xd-gPO" id="QH1-aR-MDf"/>
-                        <outlet property="keyField" destination="iuA-fU-iT9" id="QA8-hR-GNt"/>
-                        <outlet property="lastnameField" destination="bCh-RY-uBs" id="Mjc-FP-4uO"/>
-                        <outlet property="passwordField" destination="yeY-rj-mPw" id="ZOt-lb-E2E"/>
-                        <outlet property="phoneField" destination="Ac4-kj-mpJ" id="QH3-zq-Xtb"/>
-                        <outlet property="usernameField" destination="MF2-pm-hhN" id="ABq-Xs-GLq"/>
-                        <segue destination="hWv-gy-UkB" kind="show" id="v8v-qu-laj">
-                            <nil key="action"/>
-                        </segue>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uSi-EG-o4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1564" y="-645"/>
-        </scene>
-        <!--Login View Controller-->
-        <scene sceneID="h6V-tJ-ioG">
-            <objects>
-                <viewController id="5Nr-lo-Ugc" customClass="LoginViewController" customModule="FirePage" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ouh-f6-fey" customClass="GradientView" customModule="FirePage" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7hg-lg-bws" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="240" width="280" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="dmt-O0-mAP"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whiteprofile-1"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OBR-Al-hUt" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="290" width="280" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="DFu-s1-e85"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="Svm-yi-QsN"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitelock"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FsP-EX-3Qu">
-                                <rect key="frame" x="181" y="265" width="119" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="v5S-aA-ceY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="forgot username?">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAU-d9-BRb">
-                                <rect key="frame" x="181" y="315" width="118" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="qdn-Vu-cZc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="forgot password?">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uay-0p-H8T" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="60" y="368" width="200" height="30"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginClick:" destination="5Nr-lo-Ugc" eventType="touchUpInside" id="c0b-tQ-SCJ"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="firepage" translatesAutoresizingMaskIntoConstraints="NO" id="KkB-4X-3uq">
-                                <rect key="frame" x="85" y="49" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmX-ke-JIX" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="60" y="434" width="200" height="30"/>
-                                <state key="normal" title="Signup">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="signupClick:" destination="5Nr-lo-Ugc" eventType="touchUpInside" id="Jik-Nx-oXc"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="OBR-Al-hUt" firstAttribute="centerX" secondItem="uay-0p-H8T" secondAttribute="centerX" id="59z-qK-l2C"/>
-                            <constraint firstItem="OBR-Al-hUt" firstAttribute="centerX" secondItem="NmX-ke-JIX" secondAttribute="centerX" id="8Ij-bL-TAf"/>
-                            <constraint firstItem="FsP-EX-3Qu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZAU-d9-BRb" secondAttribute="leading" id="8hC-dD-zuP"/>
-                            <constraint firstItem="NmX-ke-JIX" firstAttribute="leading" secondItem="4pq-d2-mrG" secondAttribute="leading" constant="60" id="9Y4-RZ-X5z"/>
-                            <constraint firstItem="OBR-Al-hUt" firstAttribute="centerX" secondItem="ouh-f6-fey" secondAttribute="centerX" id="9qf-jb-JFI"/>
-                            <constraint firstItem="OBR-Al-hUt" firstAttribute="leading" secondItem="4pq-d2-mrG" secondAttribute="leading" constant="20" id="Kc1-cn-eUb"/>
-                            <constraint firstItem="7hg-lg-bws" firstAttribute="leading" secondItem="ouh-f6-fey" secondAttribute="leading" constant="20" id="ZGb-Fe-hTx"/>
-                            <constraint firstItem="FsP-EX-3Qu" firstAttribute="top" secondItem="7hg-lg-bws" secondAttribute="bottom" id="au9-pF-6CD"/>
-                            <constraint firstItem="OBR-Al-hUt" firstAttribute="top" secondItem="FsP-EX-3Qu" secondAttribute="bottom" id="fub-ml-Of5"/>
-                            <constraint firstAttribute="bottom" secondItem="OBR-Al-hUt" secondAttribute="bottom" constant="253" id="iM7-VT-3u5"/>
-                            <constraint firstAttribute="trailing" secondItem="ZAU-d9-BRb" secondAttribute="trailing" constant="21" id="lrO-nX-oJA"/>
-                            <constraint firstItem="7hg-lg-bws" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FsP-EX-3Qu" secondAttribute="trailing" id="s4C-FL-SF3"/>
-                            <constraint firstItem="uay-0p-H8T" firstAttribute="leading" secondItem="4pq-d2-mrG" secondAttribute="leading" constant="60" id="u9s-g7-d2r"/>
-                            <constraint firstItem="4pq-d2-mrG" firstAttribute="bottom" secondItem="NmX-ke-JIX" secondAttribute="bottom" constant="104" id="ulw-zq-SOv"/>
-                            <constraint firstItem="ZAU-d9-BRb" firstAttribute="top" secondItem="OBR-Al-hUt" secondAttribute="bottom" id="wDf-7N-Yh9"/>
-                            <constraint firstItem="NmX-ke-JIX" firstAttribute="top" secondItem="uay-0p-H8T" secondAttribute="bottom" constant="36" id="x3N-sd-WeC"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="4pq-d2-mrG"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                <color key="value" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                <color key="value" red="0.57717373699999996" green="0.1156341212" blue="0.072292098420000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                    <connections>
-                        <outlet property="loginButton" destination="uay-0p-H8T" id="11q-dL-Cof"/>
-                        <outlet property="passwordField" destination="OBR-Al-hUt" id="h0E-Id-IvO"/>
-                        <outlet property="signupButton" destination="NmX-ke-JIX" id="dNj-pV-l5o"/>
-                        <outlet property="usernameField" destination="7hg-lg-bws" id="bTQ-vS-aOU"/>
-                        <segue destination="5bV-5g-nAy" kind="show" identifier="loginToSignUp" id="XK9-pO-SeM">
-                            <nil key="action"/>
-                        </segue>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q2f-Q4-jaq" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2304" y="436"/>
-        </scene>
-        <!--Account View Controller-->
-        <scene sceneID="oy7-Gq-W9v">
-            <objects>
-                <viewController id="5bV-5g-nAy" customClass="AccountViewController" customModule="FirePage" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Avx-Bg-8aI" customClass="GradientView" customModule="FirePage" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2lj-Zq-taJ" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="195" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whiteprofile-1"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uVq-1L-qfp" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="233" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitephone"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LXl-B0-QHb" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="348" width="280" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitelock"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Re-enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N4F-BJ-KS4" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="384" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitelock"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uEQ-WP-5jE" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="46" y="93" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p1C-Vl-0B4" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="190" y="93" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9YI-UM-9JX" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="291" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitekey"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="kin-71-SNC"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                <color key="value" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                <color key="value" red="0.57717373699999996" green="0.1156341212" blue="0.072292098420000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                    <connections>
-                        <outlet property="confirmField" destination="N4F-BJ-KS4" id="6nT-ZL-BKl"/>
-                        <outlet property="firstnameField" destination="uEQ-WP-5jE" id="EYI-RK-cFh"/>
-                        <outlet property="keyField" destination="9YI-UM-9JX" id="hvz-IR-drT"/>
-                        <outlet property="lastnameField" destination="p1C-Vl-0B4" id="EPI-Is-N9U"/>
-                        <outlet property="passwordField" destination="LXl-B0-QHb" id="TYY-Mg-2SU"/>
-                        <outlet property="phoneField" destination="uVq-1L-qfp" id="OcR-qQ-Nc7"/>
-                        <outlet property="usernameField" destination="2lj-Zq-taJ" id="fQd-9M-E5f"/>
-                        <segue destination="5Nr-lo-Ugc" kind="show" identifier="accountToLogin" id="7fP-lR-lL0">
-                            <nil key="action"/>
-                        </segue>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eUf-em-Kqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1564" y="-645"/>
+            <point key="canvasLocation" x="-1453" y="-470"/>
         </scene>
         <!--Help Line-->
         <scene sceneID="fps-AZ-ept">
@@ -1354,10 +658,4 @@
         <image name="whitephone" width="512" height="512"/>
         <image name="whiteprofile-1" width="460" height="458"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="v8v-qu-laj"/>
-        <segue reference="Ecg-Ed-vbc"/>
-        <segue reference="KeS-dU-Aeq"/>
-        <segue reference="7fP-lR-lL0"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -42,7 +42,6 @@ class AccountViewController: UIViewController {
             Auth.auth().createUser(withEmail: username!, password: password!) { (user, error) in
                 // ...
             }
-            ref.child("users").child(user!.uid).setValue(["Provider": self.txtPassword.text!,"Email": self.txtEmail.text!,"Firstname": self.txtFName.text!,"Lastname": self.txtLname.text!,"Phone": self.txtPhone.text!,])
         }
         self.performSegue(withIdentifier: "returnSignin", sender: self)
     }
