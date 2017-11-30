@@ -168,7 +168,7 @@ extension MainTableViewController {
         let rect = CGRect(x: 10, y:10, width: UIScreen.main.bounds.width, height: 44)
         let myView = UIView(frame: rect)
         myView.backgroundColor = UIColor.cyan
-        var myLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+        let myLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
         myLabel.backgroundColor = UIColor.green
         myLabel.center = CGPoint(x: myView.frame.midX, y: myView.frame.midY)
         myLabel.text = "Poopyheads"
