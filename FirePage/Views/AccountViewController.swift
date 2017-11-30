@@ -13,6 +13,10 @@ class AccountViewController: UIViewController {
     
     var currAccount:Account?
     
+    // MARK: Firebase linking
+    let ref = Database.database().reference()
+    
+    
     // MARK: UIComponents from storyboard
     
     @IBOutlet weak var usernameField: LeftFireField!
@@ -24,27 +28,32 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var firstnameField: LeftFireField!
     @IBOutlet weak var lastnameField: LeftFireField!
     
-    // MARK: Determines whether signup button is viewable or not
-    let buttonDisplay = true
+    @IBOutlet weak var login: FireButton!
+    @IBOutlet weak var back: FireButton!
+    var textFieldList = [UITextField]()
     
-    // MARK: Actions when buttons are clicked
+    // MARK: UIComponent Actions
     
-    @objc func signUpAction(sender: UIButton!){
-        //init(_ first:String, _ last:String, _ phone:String, _ key:String, _ user:String)
-        if(true){
-            
-            let username = ""
-            let password = ""
+    @IBAction func loginAction(_ sender: Any) {
+        if(validInput()){
+            let username = usernameField.text
+            let password = passwordField.text
             //currAccount = Account(first!,last!,phone!,key!,username!)
-            Auth.auth().createUser(withEmail: username, password: password) { (user, error) in
+            Auth.auth().createUser(withEmail: username!, password: password!) { (user, error) in
                 // ...
             }
+            ref.child("users").child(user!.uid).setValue(["Provider": self.txtPassword.text!,"Email": self.txtEmail.text!,"Firstname": self.txtFName.text!,"Lastname": self.txtLname.text!,"Phone": self.txtPhone.text!,])
         }
         self.performSegue(withIdentifier: "returnSignin", sender: self)
     }
-    @objc func backAction(sender: UIButton!){
+    
+    @IBAction func backAction(_ sender: Any) {
         self.performSegue(withIdentifier: "returnSignin", sender: self)
     }
+    
+    // MARK: Determines whether signup button is viewable or not
+    let buttonDisplay = true
+    
     
     private func underLineFields(){
         self.usernameField.useUnderline()
@@ -56,11 +65,25 @@ class AccountViewController: UIViewController {
         self.lastnameField.useUnderline()
     }
     
+    private func validInput()->Bool{
+        for field in textFieldList{
+            if field.text==""{
+                return false
+            }
+        }
+        return passwordField.text == confirmField.text
+    }
+    
+    private func consolidateFields(){
+        textFieldList = [usernameField,phoneField,keyField,passwordField,confirmField,firstnameField,lastnameField];
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         underLineFields()
+        consolidateFields()
         // Do any additional setup after loading the view.
     }
     

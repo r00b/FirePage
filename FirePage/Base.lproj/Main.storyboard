@@ -268,9 +268,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1MZ-Zq-00I" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1MZ-Zq-00I" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
                                 <rect key="frame" x="20" y="195" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="KEm-SC-par"/>
+                                </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -278,9 +280,8 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whiteprofile-1"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="86n-II-mGd" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="233" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="86n-II-mGd" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
+                                <rect key="frame" x="20" y="245" width="280" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -288,9 +289,8 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitephone"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vqm-rV-Nh0" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="348" width="280" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Re-enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M4W-4w-E8b" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
+                                <rect key="frame" x="20" y="360" width="280" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -298,19 +298,11 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitelock"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Re-enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M4W-4w-E8b" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="384" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitelock"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sss-zm-RW3" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sss-zm-RW3" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
                                 <rect key="frame" x="46" y="93" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="UMA-vm-vfL"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -320,9 +312,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qKo-fI-umR" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qKo-fI-umR" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
                                 <rect key="frame" x="190" y="93" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -332,9 +323,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hlv-mK-1Pz" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
-                                <rect key="frame" x="20" y="291" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hlv-mK-1Pz" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
+                                <rect key="frame" x="20" y="282" width="280" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -342,8 +332,74 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitekey"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vqm-rV-Nh0" customClass="LeftFireField" customModule="FirePage" customModuleProvider="target">
+                                <rect key="frame" x="20" y="319" width="280" height="21"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="whitelock"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djG-FX-h0L" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
+                                <rect key="frame" x="114" y="468" width="93" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back to Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backAction:" destination="RCQ-Ix-v3P" eventType="touchUpInside" id="aJ4-GZ-fTd"/>
+                                    <action selector="backClicked:" destination="RCQ-Ix-v3P" eventType="touchUpInside" id="roB-Y3-u6b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7o-Al-9TM" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
+                                <rect key="frame" x="133" y="415" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginAction:" destination="RCQ-Ix-v3P" eventType="touchUpInside" id="Kai-Rt-MCI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="M4W-4w-E8b" firstAttribute="top" secondItem="Vqm-rV-Nh0" secondAttribute="bottom" constant="20" id="1SI-m6-D1x"/>
+                            <constraint firstItem="ER2-w7-Qhk" firstAttribute="trailing" secondItem="Vqm-rV-Nh0" secondAttribute="trailing" constant="20" id="1cf-Gn-zGh"/>
+                            <constraint firstItem="1MZ-Zq-00I" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="20" id="5MG-R9-U2x"/>
+                            <constraint firstItem="ER2-w7-Qhk" firstAttribute="trailing" secondItem="86n-II-mGd" secondAttribute="trailing" constant="20" id="6Qs-mG-k21"/>
+                            <constraint firstItem="Hlv-mK-1Pz" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="20" id="78A-Ld-quP"/>
+                            <constraint firstItem="Vqm-rV-Nh0" firstAttribute="leading" secondItem="86n-II-mGd" secondAttribute="leading" id="7ou-cQ-bLi"/>
+                            <constraint firstItem="86n-II-mGd" firstAttribute="top" secondItem="1MZ-Zq-00I" secondAttribute="bottom" constant="20" id="7v8-sf-zQh"/>
+                            <constraint firstItem="Vqm-rV-Nh0" firstAttribute="trailing" secondItem="86n-II-mGd" secondAttribute="trailing" id="93A-6w-i1V"/>
+                            <constraint firstItem="Sss-zm-RW3" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="46" id="BDl-vB-i2G"/>
+                            <constraint firstItem="Sss-zm-RW3" firstAttribute="top" secondItem="ER2-w7-Qhk" secondAttribute="top" constant="73" id="IKG-6Q-bHc"/>
+                            <constraint firstItem="Vqm-rV-Nh0" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="20" id="JzD-cc-4YL"/>
+                            <constraint firstItem="1MZ-Zq-00I" firstAttribute="top" secondItem="Sss-zm-RW3" secondAttribute="bottom" constant="72" id="K19-0C-Ay1"/>
+                            <constraint firstItem="qKo-fI-umR" firstAttribute="leading" secondItem="Sss-zm-RW3" secondAttribute="trailing" constant="47" id="KHj-sC-AQe"/>
+                            <constraint firstItem="Vqm-rV-Nh0" firstAttribute="leading" secondItem="Hlv-mK-1Pz" secondAttribute="leading" id="N6v-kI-eMW"/>
+                            <constraint firstItem="ER2-w7-Qhk" firstAttribute="trailing" secondItem="86n-II-mGd" secondAttribute="trailing" constant="20" id="NIW-FA-GDI"/>
+                            <constraint firstAttribute="bottom" secondItem="Vqm-rV-Nh0" secondAttribute="bottom" constant="228" id="OFV-aA-h6S"/>
+                            <constraint firstItem="M4W-4w-E8b" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="20" id="Oeq-0X-I1y"/>
+                            <constraint firstItem="ER2-w7-Qhk" firstAttribute="trailing" secondItem="Hlv-mK-1Pz" secondAttribute="trailing" constant="20" id="RlI-hj-Q9G"/>
+                            <constraint firstItem="Sss-zm-RW3" firstAttribute="bottom" secondItem="qKo-fI-umR" secondAttribute="bottom" id="VZA-jf-mAt"/>
+                            <constraint firstItem="Vqm-rV-Nh0" firstAttribute="top" secondItem="Hlv-mK-1Pz" secondAttribute="bottom" constant="20" id="X4P-H4-3hu"/>
+                            <constraint firstItem="ER2-w7-Qhk" firstAttribute="trailing" secondItem="1MZ-Zq-00I" secondAttribute="trailing" constant="20" id="Xww-w7-0j0"/>
+                            <constraint firstItem="1MZ-Zq-00I" firstAttribute="top" secondItem="anT-6Q-kv2" secondAttribute="top" constant="195" id="Y4t-E5-mso"/>
+                            <constraint firstItem="86n-II-mGd" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="20" id="YMH-B8-2bM"/>
+                            <constraint firstItem="Vqm-rV-Nh0" firstAttribute="trailing" secondItem="1MZ-Zq-00I" secondAttribute="trailing" id="eUX-GA-6Ve"/>
+                            <constraint firstItem="Hlv-mK-1Pz" firstAttribute="top" secondItem="86n-II-mGd" secondAttribute="bottom" constant="20" id="ev8-QX-w7c"/>
+                            <constraint firstItem="Vqm-rV-Nh0" firstAttribute="leading" secondItem="1MZ-Zq-00I" secondAttribute="leading" id="hk5-Bn-V1Z"/>
+                            <constraint firstItem="Sss-zm-RW3" firstAttribute="baseline" secondItem="qKo-fI-umR" secondAttribute="baseline" id="kga-K5-rFS"/>
+                            <constraint firstItem="86n-II-mGd" firstAttribute="leading" secondItem="ER2-w7-Qhk" secondAttribute="leading" constant="20" id="lvq-ew-UMl"/>
+                            <constraint firstItem="Vqm-rV-Nh0" firstAttribute="trailing" secondItem="Hlv-mK-1Pz" secondAttribute="trailing" id="oFo-Ju-lPc"/>
+                            <constraint firstItem="86n-II-mGd" firstAttribute="top" secondItem="1MZ-Zq-00I" secondAttribute="bottom" constant="20" id="sJR-aa-yGG"/>
+                            <constraint firstItem="Vqm-rV-Nh0" firstAttribute="leading" secondItem="M4W-4w-E8b" secondAttribute="leading" id="soA-xZ-AmT"/>
+                            <constraint firstItem="Vqm-rV-Nh0" firstAttribute="trailing" secondItem="M4W-4w-E8b" secondAttribute="trailing" id="xVI-jj-Wsk"/>
+                            <constraint firstItem="Hlv-mK-1Pz" firstAttribute="top" secondItem="86n-II-mGd" secondAttribute="bottom" constant="20" id="yti-Kr-cGJ"/>
+                            <constraint firstItem="ER2-w7-Qhk" firstAttribute="trailing" secondItem="M4W-4w-E8b" secondAttribute="trailing" constant="20" id="zRG-h8-X4v"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ER2-w7-Qhk"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -355,10 +411,13 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="back" destination="djG-FX-h0L" id="5rS-yZ-kGp"/>
                         <outlet property="confirmField" destination="M4W-4w-E8b" id="VtH-RF-PBy"/>
                         <outlet property="firstnameField" destination="Sss-zm-RW3" id="tBA-fL-Vq2"/>
                         <outlet property="keyField" destination="Hlv-mK-1Pz" id="Mn3-vX-rij"/>
                         <outlet property="lastnameField" destination="qKo-fI-umR" id="Bxz-A8-8gA"/>
+                        <outlet property="login" destination="K7o-Al-9TM" id="j25-7W-Sox"/>
+                        <outlet property="loginClicked" destination="K7o-Al-9TM" id="3u2-Y1-jOZ"/>
                         <outlet property="passwordField" destination="Vqm-rV-Nh0" id="W9N-xk-c26"/>
                         <outlet property="phoneField" destination="86n-II-mGd" id="TeW-e3-C4c"/>
                         <outlet property="usernameField" destination="1MZ-Zq-00I" id="Yjp-k0-hYR"/>
@@ -1061,7 +1120,7 @@
                         <outlet property="passwordField" destination="LXl-B0-QHb" id="TYY-Mg-2SU"/>
                         <outlet property="phoneField" destination="uVq-1L-qfp" id="OcR-qQ-Nc7"/>
                         <outlet property="usernameField" destination="2lj-Zq-taJ" id="fQd-9M-E5f"/>
-                        <segue destination="5Nr-lo-Ugc" kind="show" id="7fP-lR-lL0">
+                        <segue destination="5Nr-lo-Ugc" kind="show" identifier="accountToLogin" id="7fP-lR-lL0">
                             <nil key="action"/>
                         </segue>
                     </connections>

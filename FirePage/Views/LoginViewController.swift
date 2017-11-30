@@ -21,9 +21,9 @@ class LoginViewController: UIViewController{
     // MARK: UI Actions
     
     @IBAction func loginClick(_ sender: Any) {
-        let email = ""
-        let password = ""
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+        let email = usernameField.text
+        let password = passwordField.text
+        Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
             // ...
         }
         if Auth.auth().currentUser != nil {
