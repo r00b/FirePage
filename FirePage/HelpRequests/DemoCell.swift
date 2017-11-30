@@ -11,6 +11,8 @@ import FoldingCell
 
 class DemoCell: FoldingCell {
     
+    var expanded: Bool = false
+    
     @IBOutlet weak var foregroundTime: UILabel!
     @IBOutlet weak var foregroundDescription: UILabel!
     @IBOutlet weak var expansionTime: UILabel!
@@ -18,7 +20,7 @@ class DemoCell: FoldingCell {
     @IBOutlet weak var expansionDescription: UITextView!
     @IBOutlet weak var expansionSender: UILabel!
     @IBOutlet weak var expansionLocation: UILabel!
-    @IBOutlet weak var expansionResolution: UILabel!
+    @IBOutlet weak var expansionResolution: UITextView!
     @IBOutlet weak var resolveButton: UIButton!
     
     override func awakeFromNib() {

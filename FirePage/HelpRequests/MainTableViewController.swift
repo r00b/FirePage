@@ -28,15 +28,18 @@ class MainTableViewController: UITableViewController {
     
     let kCloseCellHeight: CGFloat = 179 - 110 - 10
     let kOpenCellHeight: CGFloat = 488 - 319 - 30 + 5 + 180
-    let kRowsCount = 10
+    let kRowsCount = 100
     var cellHeights: [CGFloat] = []
     
-    // TODO : Update hardcoded dates with Ritwik's stuff.
-    //var hardcodedDates: [String] =
+    // TODO : Update hardcoded RA!
+    // TODO : Cell heights bug
+    var hardcodedRA: String = "Harshil"
     
-    //var myHelpRequests: [HelpRequest] = []
+    var myHelpRequests: [String: [HelpRequest]] = [:]
+    var myHelpRequestsOrderedKeys: [String] = []
     
     override func viewDidLoad() {
+        DB.getAllRAHelpRequests(RA: hardcodedRA, reloadFunction: reloadTableViewData)
         super.viewDidLoad()
         setup()
     }
@@ -46,12 +49,12 @@ class MainTableViewController: UITableViewController {
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
-        
-        DB.getHelpRequests(onCallGroup: "N2Group", day: "11-12-2017", reloadFunction: reloadData)
     }
     
-    func reloadData(array: [HelpRequest]){
-        //myHelpRequests = array
+    func reloadTableViewData(requests: [String: [HelpRequest]]){
+        myHelpRequests = requests
+        myHelpRequestsOrderedKeys = Array(myHelpRequests.keys)
+        print(myHelpRequestsOrderedKeys)
         tableView.reloadData()
     }
     
@@ -60,9 +63,28 @@ class MainTableViewController: UITableViewController {
 // MARK: - TableView
 extension MainTableViewController {
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return myHelpRequestsOrderedKeys.count
     }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (myHelpRequestsOrderedKeys.count <= section) {
+            return 0
+        }
+        if let numRows = myHelpRequests[myHelpRequestsOrderedKeys[section]] {
+//            print("The section is \(section)")
+//            print("\n")
+//            for row in numRows {
+//                let full: String = (row.time + row.fromPerson + row.onCallGroup + row.date + row.location + "\(row.isResolved)" + row.description)
+//                print(full)
+//            }
+//            print("\n")
+            return numRows.count
+        } else {
+            return 0
+        }
+    }
+    
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard case let cell as DemoCell = cell else {
@@ -80,8 +102,30 @@ extension MainTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as! FoldingCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as! DemoCell
         
+        let helpRequests: [HelpRequest] = myHelpRequests[myHelpRequestsOrderedKeys[indexPath.section]]!
+        let helpRequest: HelpRequest = helpRequests[indexPath.row]
+        
+        cell.foregroundTime.text = helpRequest.time
+        cell.foregroundDescription.text = helpRequest.description
+        cell.expansionTime.text = helpRequest.time
+        cell.expansionOnCallGroup.text = helpRequest.onCallGroup
+        cell.expansionDescription.text = helpRequest.description
+        cell.expansionSender.text = helpRequest.fromPerson
+        cell.expansionLocation.text = helpRequest.location
+        
+        if (helpRequest.resolution == nil) {
+            cell.expansionResolution.text = "Kill yourself"
+        } else {
+            cell.expansionResolution.text = helpRequest.resolution!
+        }
+        
+        if (helpRequest.isResolved) {
+            cell.resolveButton.titleLabel?.text = "SAVE"
+        } else {
+            cell.resolveButton.titleLabel?.text = "RESOLVE"
+        }
         return cell
     }
     
@@ -115,5 +159,26 @@ extension MainTableViewController {
         }, completion: nil)
         
     }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let rect = CGRect(x: 10, y:10, width: UIScreen.main.bounds.width, height: 44)
+        let myView = UIView(frame: rect)
+        myView.backgroundColor = UIColor.cyan
+        var myLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+        myLabel.backgroundColor = UIColor.green
+        myLabel.center = CGPoint(x: myView.frame.midX, y: myView.frame.midY)
+        myLabel.text = "Poopyheads"
+        myView.addSubview(myLabel)
+        //let headerView = Bundle.main.loadNibNamed("HeaderViewCellTableViewCell", owner: self, options: nil)?.first as! HeaderViewCellTableViewCell
+        //if (myHelpRequestsOrderedKeys.count > section) {
+            //headerView.randomLabel.text = myHelpRequestsOrderedKeys[section]
+        //}
+        return myView
+    }
+    
     
 }
