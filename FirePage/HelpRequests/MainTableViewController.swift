@@ -54,6 +54,7 @@ class MainTableViewController: UITableViewController {
     func reloadTableViewData(requests: [String: [HelpRequest]]){
         myHelpRequests = requests
         myHelpRequestsOrderedKeys = Array(myHelpRequests.keys)
+        print(myHelpRequestsOrderedKeys)
         tableView.reloadData()
     }
     
@@ -71,6 +72,13 @@ extension MainTableViewController {
             return 0
         }
         if let numRows = myHelpRequests[myHelpRequestsOrderedKeys[section]] {
+//            print("The section is \(section)")
+//            print("\n")
+//            for row in numRows {
+//                let full: String = (row.time + row.fromPerson + row.onCallGroup + row.date + row.location + "\(row.isResolved)" + row.description)
+//                print(full)
+//            }
+//            print("\n")
             return numRows.count
         } else {
             return 0
@@ -150,6 +158,26 @@ extension MainTableViewController {
             tableView.endUpdates()
         }, completion: nil)
         
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let rect = CGRect(x: 10, y:10, width: UIScreen.main.bounds.width, height: 44)
+        let myView = UIView(frame: rect)
+        myView.backgroundColor = UIColor.cyan
+        var myLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+        myLabel.backgroundColor = UIColor.green
+        myLabel.center = CGPoint(x: myView.frame.midX, y: myView.frame.midY)
+        myLabel.text = "Poopyheads"
+        myView.addSubview(myLabel)
+        //let headerView = Bundle.main.loadNibNamed("HeaderViewCellTableViewCell", owner: self, options: nil)?.first as! HeaderViewCellTableViewCell
+        //if (myHelpRequestsOrderedKeys.count > section) {
+            //headerView.randomLabel.text = myHelpRequestsOrderedKeys[section]
+        //}
+        return myView
     }
     
     
