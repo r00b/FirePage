@@ -89,17 +89,17 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
  
         var dict = Dictionary<String,Any>()
         
-        dict["date"] = getDate()
-        dict["onCallGroup"] = dormDic[currDorm]
+        //dict["date"] = getDate()
+        //dict["onCallGroup"] = dormDic[currDorm]
+        dict["date"] = "12-04-2017"
+        dict["onCallGroup"] = "N2Group"
         dict["time"] = getTime()
         dict["isResolved"] = false
         dict["description"] = subjectField.text
         dict["Location"] = "\(currDorm) \(locationField.text ?? "")"
         dict["fromPerson"] = getUserData()["email"]
         
-        //print(dict)
-        
-        DB.addHelpRequest(onCallGroup: dormDic[currDorm]!, day: getDate(), helpRequest: HelpRequest(dictionary: dict as NSDictionary))
+        DB.addHelpRequest(onCallGroup: "N2Group", day: "12-04-2017", helpRequest: HelpRequest(dictionary: dict as NSDictionary))
         
         
         
