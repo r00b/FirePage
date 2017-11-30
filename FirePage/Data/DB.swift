@@ -93,6 +93,7 @@ class DB{
                             let value = snapshot.value as? NSDictionary
                             let helpRequest = HelpRequest(dictionary: value!)
                             helpRequests[day]!.append(helpRequest)
+                            reloadFunction(helpRequests)
                         })
                     }
                         
@@ -101,12 +102,24 @@ class DB{
                 })
 
                 }
+            /*
             let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
             DispatchQueue.main.asyncAfter(deadline: when) {
                 reloadFunction(helpRequests)
             }
+            */
 
         })
+    }
+    
+    static func getHelpRequests(RA: String, reloadFunction: @escaping ([String: [HelpRequest]]) -> Void){
+        self.RA.child(RA).child("onCallGroup").observeSingleEvent(of: .value, with: { (snapshot) in
+            let onCallGroup = snapshot.value as? String
+            OnCallGroup.child(onCallGroup!).child("HelpRequests").observe(DataEventType.value, with: { (snapshot) in
+                getAllRAHelpRequests(RA: RA, reloadFunction: reloadFunction)
+        })
+        })
+        
     }
     
     
