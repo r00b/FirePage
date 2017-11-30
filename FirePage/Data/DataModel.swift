@@ -78,15 +78,20 @@ struct HelpRequest: CustomStringConvertible{
     public var resolution: String?
     
     init(dictionary: NSDictionary){
+        print(dictionary)
         self.time = dictionary.object(forKey: "time") as! String
         self.fromPerson = dictionary.object(forKey: "fromPerson") as! String
         self.onCallGroup = dictionary.object(forKey: "onCallGroup") as! String
         self.date = dictionary.object(forKey: "date") as! String
         self.location = dictionary.object(forKey: "Location") as! String
+        if(dictionary.object(forKey: "isResolved") as? Bool == false){
+            self.isResolved = false
+        }else{
         if(dictionary.object(forKey: "isResolved") as! String == "true"){
             self.isResolved = true
         }else{
             self.isResolved = false
+        }
         }
         if(dictionary.object(forKey: "resolution") != nil){
             self.resolution = dictionary.object(forKey: "resolution") as! String
@@ -118,7 +123,7 @@ struct HelpRequest: CustomStringConvertible{
         dictionary["Location"] = self.location
         dictionary["isResolved"] = "\(self.isResolved)"
         dictionary["description"] = self.description
-        if(resolution != nil){
+        if(resolution != nil && resolution != "Kill yourself"){
             dictionary["resolution"] = self.resolution
         }
         return dictionary

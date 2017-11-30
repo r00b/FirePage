@@ -112,6 +112,16 @@ class DB{
         })
     }
     
+    static func getHelpRequests(RA: String, reloadFunction: @escaping ([String: [HelpRequest]]) -> Void){
+        self.RA.child(RA).child("onCallGroup").observeSingleEvent(of: .value, with: { (snapshot) in
+            let onCallGroup = snapshot.value as? String
+            OnCallGroup.child(onCallGroup!).child("HelpRequests").observe(DataEventType.value, with: { (snapshot) in
+                getAllRAHelpRequests(RA: RA, reloadFunction: reloadFunction)
+        })
+        })
+        
+    }
+    
     
     static func addHelpRequests(onCallGroup: String, day: String,  helpRequests: [HelpRequest]){
         for helpRequest in helpRequests{

@@ -58,7 +58,7 @@ class MainTableViewController: UITableViewController {
         }
     }
     override func viewDidLoad() {
-        DB.getAllRAHelpRequests(RA: hardcodedRA, reloadFunction: reloadTableViewData)
+        DB.getHelpRequests(RA: hardcodedRA, reloadFunction: reloadTableViewData)
         super.viewDidLoad()
         setup()
         
