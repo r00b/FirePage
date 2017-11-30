@@ -10,7 +10,7 @@ import UIKit
 
 class HeaderViewCellTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var randomLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

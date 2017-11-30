@@ -36,7 +36,7 @@ class MainTableViewController: UITableViewController {
     
     // TODO : Update hardcoded RA!
     // TODO : Cell heights bug
-    var hardcodedRA: String = "Harshil"
+    var hardcodedRA: String = "Ben"
     
     var myHelpRequests: [String: [HelpRequest]] = [:]
     var myHelpRequestsOrderedKeys: [String] = []
@@ -46,20 +46,24 @@ class MainTableViewController: UITableViewController {
         print(indexPathOfSelectedRow)
         print(selectedCell != nil)
         if (indexPathOfSelectedRow != nil && selectedCell != nil) {
-            var helpRequests: [HelpRequest] = myHelpRequests[myHelpRequestsOrderedKeys[indexPathOfSelectedRow.section]]!
+            var helpRequests: [HelpRequest] = myHelpRequests[myHelpRequestsOrderedKeys[(indexPathOfSelectedRow.section - 1)/2]]!
             print(helpRequests)
             print(selectedCell.expansionResolution.text)
             helpRequests[indexPathOfSelectedRow.row].isResolved = true
             helpRequests[indexPathOfSelectedRow.row].resolution = selectedCell.expansionResolution.text
             print(helpRequests[indexPathOfSelectedRow.row].onCallGroup)
-            print(myHelpRequestsOrderedKeys[indexPathOfSelectedRow.section])
+            print(myHelpRequestsOrderedKeys[(indexPathOfSelectedRow.section - 1)/2])
             print(helpRequests)
-            DB.addHelpRequests(onCallGroup: helpRequests[indexPathOfSelectedRow.row].onCallGroup, day: myHelpRequestsOrderedKeys[indexPathOfSelectedRow.section], helpRequests: helpRequests)
+            DB.addHelpRequests(onCallGroup: helpRequests[indexPathOfSelectedRow.row].onCallGroup, day: myHelpRequestsOrderedKeys[(indexPathOfSelectedRow.section - 1)/2], helpRequests: helpRequests)
         }
     }
     override func viewDidLoad() {
+        
         DB.getHelpRequests(RA: hardcodedRA, reloadFunction: reloadTableViewData)
         super.viewDidLoad()
+        
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "xdcell")
+        self.tableView.register(UINib.init(nibName: "HeaderViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: "xdcell")
         setup()
         
     }
@@ -78,6 +82,7 @@ class MainTableViewController: UITableViewController {
         print("reloading data table view")
         tableView.reloadData()
     }
+
     
 }
 
@@ -85,14 +90,17 @@ class MainTableViewController: UITableViewController {
 extension MainTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return myHelpRequestsOrderedKeys.count
+        return 2*myHelpRequestsOrderedKeys.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (myHelpRequestsOrderedKeys.count <= section) {
+        if (2*myHelpRequestsOrderedKeys.count <= section) {
             return 0
         }
-        if let numRows = myHelpRequests[myHelpRequestsOrderedKeys[section]] {
+        if (section % 2 == 0) {
+            return 1
+        }
+        if let numRows = myHelpRequests[myHelpRequestsOrderedKeys[(section - 1)/2]] {
 //            print("The section is \(section)")
 //            print("\n")
 //            for row in numRows {
@@ -108,6 +116,14 @@ extension MainTableViewController {
     
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if (indexPath.section % 2 == 0) {
+            guard case let cell as HeaderViewCellTableViewCell = cell else {
+                return
+            }
+            cell.backgroundColor = .white
+            return
+        }
         guard case let cell as DemoCell = cell else {
             return
         }
@@ -123,15 +139,23 @@ extension MainTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if (indexPath.section % 2 == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "xdcell", for: indexPath) as! HeaderViewCellTableViewCell
+            cell.backgroundColor = .clear
+            cell.dateLabel.text = myHelpRequestsOrderedKeys[(indexPath.section)/2]
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as! DemoCell
         
-        let helpRequests: [HelpRequest] = myHelpRequests[myHelpRequestsOrderedKeys[indexPath.section]]!
+        let helpRequests: [HelpRequest] = myHelpRequests[myHelpRequestsOrderedKeys[(indexPath.section - 1)/2]]!
         let helpRequest: HelpRequest = helpRequests[indexPath.row]
         
-        if (indexPath.section == 0 && indexPath.row == 0) {
+        if (indexPath.section == 1 && indexPath.row == 0) {
             print("bananas")
-            print(helpRequest.time)
-            print(helpRequest.description)
+            print(helpRequest.getDictionary())
+            print("apple")
         }
         
         cell.foregroundTime.text = helpRequest.time
@@ -142,27 +166,53 @@ extension MainTableViewController {
         cell.expansionSender.text = helpRequest.fromPerson
         cell.expansionLocation.text = helpRequest.location
         
-        if (helpRequest.resolution == nil) {
-            cell.expansionResolution.text = "Kill yourself"
-        } else {
+        if (helpRequest.resolution != nil) {
             cell.expansionResolution.text = helpRequest.resolution!
             print("people")
         }
         
         if (helpRequest.isResolved) {
-            cell.resolveButton.titleLabel?.text = "SAVE"
+            cell.resolveButton.setTitle("SAVE", for: .normal)
+        
+            cell.foregroundBackground.backgroundColor = UIColor.white
+            cell.foregroundLabel.textColor = UIColor.black
+            cell.foregroundTimeBackground.backgroundColor = UIColor.white
+            cell.foregroundTimeLabel.textColor = UIColor.black
+            
+            cell.barView.backgroundColor = UIColor.white
+            cell.expansionLabel.textColor = UIColor.black
+            cell.backgroundTimeLabel.textColor = UIColor.black
             print("peoplx")
         } else {
-            cell.resolveButton.titleLabel?.text = "RESOLVE"
+            cell.resolveButton.setTitle("RESOLVE", for: .normal)
+            
+            cell.foregroundBackground.backgroundColor = UIColor.init(red: 220/255, green: 81/255, blue: 81/255, alpha: 1)
+            cell.foregroundLabel.textColor = UIColor.white
+            cell.foregroundTimeBackground.backgroundColor = UIColor.init(red: 220/255, green: 81/255, blue: 81/255, alpha: 1)
+            cell.foregroundTimeLabel.textColor = UIColor.white
+            
+            cell.barView.backgroundColor = UIColor.init(red: 220/255, green: 81/255, blue: 81/255, alpha: 1)
+            cell.expansionLabel.textColor = UIColor.white
+            cell.backgroundTimeLabel.textColor = UIColor.white
         }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath.section % 2 == 0) {
+            return 25
+        }
         return cellHeights[indexPath.row]
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if (indexPath.section % 2 == 0) {
+            let cell = tableView.cellForRow(at: indexPath) as! HeaderViewCellTableViewCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.isUserInteractionEnabled = false
+            return
+        }
         
         indexPathOfSelectedRow = indexPath
         
@@ -192,25 +242,25 @@ extension MainTableViewController {
         
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
-    }
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 44
+//    }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let rect = CGRect(x: 10, y:10, width: UIScreen.main.bounds.width, height: 44)
-        let myView = UIView(frame: rect)
-        myView.backgroundColor = UIColor.cyan
-        let myLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-        myLabel.backgroundColor = UIColor.green
-        myLabel.center = CGPoint(x: myView.frame.midX, y: myView.frame.midY)
-        myLabel.text = "Poopyheads"
-        myView.addSubview(myLabel)
-        //let headerView = Bundle.main.loadNibNamed("HeaderViewCellTableViewCell", owner: self, options: nil)?.first as! HeaderViewCellTableViewCell
-        //if (myHelpRequestsOrderedKeys.count > section) {
-            //headerView.randomLabel.text = myHelpRequestsOrderedKeys[section]
-        //}
-        return myView
-    }
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let rect = CGRect(x: 10, y:10, width: UIScreen.main.bounds.width, height: 44)
+//        let myView = UIView(frame: rect)
+//        myView.backgroundColor = UIColor.cyan
+//        let myLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+//        myLabel.backgroundColor = UIColor.green
+//        myLabel.center = CGPoint(x: myView.frame.midX, y: myView.frame.midY)
+//        myLabel.text = "Poopyheads"
+//        myView.addSubview(myLabel)
+//        //let headerView = Bundle.main.loadNibNamed("HeaderViewCellTableViewCell", owner: self, options: nil)?.first as! HeaderViewCellTableViewCell
+//        //if (myHelpRequestsOrderedKeys.count > section) {
+//            //headerView.randomLabel.text = myHelpRequestsOrderedKeys[section]
+//        //}
+//        return myView
+//    }
     
     
 }
