@@ -22,7 +22,7 @@
 		B73083B11FCCE8F4000AD305 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73083B01FCCE8F4000AD305 /* UITextFieldExtensions.swift */; };
 		B73083B51FCCE969000AD305 /* DormCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73083B31FCCE969000AD305 /* DormCollectionViewCell.swift */; };
 		B73083B61FCCE969000AD305 /* HelplineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73083B41FCCE969000AD305 /* HelplineViewController.swift */; };
-		B73083B81FCCEA17000AD305 /* HelpLine.storyboad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B73083B71FCCEA17000AD305 /* HelpLine.storyboad.storyboard */; };
+		B73083B81FCCEA17000AD305 /* HelpLine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B73083B71FCCEA17000AD305 /* HelpLine.storyboard */; };
 		B757595F1FAFE81D006845E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B757595E1FAFE81D006845E9 /* AppDelegate.swift */; };
 		B75759611FAFE81D006845E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75759601FAFE81D006845E9 /* ViewController.swift */; };
 		B75759641FAFE81D006845E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B75759621FAFE81D006845E9 /* Main.storyboard */; };
@@ -37,6 +37,7 @@
 		B77CCCC01FB93F2600ECAD81 /* CustomRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CCCBF1FB93F2600ECAD81 /* CustomRadioButton.swift */; };
 		B77CCCC21FB9414400ECAD81 /* RadioButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CCCC11FB9414400ECAD81 /* RadioButtonController.swift */; };
 		BB344B471FCA76D200BD890B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB344B461FCA76D200BD890B /* GoogleService-Info.plist */; };
+		BB344B4C1FCFA8E200BD890B /* myTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB344B4B1FCFA8E200BD890B /* myTabBar.swift */; };
 		BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3AE4701FC61A8400A0470A /* Utilities.swift */; };
 		BB3AE4731FC7926B00A0470A /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3AE4721FC7926B00A0470A /* DB.swift */; };
 		E1658EF91FC27B2200DCAFD8 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1658EF81FC27B2200DCAFD8 /* Calendar.storyboard */; };
@@ -101,7 +102,7 @@
 		B73083B01FCCE8F4000AD305 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		B73083B31FCCE969000AD305 /* DormCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DormCollectionViewCell.swift; sourceTree = "<group>"; };
 		B73083B41FCCE969000AD305 /* HelplineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelplineViewController.swift; sourceTree = "<group>"; };
-		B73083B71FCCEA17000AD305 /* HelpLine.storyboad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HelpLine.storyboad.storyboard; sourceTree = "<group>"; };
+		B73083B71FCCEA17000AD305 /* HelpLine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HelpLine.storyboard; sourceTree = "<group>"; };
 		B757595B1FAFE81D006845E9 /* FirePage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirePage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B757595E1FAFE81D006845E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B75759601FAFE81D006845E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +123,7 @@
 		B77CCCBF1FB93F2600ECAD81 /* CustomRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRadioButton.swift; sourceTree = "<group>"; };
 		B77CCCC11FB9414400ECAD81 /* RadioButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonController.swift; sourceTree = "<group>"; };
 		BB344B461FCA76D200BD890B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BB344B4B1FCFA8E200BD890B /* myTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myTabBar.swift; sourceTree = "<group>"; };
 		BB3AE46F1FC619A100A0470A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		BB3AE4701FC61A8400A0470A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		BB3AE4721FC7926B00A0470A /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
@@ -205,7 +207,7 @@
 			children = (
 				B73083B31FCCE969000AD305 /* DormCollectionViewCell.swift */,
 				B73083B41FCCE969000AD305 /* HelplineViewController.swift */,
-				B73083B71FCCEA17000AD305 /* HelpLine.storyboad.storyboard */,
+				B73083B71FCCEA17000AD305 /* HelpLine.storyboard */,
 			);
 			path = HelpLine;
 			sourceTree = "<group>";
@@ -249,6 +251,7 @@
 				B75759671FAFE81D006845E9 /* LaunchScreen.storyboard */,
 				B757596A1FAFE81D006845E9 /* Info.plist */,
 				BB3AE46F1FC619A100A0470A /* BridgingHeader.h */,
+				BB344B4B1FCFA8E200BD890B /* myTabBar.swift */,
 			);
 			path = FirePage;
 			sourceTree = "<group>";
@@ -450,7 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B73083B81FCCEA17000AD305 /* HelpLine.storyboad.storyboard in Resources */,
+				B73083B81FCCEA17000AD305 /* HelpLine.storyboard in Resources */,
 				B75759691FAFE81D006845E9 /* LaunchScreen.storyboard in Resources */,
 				B75759661FAFE81D006845E9 /* Assets.xcassets in Resources */,
 				E29D0A0D1FCEA81000E67B04 /* HelpRequests.storyboard in Resources */,
@@ -665,6 +668,7 @@
 				B73083B11FCCE8F4000AD305 /* UITextFieldExtensions.swift in Sources */,
 				E29D0A0A1FCEA81000E67B04 /* DemoCell.swift in Sources */,
 				BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */,
+				BB344B4C1FCFA8E200BD890B /* myTabBar.swift in Sources */,
 				B7058C641FCFA28B00D2368B /* FireButton.swift in Sources */,
 				B73083951FCCE83D000AD305 /* FIreTextField.swift in Sources */,
 				B75759611FAFE81D006845E9 /* ViewController.swift in Sources */,
