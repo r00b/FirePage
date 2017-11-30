@@ -67,7 +67,7 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         
         var controllers = [UIViewController]()
         
-        controllers = [Contact, Calendar, MyPages, Accounto]
+        controllers = [Contact, Calendar, MyPages]
         
         // print(master.level)
         self.viewControllers = controllers
