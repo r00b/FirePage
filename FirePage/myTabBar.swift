@@ -17,8 +17,8 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         delegate = self
         self.tabBar.tintColor = .red
-        let storyboardHelpLine = UIStoryboard(name: "Helpline", bundle: nil)
-        let helpLineController = storyboardHelpLine.instantiateViewController(withIdentifier: "Helpline") as! UINavigationController
+        let storyboardHelpLine = UIStoryboard(name: "Main", bundle: nil)
+        let helpLineController = storyboardHelpLine.instantiateViewController(withIdentifier: "HelpLineViewController") as! UINavigationController
         
         
         let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
