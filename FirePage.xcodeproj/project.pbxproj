@@ -10,6 +10,10 @@
 		2A55B3EC15813C815ADF9C90 /* Pods_FirePage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2D703D5FEBDD56C4BCEDEE /* Pods_FirePage.framework */; };
 		8CF9F198A1F02EFFFAC76B6D /* Pods_FirePageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8349D411B12345576663A /* Pods_FirePageTests.framework */; };
 		9152CDF08F8E58F300BBBE2B /* Pods_FirePageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9F824EE1739DDE026B9E3A /* Pods_FirePageUITests.framework */; };
+		B7058C5E1FCFA10400D2368B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7058C5D1FCFA10400D2368B /* LoginViewController.swift */; };
+		B7058C601FCFA15000D2368B /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7058C5F1FCFA15000D2368B /* AccountController.swift */; };
+		B7058C621FCFA19D00D2368B /* LeftFireField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7058C611FCFA19D00D2368B /* LeftFireField.swift */; };
+		B7058C641FCFA28B00D2368B /* FireButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7058C631FCFA28B00D2368B /* FireButton.swift */; };
 		B7194FEE1FB36346000A954E /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7194FED1FB36346000A954E /* CustomLabel.swift */; };
 		B7194FF31FB3658C000A954E /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7194FF21FB3658C000A954E /* UIViewControllerExtension.swift */; };
 		B7194FF51FB38146000A954E /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7194FF41FB38146000A954E /* CustomButton.swift */; };
@@ -85,6 +89,10 @@
 		8A2D703D5FEBDD56C4BCEDEE /* Pods_FirePage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirePage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DA8349D411B12345576663A /* Pods_FirePageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirePageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB54A5AE134096A053D4FAD3 /* Pods-FirePage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirePage.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirePage/Pods-FirePage.release.xcconfig"; sourceTree = "<group>"; };
+		B7058C5D1FCFA10400D2368B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B7058C5F1FCFA15000D2368B /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
+		B7058C611FCFA19D00D2368B /* LeftFireField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftFireField.swift; sourceTree = "<group>"; };
+		B7058C631FCFA28B00D2368B /* FireButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireButton.swift; sourceTree = "<group>"; };
 		B7194FED1FB36346000A954E /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		B7194FF21FB3658C000A954E /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		B7194FF41FB38146000A954E /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -273,6 +281,8 @@
 				B7194FF41FB38146000A954E /* CustomButton.swift */,
 				B77CCCBF1FB93F2600ECAD81 /* CustomRadioButton.swift */,
 				B77CCCC11FB9414400ECAD81 /* RadioButtonController.swift */,
+				B7058C611FCFA19D00D2368B /* LeftFireField.swift */,
+				B7058C631FCFA28B00D2368B /* FireButton.swift */,
 			);
 			path = CustomUIObjects;
 			sourceTree = "<group>";
@@ -294,6 +304,8 @@
 				B757598C1FB22C28006845E9 /* AccountViewController.swift */,
 				B77CCCBD1FB916A200ECAD81 /* HelpLineViewController.swift */,
 				E29D0A0E1FCEAA2F00E67B04 /* HelpRequestsDummyViewController.swift */,
+				B7058C5D1FCFA10400D2368B /* LoginViewController.swift */,
+				B7058C5F1FCFA15000D2368B /* AccountController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -632,12 +644,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7058C5E1FCFA10400D2368B /* LoginViewController.swift in Sources */,
 				B73083941FCCE83D000AD305 /* GradientView.swift in Sources */,
 				E19075171FBA90900038F6E9 /* CalendarExtensions.swift in Sources */,
 				E19075281FBA977A0038F6E9 /* CalendarCell.swift in Sources */,
 				E29D0A0B1FCEA81000E67B04 /* MainTableViewController.swift in Sources */,
 				E29D0A0F1FCEAA2F00E67B04 /* HelpRequestsDummyViewController.swift in Sources */,
 				B77CCCC01FB93F2600ECAD81 /* CustomRadioButton.swift in Sources */,
+				B7058C601FCFA15000D2368B /* AccountController.swift in Sources */,
 				B75759971FB230CD006845E9 /* DataModel.swift in Sources */,
 				B7194FEE1FB36346000A954E /* CustomLabel.swift in Sources */,
 				B75759901FB22DF0006845E9 /* CustomTextField.swift in Sources */,
@@ -645,11 +659,13 @@
 				B77CCCC21FB9414400ECAD81 /* RadioButtonController.swift in Sources */,
 				B77CCCBE1FB916A200ECAD81 /* HelpLineViewController.swift in Sources */,
 				E1658F091FC3F9E500DCAFD8 /* CalendarTableViewCell.swift in Sources */,
+				B7058C621FCFA19D00D2368B /* LeftFireField.swift in Sources */,
 				E1658F0D1FC4B81200DCAFD8 /* CalendarTableViewShadow.swift in Sources */,
 				B73083B51FCCE969000AD305 /* DormCollectionViewCell.swift in Sources */,
 				B73083B11FCCE8F4000AD305 /* UITextFieldExtensions.swift in Sources */,
 				E29D0A0A1FCEA81000E67B04 /* DemoCell.swift in Sources */,
 				BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */,
+				B7058C641FCFA28B00D2368B /* FireButton.swift in Sources */,
 				B73083951FCCE83D000AD305 /* FIreTextField.swift in Sources */,
 				B75759611FAFE81D006845E9 /* ViewController.swift in Sources */,
 				E190751C1FBA90D30038F6E9 /* CalendarViewController.swift in Sources */,

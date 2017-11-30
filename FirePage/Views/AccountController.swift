@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AccountViewController: UIViewController {
+class AccountController: UIViewController {
     
     var currAccount:Account?
     
@@ -81,5 +81,4 @@ class AccountViewController: UIViewController {
      */
     
 }
-
 
