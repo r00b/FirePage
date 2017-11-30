@@ -12,6 +12,11 @@ import Firebase
 
 class HelplineViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
 
+    // MARK: Global Variables
+    private var cells = [DormCollectionViewCell]()
+    private var dormDic = [String:String]()
+    private var currDorm = ""
+    
     // MARK: Horizontal Menu
     let cellID = "dormCell"
     @IBOutlet weak var dormMenu: UICollectionView!
@@ -23,9 +28,10 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     
     // MARK: Dorm info
     private var selectedDorm = "Epworth"
-    private var eastDorms = ["Alspaugh","Bassett","Brown","Pegram","East House","Epworth","Giles","Jarvis","Wilson","Gilbert-Addoms","Southgate","Blackwell","Randolph","Bell Tower","Trinity"]
+    private var eastDorms = ["Epworth","East","Randolph","Bell Tower"]
+
     //This will be replaced by firebase pull
-    private var eastPhones = ["5857979725","5857979725","5857979725","5857979725","5857979725","5857979725","5857979725","5857979725","5857979725","5857979725","5857979725","5857979725","5857979725","5857979725","5857979725"]
+    private var eastPhones = [String]()
     
     // MARK: Campus info
     private var selectedCampus = "East Campus"
@@ -39,7 +45,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     @IBOutlet weak var dormLabel: UILabel!
     @IBOutlet weak var campusLabel: UILabel!
     @IBOutlet weak var callButton: UIButton!
-    
+    @IBOutlet weak var locationField: FireTextField!
     
     // MARK: Actions
     
@@ -73,6 +79,9 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
                 UIApplication.shared.openURL(url)
             }
         }
+        
+        
+        
     }
     
     // MARK: Phone Setup
@@ -84,14 +93,28 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         subjectField.useUnderline()
+        locationField.useUnderline()
         updateLabels()
         self.currPhone = phoneList[1]
-        DB.getDormsMap(reloadFunction: printDic)
+        DB.getDormsMap(reloadFunction: setDormDic)
+        /*
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            self.dormDic = ["Epworth":"N2Group"]
+            print("reload me")
+            self.eastDorms = []
+            self.dormMenu.reloadData()
+        }
+         */
+        dormMenu.reloadData()
         // Do any additional setup after loading the view.
     }
     
-    func printDic(dictionary: [String: String]){
+    func setDormDic(dictionary: [String: String]){
+        dormDic = dictionary
         print(dictionary)
+        eastDorms = Array(dormDic.keys)
+        dormMenu.reloadData()
+        cells = [DormCollectionViewCell]()
     }
     
     private func updateLabels(){
@@ -111,16 +134,29 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("reloaded")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! DormCollectionViewCell
         cell.dorm = eastDorms[indexPath.row]
         cell.dormPhoto.image = #imageLiteral(resourceName: "Hot")
+        cell.dormPhoto.layer.borderWidth = 0
+        cell.dormPhoto.layer.masksToBounds = false
+        cell.dormPhoto.layer.borderColor = UIColor.black.cgColor
+        cell.dormPhoto.layer.cornerRadius = cell.dormPhoto.frame.height/2
+        cell.dormPhoto.clipsToBounds = true
         cell.cellNum = "5857979725"
+        cell.dormLabel.text = eastDorms[indexPath.row]
+        cells.append(cell);
         return cell;
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        phoneList[0] = eastPhones[indexPath.row]
-        print(eastDorms[indexPath.row])
+        //phoneList[0] = eastPhones[indexPath.row]
+        phoneList[0] = "5857979725"
+        clearSelected()
+        cells[indexPath.row].dormPhoto.layer.borderWidth = 4.0
+        cells[indexPath.row].dormPhoto.layer.borderColor = UIColor.white.cgColor
+        currDorm = cells[indexPath.row].dorm
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,6 +169,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             // ...
         }
+        dormMenu.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -140,6 +177,11 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     }
     
     
+    private func clearSelected(){
+        for cell in cells{
+            cell.dormPhoto.layer.borderWidth = 0
+        }
+    }
     
 
     /*
