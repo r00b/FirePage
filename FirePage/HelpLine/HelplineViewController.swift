@@ -74,6 +74,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         self.callClicked = !self.callClicked
         //let newImage = self.callClicked ?#imageLiteral(resourceName: "hangup"): #imageLiteral(resourceName: "helpPhone")
         //callButton.setImage(newImage, for: .normal)
+        
         if let url = URL(string: "tel://\(currPhone)"), UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10, *) {
                 UIApplication.shared.open(url)
@@ -81,13 +82,20 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
                 UIApplication.shared.openURL(url)
             }
         }
-        let date = getDate()
-        let group = dormDic[currDorm]
-        let time = getTime()
-        let status = false
-        let description = subjectField.text
-        let location = "\(currDorm) \(locationField.text)"
-        let username = getUserData()["email"]
+ 
+        var dict = Dictionary<String,Any>()
+        
+        dict["date"] = getDate()
+        dict["onCallGroup"] = dormDic[currDorm]
+        dict["time"] = getTime()
+        dict["isResolved"] = false
+        dict["description"] = subjectField.text
+        dict["Location"] = "\(currDorm) \(locationField.text ?? "")"
+        dict["fromPerson"] = getUserData()["email"]
+        
+        //print(dict)
+        
+        DB.addHelpRequest(onCallGroup: dormDic[currDorm]!, day: getDate(), helpRequest: HelpRequest(dictionary: dict as NSDictionary))
         
         
         
@@ -155,7 +163,13 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         cell.dormPhoto.clipsToBounds = true
         cell.cellNum = "5857979725"
         cell.dormLabel.text = eastDorms[indexPath.row]
-        cells.append(cell);
+        cells.append(cell)
+        clearSelected()
+        currDorm = cells[0].dorm
+        cells[0].dormPhoto.layer.borderWidth = 4.0
+        cells[0].dormPhoto.layer.borderColor = UIColor.white.cgColor
+        dormLabel.text = currDorm
+        
         return cell;
     }
     
@@ -167,6 +181,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         cells[indexPath.row].dormPhoto.layer.borderWidth = 4.0
         cells[indexPath.row].dormPhoto.layer.borderColor = UIColor.white.cgColor
         currDorm = cells[indexPath.row].dorm
+        dormLabel.text = currDorm
     }
 
     override func didReceiveMemoryWarning() {
@@ -196,9 +211,10 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     private func getDate()->String{
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
+        formatter.dateFormat = "MM-dd-yyyy"
         return formatter.string(from: date)
     }
+    
     
     private func getTime()->String{
         let date = Date()
@@ -227,6 +243,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         }
         return ["uid":uid,"email":email]
     }
+    
     
 
     /*
