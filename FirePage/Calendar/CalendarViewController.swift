@@ -72,7 +72,7 @@ class CalendarViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // clean up observers
-        ref.child("OnCallGroup").child(currOnCallGroup!).child("Calendar").removeAllObservers()
+        //ref.child("OnCallGroup").child(currOnCallGroup!).child("Calendar").removeAllObservers()
     }
     
     

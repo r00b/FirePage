@@ -85,15 +85,20 @@ class DB{
                 print("\(onCallGroup!):\(day)")
                     OnCallGroup.child(onCallGroup!).child("HelpRequests").child(day).observeSingleEvent(of: .value, with: { (snapshot) in
                         //print(snapshot)
-                    let encodedHelpRequests = snapshot.value as? [String]
-                    print(encodedHelpRequests)
-                    for encodedHelpRequest in encodedHelpRequests!{
-                        
-                        HelpRequests.child(encodedHelpRequest).observeSingleEvent(of: .value, with: { (snapshot) in
+                        let encodedHelpRequests = snapshot.value as? [String]
+                        print(encodedHelpRequests!)
+                        let numberOfEncodedHelpRequests: Int = encodedHelpRequests!.count
+                        var encodedHelpRequest: String
+                        for i in 0...(numberOfEncodedHelpRequests - 1 ){
+                            encodedHelpRequest = encodedHelpRequests![i]
+                            HelpRequests.child(encodedHelpRequest).observeSingleEvent(of: .value, with: { (snapshot) in
                             let value = snapshot.value as? NSDictionary
                             let helpRequest = HelpRequest(dictionary: value!)
                             helpRequests[day]!.append(helpRequest)
-                            //reloadFunction(helpRequests)
+                            if( i == (numberOfEncodedHelpRequests - 1 )){
+                                reloadFunction(helpRequests)
+                            }
+                            
                         })
                     }
                         
@@ -102,12 +107,12 @@ class DB{
                 })
 
                 }
-            
+            /*
             let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
             DispatchQueue.main.asyncAfter(deadline: when) {
                 reloadFunction(helpRequests)
             }
-            
+            */
 
         })
     }
