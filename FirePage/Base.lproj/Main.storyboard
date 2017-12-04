@@ -97,10 +97,6 @@
                                     <action selector="loginClick:" destination="2GE-dP-gl1" eventType="touchUpInside" id="J3q-MR-My9"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="firepage" translatesAutoresizingMaskIntoConstraints="NO" id="AFr-Fx-ZTd">
-                                <rect key="frame" x="85" y="49" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1QY-tq-1WA" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
                                 <rect key="frame" x="60" y="434" width="200" height="30"/>
                                 <state key="normal" title="Signup">
@@ -110,6 +106,10 @@
                                     <action selector="signupClick:" destination="2GE-dP-gl1" eventType="touchUpInside" id="e7U-wS-FsN"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="loginLogo" translatesAutoresizingMaskIntoConstraints="NO" id="sES-2v-UWz">
+                                <rect key="frame" x="110" y="20" width="101" height="190"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -155,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VyB-Rn-SE8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2432" y="364"/>
+            <point key="canvasLocation" x="-2433.75" y="363.38028169014086"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="ZYv-FI-mcy">
@@ -583,8 +583,8 @@
     </scenes>
     <resources>
         <image name="expand" width="100" height="100"/>
-        <image name="firepage" width="256" height="256"/>
         <image name="helpPhone" width="152" height="152"/>
+        <image name="loginLogo" width="179" height="281"/>
         <image name="mic" width="96" height="96"/>
         <image name="ring" width="123" height="124"/>
         <image name="whitekey" width="200" height="200"/>
@@ -592,7 +592,4 @@
         <image name="whitephone" width="512" height="512"/>
         <image name="whiteprofile-1" width="460" height="458"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="iIn-m2-i4B"/>
-    </inferredMetricsTieBreakers>
 </document>

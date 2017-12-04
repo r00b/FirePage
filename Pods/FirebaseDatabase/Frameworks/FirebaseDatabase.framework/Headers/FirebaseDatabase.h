@@ -3,6 +3,7 @@
 #import "FIRDatabase.h"
 #import "FIRDatabaseQuery.h"
 #import "FIRDatabaseReference.h"
+#import "FIRDatabaseSwiftNameSupport.h"
 #import "FIRMutableData.h"
 #import "FIRServerValue.h"
 #import "FIRTransactionResult.h"
