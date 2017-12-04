@@ -59,6 +59,8 @@
 		E19075281FBA977A0038F6E9 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19075261FBA97790038F6E9 /* CalendarCell.swift */; };
 		E19075291FBA977A0038F6E9 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19075261FBA97790038F6E9 /* CalendarCell.swift */; };
 		E190752A1FBA977A0038F6E9 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19075261FBA97790038F6E9 /* CalendarCell.swift */; };
+		E228CA131FD4F07100767C94 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CA121FD4F07100767C94 /* ChatViewController.swift */; };
+		E228CA151FD502C000767C94 /* Messaging.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E228CA141FD502C000767C94 /* Messaging.storyboard */; };
 		E29D0A0A1FCEA81000E67B04 /* DemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D0A061FCEA81000E67B04 /* DemoCell.swift */; };
 		E29D0A0B1FCEA81000E67B04 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D0A071FCEA81000E67B04 /* MainTableViewController.swift */; };
 		E29D0A0C1FCEA81000E67B04 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E29D0A081FCEA81000E67B04 /* Info.plist */; };
@@ -138,6 +140,8 @@
 		E19075161FBA90900038F6E9 /* CalendarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExtensions.swift; sourceTree = "<group>"; };
 		E190751A1FBA90D30038F6E9 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E19075261FBA97790038F6E9 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		E228CA121FD4F07100767C94 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		E228CA141FD502C000767C94 /* Messaging.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messaging.storyboard; sourceTree = "<group>"; };
 		E29D0A061FCEA81000E67B04 /* DemoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCell.swift; sourceTree = "<group>"; };
 		E29D0A071FCEA81000E67B04 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		E29D0A081FCEA81000E67B04 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 		B757595D1FAFE81D006845E9 /* FirePage */ = {
 			isa = PBXGroup;
 			children = (
+				E2928D541FD4EFA000500626 /* Messaging */,
 				E29D0A051FCEA81000E67B04 /* HelpRequests */,
 				B73083B21FCCE931000AD305 /* HelpLine */,
 				E19075151FBA90770038F6E9 /* Calendar */,
@@ -331,6 +336,15 @@
 				E1658F081FC3F9E500DCAFD8 /* CalendarTableViewCell.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		E2928D541FD4EFA000500626 /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				E228CA121FD4F07100767C94 /* ChatViewController.swift */,
+				E228CA141FD502C000767C94 /* Messaging.storyboard */,
+			);
+			path = Messaging;
 			sourceTree = "<group>";
 		};
 		E29D0A051FCEA81000E67B04 /* HelpRequests */ = {
@@ -462,6 +476,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E228CA151FD502C000767C94 /* Messaging.storyboard in Resources */,
 				BB344B4D1FCFAFB700BD890B /* HelpLine.storyboard in Resources */,
 				E29D0A161FD073E700E67B04 /* HeaderViewCellTableViewCell.xib in Resources */,
 				B75759691FAFE81D006845E9 /* LaunchScreen.storyboard in Resources */,
@@ -503,6 +518,7 @@
 				"${BUILT_PRODUCTS_DIR}/FoldingCell/FoldingCell.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GrowingTextView/GrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -512,6 +528,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoldingCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -670,6 +687,7 @@
 				B7194FEE1FB36346000A954E /* CustomLabel.swift in Sources */,
 				B75759901FB22DF0006845E9 /* CustomTextField.swift in Sources */,
 				BB3AE4731FC7926B00A0470A /* DB.swift in Sources */,
+				E228CA131FD4F07100767C94 /* ChatViewController.swift in Sources */,
 				B77CCCC21FB9414400ECAD81 /* RadioButtonController.swift in Sources */,
 				B77CCCBE1FB916A200ECAD81 /* HelpLineViewController.swift in Sources */,
 				E1658F091FC3F9E500DCAFD8 /* CalendarTableViewCell.swift in Sources */,

@@ -4,6 +4,7 @@ pod 'Firebase/Core'
 pod 'FoldingCell'
 pod 'Firebase/Auth'
 pod ‘Firebase/Database’
+pod 'GrowingTextView', '~> 0.5.3'
 target 'FirePage' do
     # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
     use_frameworks!

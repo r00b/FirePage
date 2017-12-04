@@ -42,18 +42,10 @@ class MainTableViewController: UITableViewController {
     var myHelpRequestsOrderedKeys: [String] = []
     
     @IBAction func resolvePage(_ sender: UIButton) {
-        print("cancer")
-        print(indexPathOfSelectedRow)
-        print(selectedCell != nil)
         if (indexPathOfSelectedRow != nil && selectedCell != nil) {
             var helpRequests: [HelpRequest] = myHelpRequests[myHelpRequestsOrderedKeys[(indexPathOfSelectedRow.section - 1)/2]]!
-            print(helpRequests)
-            print(selectedCell.expansionResolution.text)
             helpRequests[indexPathOfSelectedRow.row].isResolved = true
             helpRequests[indexPathOfSelectedRow.row].resolution = selectedCell.expansionResolution.text
-            print(helpRequests[indexPathOfSelectedRow.row].onCallGroup)
-            print(myHelpRequestsOrderedKeys[(indexPathOfSelectedRow.section - 1)/2])
-            print(helpRequests)
             DB.addHelpRequests(onCallGroup: helpRequests[indexPathOfSelectedRow.row].onCallGroup, day: myHelpRequestsOrderedKeys[(indexPathOfSelectedRow.section - 1)/2], helpRequests: helpRequests)
         }
     }
@@ -61,6 +53,10 @@ class MainTableViewController: UITableViewController {
         
         DB.getHelpRequests(RA: hardcodedRA, reloadFunction: reloadTableViewData)
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.barTintColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
+        let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "xdcell")
         self.tableView.register(UINib.init(nibName: "HeaderViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: "xdcell")
@@ -72,14 +68,12 @@ class MainTableViewController: UITableViewController {
         cellHeights = Array(repeating: kCloseCellHeight, count: kRowsCount)
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.backgroundColor = UIColor.init(red: 239/255, green: 232/255, blue: 231/255, alpha: 255/255)
+        tableView.backgroundColor = UIColor(red: 239/255, green: 232/255, blue: 231/255, alpha: 255/255)
     }
     
     func reloadTableViewData(requests: [String: [HelpRequest]]){
         myHelpRequests = requests
-        myHelpRequestsOrderedKeys = Array(myHelpRequests.keys)
-        print(myHelpRequestsOrderedKeys)
-        print("reloading data table view")
+        myHelpRequestsOrderedKeys = orderDates(unorderedKeys: Array(myHelpRequests.keys))
         tableView.reloadData()
     }
 
@@ -101,13 +95,9 @@ extension MainTableViewController {
             return 1
         }
         if let numRows = myHelpRequests[myHelpRequestsOrderedKeys[(section - 1)/2]] {
-//            print("The section is \(section)")
-//            print("\n")
-//            for row in numRows {
-//                let full: String = (row.time + row.fromPerson + row.onCallGroup + row.date + row.location + "\(row.isResolved)" + row.description)
-//                print(full)
-//            }
-//            print("\n")
+            if (numRows.count == 0) {
+                return 1
+            }
             return numRows.count
         } else {
             return 0
@@ -121,7 +111,7 @@ extension MainTableViewController {
             guard case let cell as HeaderViewCellTableViewCell = cell else {
                 return
             }
-            cell.backgroundColor = .white
+            cell.backgroundColor = .clear
             return
         }
         guard case let cell as DemoCell = cell else {
@@ -143,24 +133,30 @@ extension MainTableViewController {
         if (indexPath.section % 2 == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "xdcell", for: indexPath) as! HeaderViewCellTableViewCell
             cell.backgroundColor = .clear
-            cell.dateLabel.text = myHelpRequestsOrderedKeys[(indexPath.section)/2]
+            cell.dateLabel.text = humanReadableDate(dateString: myHelpRequestsOrderedKeys[(indexPath.section)/2])
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as! DemoCell
-        
         let helpRequests: [HelpRequest] = myHelpRequests[myHelpRequestsOrderedKeys[(indexPath.section - 1)/2]]!
-        let helpRequest: HelpRequest = helpRequests[indexPath.row]
         
-        if (indexPath.section == 1 && indexPath.row == 0) {
-            print("bananas")
-            print(helpRequest.getDictionary())
-            print("apple")
+        if (helpRequests.count == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as! DemoCell
+            cell.foregroundDescription.text = "No Help Requests"
+            cell.foregroundBackground.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
+            cell.foregroundTimeBackground.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
+            
+            cell.foregroundTime.text = ""
+            cell.isUserInteractionEnabled = false
+            return cell
         }
         
-        cell.foregroundTime.text = helpRequest.time
+        let helpRequest: HelpRequest = helpRequests[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as! DemoCell
+        
+        cell.foregroundTime.text = humanReadableTime(timeString: helpRequest.time)
         cell.foregroundDescription.text = helpRequest.description
-        cell.expansionTime.text = helpRequest.time
+        cell.expansionTime.text = humanReadableTime(timeString: helpRequest.time)
         cell.expansionOnCallGroup.text = helpRequest.onCallGroup
         cell.expansionDescription.text = helpRequest.description
         cell.expansionSender.text = helpRequest.fromPerson
@@ -175,23 +171,23 @@ extension MainTableViewController {
             cell.resolveButton.setTitle("SAVE", for: .normal)
         
             cell.foregroundBackground.backgroundColor = UIColor.white
-            cell.foregroundLabel.textColor = UIColor.black
+            cell.foregroundLabel.textColor = UIColor(red:0.59, green:0.53, blue:0.53, alpha:1.0)
             cell.foregroundTimeBackground.backgroundColor = UIColor.white
-            cell.foregroundTimeLabel.textColor = UIColor.black
+            cell.foregroundTimeLabel.textColor = UIColor(red:0.59, green:0.53, blue:0.53, alpha:1.0)
             
             cell.barView.backgroundColor = UIColor.white
-            cell.expansionLabel.textColor = UIColor.black
-            cell.backgroundTimeLabel.textColor = UIColor.black
+            cell.expansionLabel.textColor = UIColor(red:0.59, green:0.53, blue:0.53, alpha:1.0)
+            cell.backgroundTimeLabel.textColor = UIColor(red:0.59, green:0.53, blue:0.53, alpha:1.0)
             print("peoplx")
         } else {
             cell.resolveButton.setTitle("RESOLVE", for: .normal)
             
-            cell.foregroundBackground.backgroundColor = UIColor.init(red: 220/255, green: 81/255, blue: 81/255, alpha: 1)
+            cell.foregroundBackground.backgroundColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
             cell.foregroundLabel.textColor = UIColor.white
-            cell.foregroundTimeBackground.backgroundColor = UIColor.init(red: 220/255, green: 81/255, blue: 81/255, alpha: 1)
+            cell.foregroundTimeBackground.backgroundColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
             cell.foregroundTimeLabel.textColor = UIColor.white
             
-            cell.barView.backgroundColor = UIColor.init(red: 220/255, green: 81/255, blue: 81/255, alpha: 1)
+            cell.barView.backgroundColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
             cell.expansionLabel.textColor = UIColor.white
             cell.backgroundTimeLabel.textColor = UIColor.white
         }
@@ -241,6 +237,54 @@ extension MainTableViewController {
         }, completion: nil)
         
     }
+    
+    func orderDates(unorderedKeys: [String]) -> [String] {
+        var dates: [Date] = []
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy"
+        
+        for dateString in unorderedKeys {
+            let date = formatter.date(from: dateString)
+            if let date = date {
+                dates.append(date)
+            }
+        }
+        
+        let sortedDates = dates.sorted(by: { $0.compare($1) == .orderedDescending })
+        
+        var orderedKeys: [String] = []
+        for date in sortedDates {
+            let dateString = formatter.string(from: date)
+            orderedKeys.append(dateString)
+        }
+        
+        return orderedKeys
+    }
+    
+    func humanReadableDate(dateString: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy"
+        let date = formatter.date(from: dateString)
+        
+        if Calendar.current.isDateInToday(date!) {
+            return "TODAY"
+        } else if(Calendar.current.isDateInYesterday(date!)) {
+            return "YESTERDAY"
+        } else {
+            formatter.dateFormat = "M.dd"
+            return formatter.string(from: date!)
+        }
+    }
+    
+    func humanReadableTime(timeString: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        let time = formatter.date(from: timeString)
+        formatter.dateFormat = "h:mm a"
+        return formatter.string(from: time!)
+        
+    }
+    
     
 //    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 //        return 44
