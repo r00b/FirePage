@@ -134,7 +134,7 @@ struct HelpRequest: CustomStringConvertible{
         }
         }
         if(dictionary.object(forKey: "resolution") != nil){
-            self.resolution = dictionary.object(forKey: "resolution") as! String
+            self.resolution = dictionary.object(forKey: "resolution") as? String
         }
         self.description = dictionary.object(forKey: "description") as! String
     }
