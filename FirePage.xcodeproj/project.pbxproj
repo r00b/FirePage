@@ -61,13 +61,12 @@
 		E190752A1FBA977A0038F6E9 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19075261FBA97790038F6E9 /* CalendarCell.swift */; };
 		E228CA131FD4F07100767C94 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CA121FD4F07100767C94 /* ChatViewController.swift */; };
 		E228CA151FD502C000767C94 /* Messaging.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E228CA141FD502C000767C94 /* Messaging.storyboard */; };
-		E29D0A0A1FCEA81000E67B04 /* DemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D0A061FCEA81000E67B04 /* DemoCell.swift */; };
-		E29D0A0B1FCEA81000E67B04 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D0A071FCEA81000E67B04 /* MainTableViewController.swift */; };
+		E29D0A0A1FCEA81000E67B04 /* HelpRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D0A061FCEA81000E67B04 /* HelpRequestCell.swift */; };
+		E29D0A0B1FCEA81000E67B04 /* HelpRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D0A071FCEA81000E67B04 /* HelpRequestsTableViewController.swift */; };
 		E29D0A0C1FCEA81000E67B04 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E29D0A081FCEA81000E67B04 /* Info.plist */; };
 		E29D0A0D1FCEA81000E67B04 /* HelpRequests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E29D0A091FCEA81000E67B04 /* HelpRequests.storyboard */; };
-		E29D0A0F1FCEAA2F00E67B04 /* HelpRequestsDummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D0A0E1FCEAA2F00E67B04 /* HelpRequestsDummyViewController.swift */; };
-		E29D0A161FD073E700E67B04 /* HeaderViewCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E29D0A141FD073E700E67B04 /* HeaderViewCellTableViewCell.xib */; };
-		E29D0A171FD073E700E67B04 /* HeaderViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D0A151FD073E700E67B04 /* HeaderViewCellTableViewCell.swift */; };
+		E29D0A161FD073E700E67B04 /* DateDisplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E29D0A141FD073E700E67B04 /* DateDisplayCell.xib */; };
+		E29D0A171FD073E700E67B04 /* DateDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D0A151FD073E700E67B04 /* DateDisplayCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,13 +141,12 @@
 		E19075261FBA97790038F6E9 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		E228CA121FD4F07100767C94 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E228CA141FD502C000767C94 /* Messaging.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messaging.storyboard; sourceTree = "<group>"; };
-		E29D0A061FCEA81000E67B04 /* DemoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCell.swift; sourceTree = "<group>"; };
-		E29D0A071FCEA81000E67B04 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		E29D0A061FCEA81000E67B04 /* HelpRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestCell.swift; sourceTree = "<group>"; };
+		E29D0A071FCEA81000E67B04 /* HelpRequestsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestsTableViewController.swift; sourceTree = "<group>"; };
 		E29D0A081FCEA81000E67B04 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E29D0A091FCEA81000E67B04 /* HelpRequests.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HelpRequests.storyboard; sourceTree = "<group>"; };
-		E29D0A0E1FCEAA2F00E67B04 /* HelpRequestsDummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRequestsDummyViewController.swift; sourceTree = "<group>"; };
-		E29D0A141FD073E700E67B04 /* HeaderViewCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderViewCellTableViewCell.xib; sourceTree = "<group>"; };
-		E29D0A151FD073E700E67B04 /* HeaderViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		E29D0A141FD073E700E67B04 /* DateDisplayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateDisplayCell.xib; sourceTree = "<group>"; };
+		E29D0A151FD073E700E67B04 /* DateDisplayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDisplayCell.swift; sourceTree = "<group>"; };
 		F3620387EED78349E70D83C9 /* Pods-FirePageUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirePageUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirePageUITests/Pods-FirePageUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -318,7 +316,6 @@
 				B75759601FAFE81D006845E9 /* ViewController.swift */,
 				B757598C1FB22C28006845E9 /* AccountViewController.swift */,
 				B77CCCBD1FB916A200ECAD81 /* HelpLineViewController.swift */,
-				E29D0A0E1FCEAA2F00E67B04 /* HelpRequestsDummyViewController.swift */,
 				B7058C5D1FCFA10400D2368B /* LoginViewController.swift */,
 				B7058C5F1FCFA15000D2368B /* AccountController.swift */,
 			);
@@ -350,10 +347,10 @@
 		E29D0A051FCEA81000E67B04 /* HelpRequests */ = {
 			isa = PBXGroup;
 			children = (
-				E29D0A151FD073E700E67B04 /* HeaderViewCellTableViewCell.swift */,
-				E29D0A141FD073E700E67B04 /* HeaderViewCellTableViewCell.xib */,
-				E29D0A061FCEA81000E67B04 /* DemoCell.swift */,
-				E29D0A071FCEA81000E67B04 /* MainTableViewController.swift */,
+				E29D0A151FD073E700E67B04 /* DateDisplayCell.swift */,
+				E29D0A141FD073E700E67B04 /* DateDisplayCell.xib */,
+				E29D0A061FCEA81000E67B04 /* HelpRequestCell.swift */,
+				E29D0A071FCEA81000E67B04 /* HelpRequestsTableViewController.swift */,
 				E29D0A081FCEA81000E67B04 /* Info.plist */,
 				E29D0A091FCEA81000E67B04 /* HelpRequests.storyboard */,
 			);
@@ -478,7 +475,7 @@
 			files = (
 				E228CA151FD502C000767C94 /* Messaging.storyboard in Resources */,
 				BB344B4D1FCFAFB700BD890B /* HelpLine.storyboard in Resources */,
-				E29D0A161FD073E700E67B04 /* HeaderViewCellTableViewCell.xib in Resources */,
+				E29D0A161FD073E700E67B04 /* DateDisplayCell.xib in Resources */,
 				B75759691FAFE81D006845E9 /* LaunchScreen.storyboard in Resources */,
 				B75759661FAFE81D006845E9 /* Assets.xcassets in Resources */,
 				E29D0A0D1FCEA81000E67B04 /* HelpRequests.storyboard in Resources */,
@@ -678,12 +675,11 @@
 				B73083941FCCE83D000AD305 /* GradientView.swift in Sources */,
 				E19075171FBA90900038F6E9 /* CalendarExtensions.swift in Sources */,
 				E19075281FBA977A0038F6E9 /* CalendarCell.swift in Sources */,
-				E29D0A0B1FCEA81000E67B04 /* MainTableViewController.swift in Sources */,
-				E29D0A0F1FCEAA2F00E67B04 /* HelpRequestsDummyViewController.swift in Sources */,
+				E29D0A0B1FCEA81000E67B04 /* HelpRequestsTableViewController.swift in Sources */,
 				B77CCCC01FB93F2600ECAD81 /* CustomRadioButton.swift in Sources */,
 				B7058C601FCFA15000D2368B /* AccountController.swift in Sources */,
 				B75759971FB230CD006845E9 /* DataModel.swift in Sources */,
-				E29D0A171FD073E700E67B04 /* HeaderViewCellTableViewCell.swift in Sources */,
+				E29D0A171FD073E700E67B04 /* DateDisplayCell.swift in Sources */,
 				B7194FEE1FB36346000A954E /* CustomLabel.swift in Sources */,
 				B75759901FB22DF0006845E9 /* CustomTextField.swift in Sources */,
 				BB3AE4731FC7926B00A0470A /* DB.swift in Sources */,
@@ -696,7 +692,7 @@
 				B73083B51FCCE969000AD305 /* DormCollectionViewCell.swift in Sources */,
 				B73083B11FCCE8F4000AD305 /* UITextFieldExtensions.swift in Sources */,
 				BB395BE41FD5174D00456FCF /* SessionInfo.swift in Sources */,
-				E29D0A0A1FCEA81000E67B04 /* DemoCell.swift in Sources */,
+				E29D0A0A1FCEA81000E67B04 /* HelpRequestCell.swift in Sources */,
 				BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */,
 				BB344B4C1FCFA8E200BD890B /* myTabBar.swift in Sources */,
 				B7058C641FCFA28B00D2368B /* FireButton.swift in Sources */,

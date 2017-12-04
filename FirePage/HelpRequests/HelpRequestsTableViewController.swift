@@ -24,15 +24,14 @@
 import UIKit
 import FoldingCell
 
-class MainTableViewController: UITableViewController {
+class HelpRequestsTableViewController: UITableViewController {
     
-    let kCloseCellHeight: CGFloat = 179 - 110 - 20 - 3
-    let kOpenCellHeight: CGFloat = 488 - 319 - 30 + 5 + 170 - 3
-    let kRowsCount = 100
+    let kCloseCellHeight: CGFloat = 46
+    let kOpenCellHeight: CGFloat = 311
     var cellHeights: [CGFloat] = []
     
     var indexPathOfSelectedRow: IndexPath!
-    var selectedCell: DemoCell!
+    var selectedCell: HelpRequestCell!
     
     // TODO : Update hardcoded RA!
     // TODO : Cell heights bug
@@ -58,14 +57,14 @@ class MainTableViewController: UITableViewController {
         let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "xdcell")
-        self.tableView.register(UINib.init(nibName: "HeaderViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: "xdcell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DateDisplayCell")
+        self.tableView.register(UINib.init(nibName: "DateDisplayCell", bundle: nil), forCellReuseIdentifier: "DateDisplayCell")
         setup()
         
     }
     
     private func setup() {
-        cellHeights = Array(repeating: kCloseCellHeight, count: kRowsCount)
+        cellHeights = Array(repeating: kCloseCellHeight, count: 100)
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.backgroundColor = UIColor(red: 239/255, green: 232/255, blue: 231/255, alpha: 255/255)
@@ -81,7 +80,7 @@ class MainTableViewController: UITableViewController {
 }
 
 // MARK: - TableView
-extension MainTableViewController {
+extension HelpRequestsTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2*myHelpRequestsOrderedKeys.count
@@ -108,13 +107,13 @@ extension MainTableViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         if (indexPath.section % 2 == 0) {
-            guard case let cell as HeaderViewCellTableViewCell = cell else {
+            guard case let cell as DateDisplayCell = cell else {
                 return
             }
             cell.backgroundColor = .clear
             return
         }
-        guard case let cell as DemoCell = cell else {
+        guard case let cell as HelpRequestCell = cell else {
             return
         }
         
@@ -131,7 +130,7 @@ extension MainTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if (indexPath.section % 2 == 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "xdcell", for: indexPath) as! HeaderViewCellTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DateDisplayCell", for: indexPath) as! DateDisplayCell
             cell.backgroundColor = .clear
             cell.dateLabel.text = humanReadableDate(dateString: myHelpRequestsOrderedKeys[(indexPath.section)/2])
             return cell
@@ -140,7 +139,7 @@ extension MainTableViewController {
         let helpRequests: [HelpRequest] = myHelpRequests[myHelpRequestsOrderedKeys[(indexPath.section - 1)/2]]!
         
         if (helpRequests.count == 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as! DemoCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HelpRequestCell", for: indexPath) as! HelpRequestCell
             cell.foregroundDescription.text = "No Help Requests"
             cell.foregroundBackground.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
             cell.foregroundTimeBackground.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
@@ -152,7 +151,7 @@ extension MainTableViewController {
         
         let helpRequest: HelpRequest = helpRequests[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as! DemoCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HelpRequestCell", for: indexPath) as! HelpRequestCell
         
         cell.foregroundTime.text = humanReadableTime(timeString: helpRequest.time)
         cell.foregroundDescription.text = helpRequest.description
@@ -204,7 +203,7 @@ extension MainTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if (indexPath.section % 2 == 0) {
-            let cell = tableView.cellForRow(at: indexPath) as! HeaderViewCellTableViewCell
+            let cell = tableView.cellForRow(at: indexPath) as! DateDisplayCell
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.isUserInteractionEnabled = false
             return
@@ -212,7 +211,7 @@ extension MainTableViewController {
         
         indexPathOfSelectedRow = indexPath
         
-        let cell = tableView.cellForRow(at: indexPath) as! DemoCell
+        let cell = tableView.cellForRow(at: indexPath) as! HelpRequestCell
         
         selectedCell = cell
         if cell.isAnimating() {
@@ -238,8 +237,18 @@ extension MainTableViewController {
         
     }
     
+    /**
+     Converts the unordered dates for the help requests into descending order to display
+     correctly in the user interface.
+     
+     - Parameter unorderedKeys:   The keys (dates) to order, each formatted as 12-07-2017.
+     
+     - Returns: A new string array with dates in descending order, each formatted as 12-07-2017.
+     */
     func orderDates(unorderedKeys: [String]) -> [String] {
+        // First convert date strings to Date objects via a DateFormatter object
         var dates: [Date] = []
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "MM-dd-yyyy"
         
@@ -250,17 +259,29 @@ extension MainTableViewController {
             }
         }
         
+        // Sort the dates
         let sortedDates = dates.sorted(by: { $0.compare($1) == .orderedDescending })
         
+        // Reconstruct an ordered array of date strings from the sorted array of Date objects
         var orderedKeys: [String] = []
         for date in sortedDates {
             let dateString = formatter.string(from: date)
             orderedKeys.append(dateString)
         }
         
+        // Return ordered array of date strings
         return orderedKeys
     }
     
+    /**
+     Converts the original date format into a decidely more human-readable format. In addition,
+     if the string is on today or yesterday's date, it will return "TODAY" or "YESTERDAY"
+     respectively.
+     
+     - Parameter dateString:   The date in string format, formatted as 12-07-2017.
+     
+     - Returns: The date in string format, formatted as 12.04, 12.17, or 08.17.
+     */
     func humanReadableDate(dateString: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM-dd-yyyy"
@@ -276,35 +297,19 @@ extension MainTableViewController {
         }
     }
     
+    /**
+     Converts the original time format into a decidely more human-readable format.
+     
+     - Parameter dateString:   The time in string format, formatted as 23:55:21.
+     
+     - Returns: The time in string format, formatted as 11:55 PM.
+     */
     func humanReadableTime(timeString: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss"
         let time = formatter.date(from: timeString)
         formatter.dateFormat = "h:mm a"
         return formatter.string(from: time!)
-        
     }
-    
-    
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 44
-//    }
-    
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let rect = CGRect(x: 10, y:10, width: UIScreen.main.bounds.width, height: 44)
-//        let myView = UIView(frame: rect)
-//        myView.backgroundColor = UIColor.cyan
-//        let myLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-//        myLabel.backgroundColor = UIColor.green
-//        myLabel.center = CGPoint(x: myView.frame.midX, y: myView.frame.midY)
-//        myLabel.text = "Poopyheads"
-//        myView.addSubview(myLabel)
-//        //let headerView = Bundle.main.loadNibNamed("HeaderViewCellTableViewCell", owner: self, options: nil)?.first as! HeaderViewCellTableViewCell
-//        //if (myHelpRequestsOrderedKeys.count > section) {
-//            //headerView.randomLabel.text = myHelpRequestsOrderedKeys[section]
-//        //}
-//        return myView
-//    }
-    
     
 }

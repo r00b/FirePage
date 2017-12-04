@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeaderViewCellTableViewCell: UITableViewCell {
+class DateDisplayCell: UITableViewCell {
 
     @IBOutlet weak var dateLabel: UILabel!
     override func awakeFromNib() {

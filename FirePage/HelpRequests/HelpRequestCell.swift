@@ -9,7 +9,7 @@
 import UIKit
 import FoldingCell
 
-class DemoCell: FoldingCell {
+class HelpRequestCell: FoldingCell {
     
     var expanded: Bool = false
     
@@ -33,23 +33,14 @@ class DemoCell: FoldingCell {
     @IBOutlet weak var backgroundTimeLabel: UILabel!
     
     override func awakeFromNib() {
-    //foregroundView.layer.cornerRadius = 10
-    //foregroundView.layer.masksToBounds = true
-    super.awakeFromNib()
-  }
+        //foregroundView.layer.cornerRadius = 10
+        //foregroundView.layer.masksToBounds = true
+        super.awakeFromNib()
+    }
   
-  override func animationDuration(_ itemIndex: NSInteger, type: FoldingCell.AnimationType) -> TimeInterval {
-    let durations = [0.15, 0.14, 0.13, 0.12, 0.11, 0.1]
-    return durations[itemIndex]
-  }
-  
-}
-
-// MARK: - Actions ⚡️
-extension DemoCell {
-  
-  @IBAction func buttonHandler(_ sender: AnyObject) {
-    print("tap")
-  }
+    override func animationDuration(_ itemIndex: NSInteger, type: FoldingCell.AnimationType) -> TimeInterval {
+        let durations = [0.15, 0.14, 0.13, 0.12, 0.11, 0.1]
+        return durations[itemIndex]
+    }
   
 }
