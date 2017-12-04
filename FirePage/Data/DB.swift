@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseDatabase
 class DB{
+    //Database references
     static var rootRef = Database.database().reference()
     static var HelpRequests = rootRef.child("HelpRequests")
     static var OnCallGroup = rootRef.child("OnCallGroup")
@@ -16,7 +17,7 @@ class DB{
     static var Dorms = rootRef.child("Dorms")
     static var Users = rootRef.child("Users")
     
-    
+    //Strings to be used in constructing database paths
     static let testDirectory = "test"
     static let RADirectory = "RA"
     static let daysOnCallDirectory = "DaysOnCall"
@@ -24,7 +25,7 @@ class DB{
     static let helpRequestsDirectory = "HelpRequests"
     static let onCallGroupDirectory = "onCallGroup"
     
-    
+    //lets developer see if they are connected to firebase
     static func testConnection(){
         //tests the connection to firebase and prints 
         rootRef.child(testDirectory).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -35,6 +36,7 @@ class DB{
         }
     }
     
+    //takes a helpreauest reference (encoded helpRequest) and gets the helprequest data it maps to
     static func getHelpRequest(requestID: String, append: @escaping (HelpRequest) -> Void) {
         HelpRequests.child(requestID).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
@@ -46,6 +48,7 @@ class DB{
         }
     }
     
+    //gets an RA's days on Call and passes them to the reload function responsibel for repopulating the vc
     static func getDaysOnCall(RA: String, reloadFunction: @escaping ([String]) -> Void){
         rootRef.child(RADirectory).child(RA).child(daysOnCallDirectory).observe(DataEventType.value, with: { (snapshot) in
             var daysOnCall = [String]()
@@ -54,6 +57,7 @@ class DB{
         })
     }
     
+    //gets an onCallGroup's calendar and passes the dates to the reload function responsible for repopulating the vc
     static func getCalendar(onCallGroup: String, reloadFunction: @escaping ([String:String]) -> Void){
         
         OnCallGroup.child(onCallGroup).child(calendar).observe(DataEventType.value, with: { (snapshot) in
@@ -62,27 +66,8 @@ class DB{
             reloadFunction(calendar)
         })
     }
-    
-    static func getHelpRequests(onCallGroup: String, day: String, reloadFunction: @escaping ([HelpRequest]) -> Void){
 
-        var helpRequests = [HelpRequest]()
-        OnCallGroup.child(onCallGroup).child(helpRequestsDirectory).child(day).observe(DataEventType.value, with: { (snapshot) in
-            let encodedHelpRequests = snapshot.value as? [String]
-            for encodedHelpRequest in encodedHelpRequests!{
-                
-                HelpRequests.child(encodedHelpRequest).observeSingleEvent(of: .value, with: { (snapshot) in
-                    let value = snapshot.value as? NSDictionary
-                    let helpRequest = HelpRequest(dictionary: value!)
-                    helpRequests.append(helpRequest)
-                })
-            }
-            let when = DispatchTime.now() + 0.1 // change 2 to desired number of seconds
-            DispatchQueue.main.asyncAfter(deadline: when) {
-                reloadFunction(helpRequests)
-            }
-        })
-    }
-    
+    //gets an RA's days on Call and passes them to the reload function responsibel for repopulating the vc
     static func getAllRAHelpRequests(RA: String, reloadFunction: @escaping ([String: [HelpRequest]]) -> Void){
         self.RA.child(RA).child(daysOnCallDirectory).observeSingleEvent(of: .value, with: { (snapshot) in
             let daysOnCall = snapshot.value as? [String]
@@ -121,16 +106,12 @@ class DB{
                 })
 
                 }
-            /*
-            let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
-            DispatchQueue.main.asyncAfter(deadline: when) {
-                reloadFunction(helpRequests)
-            }
-            */
+            
 
         })
     }
     
+    //sets up listener for helprequests and calls function to reloadcells with helprequests data
     static func getHelpRequests(RA: String, reloadFunction: @escaping ([String: [HelpRequest]]) -> Void){
         self.RA.child(RA).child(onCallGroupDirectory).observeSingleEvent(of: .value, with: { (snapshot) in
             let onCallGroup = snapshot.value as? String
@@ -141,7 +122,7 @@ class DB{
         
     }
     
-    
+    //adds an array of helprequest to the database
     static func addHelpRequests(onCallGroup: String, day: String,  helpRequests: [HelpRequest]){
         for helpRequest in helpRequests{
             HelpRequests.child(helpRequest.getHash()).setValue(helpRequest.getDictionary())
@@ -149,6 +130,7 @@ class DB{
  OnCallGroup.child(onCallGroup).child(helpRequestsDirectory).child(day).setValue(convertHelpRequests(helpRequests: helpRequests))
     }
     
+    //adds one helprequest to the database
     static func addHelpRequest(onCallGroup: String, day: String,  helpRequest: HelpRequest){
         HelpRequests.child(helpRequest.getHash()).setValue(helpRequest.getDictionary())
     OnCallGroup.child(onCallGroup).child(helpRequestsDirectory).child(day).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -158,6 +140,7 @@ class DB{
         })
     }
     
+    //gets a mapping of dorm to onCallGroup and calls the function to reload that in the vc
     static func getDormsMap(reloadFunction: @escaping ([String: String]) -> Void){
         Dorms.observeSingleEvent(of: .value, with: { (snapshot) in
             let dormsMap = snapshot.value as? [String: String]
@@ -168,6 +151,7 @@ class DB{
         }
     }
     
+    //takes an array of helprequests and converts it to a string of helprequest encodings to be used as references
     static func convertHelpRequests(helpRequests: [HelpRequest]) -> [String]{
         var encodedHelpRequests = [String]()
         for helpRequest in helpRequests{
@@ -176,6 +160,7 @@ class DB{
         return encodedHelpRequests
     }
     
+    //creates an account in the database
     static func createAccount(account: Account){
         var userAttributes = [String: String]()
         userAttributes["firstName"] = account.getFirstName()
@@ -191,6 +176,7 @@ class DB{
         Users.child(account.getEmail().replacingOccurrences(of: ".", with: "-")).setValue(userAttributes)
     }
     
+    //sets the account in sessionInfo and segue's to main part of the app
     static func getAccount(email: String, mainAppSegue: @escaping () -> Void){
         //this is done because firebase cannot accept values with $ # [ ] / or .
         let userEmail = email.replacingOccurrences(of: ".", with: "-")
