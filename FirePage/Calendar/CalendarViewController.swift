@@ -101,14 +101,25 @@ class CalendarViewController: UIViewController {
     
     // set up initial listeners on OnCallGroup
     func initDatabase() {
-        // get names of all OnCallGroups
-        ref.child("OnCallGroup").observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
-            let groups = snapshot.value as? [String : AnyObject] ?? [:]
-            self.onCallGroups = Array(groups.keys)
-            // default group set to first in list from database
-            self.currOnCallGroup = self.onCallGroups?[0]
-            self.renderUserData()
-        })
+        // get list of onCallGroups associated with current user
+        let onCallGroups : [String] = (SessionInfo.account?.getOnCallGroups()!)!
+        
+        for onCallGroup in onCallGroups {
+            DB.getCalendar(onCallGroup: onCallGroup, reloadFunction: reload)
+        }
+        
+        
+//        ref.child("OnCallGroup").observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+//            let groups = snapshot.value as? [String : AnyObject] ?? [:]
+//            self.onCallGroups = Array(groups.keys)
+//            // default group set to first in list from database
+//            self.currOnCallGroup = self.onCallGroups?[0]
+//            self.renderUserData()
+//        })
+    }
+    
+    func reload(calendar: [String : String]) {
+        let f = ""
     }
     
     // sets month and year labels in calendar header, called on calendar scroll
