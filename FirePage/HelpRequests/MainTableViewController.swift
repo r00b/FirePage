@@ -36,7 +36,7 @@ class MainTableViewController: UITableViewController {
     
     // TODO : Update hardcoded RA!
     // TODO : Cell heights bug
-    var hardcodedRA: String = "Harshil"
+    var hardcodedRA: String = (SessionInfo.account?.getFirstName())!
     
     var myHelpRequests: [String: [HelpRequest]] = [:]
     var myHelpRequestsOrderedKeys: [String] = []

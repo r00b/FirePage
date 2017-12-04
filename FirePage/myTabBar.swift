@@ -67,7 +67,15 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         
         var controllers = [UIViewController]()
         
-        controllers = [Contact, Calendar, MyPages]
+        if(SessionInfo.account?.getRole() == FireRole.RA){
+            controllers = [Contact, Calendar, MyPages]
+        }else if(SessionInfo.account?.getRole() == FireRole.RC){
+            controllers = [Contact, Calendar]
+        }else{
+            controllers = [Contact]
+        }
+        
+        
         
         // print(master.level)
         self.viewControllers = controllers

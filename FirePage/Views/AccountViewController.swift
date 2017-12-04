@@ -40,7 +40,7 @@ class AccountViewController: UIViewController {
             let password = passwordField.text
             //currAccount = Account(first!,last!,phone!,key!,username!)
             Auth.auth().createUser(withEmail: username!, password: password!) { (user, error) in
-                // ...
+                DB.createAccount(account: Account.init(self.firstnameField.text!, self.lastnameField.text!, self.phoneField.text!, "Student", self.usernameField.text!))
             }
             self.performSegue(withIdentifier: "returnSignin", sender: self)
         }
@@ -67,7 +67,7 @@ class AccountViewController: UIViewController {
     
     private func validInput()->Bool{
         for field in textFieldList{
-            if field.text==""{
+            if field.text=="" && field != keyField{
                 return false
             }
         }

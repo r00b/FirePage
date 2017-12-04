@@ -30,10 +30,15 @@ class LoginViewController: UIViewController{
         }
         if Auth.auth().currentUser != nil {
             print("signed in")
-            self.performSegue(withIdentifier: "signedIn", sender: self)
+            DB.getAccount(email: email!, mainAppSegue: performSegue)
+            //self.performSegue(withIdentifier: "signedIn", sender: self)
         } else {
             print("Invalid Password or Account")
         }
+    }
+    
+    func performSegue() -> Void{
+        self.performSegue(withIdentifier: "signedIn", sender: self)
     }
     
     @IBAction func signupClick(_ sender: Any) {

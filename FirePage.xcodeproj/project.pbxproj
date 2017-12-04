@@ -38,6 +38,7 @@
 		BB344B471FCA76D200BD890B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB344B461FCA76D200BD890B /* GoogleService-Info.plist */; };
 		BB344B4C1FCFA8E200BD890B /* myTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB344B4B1FCFA8E200BD890B /* myTabBar.swift */; };
 		BB344B4D1FCFAFB700BD890B /* HelpLine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB344B4F1FCFAFB700BD890B /* HelpLine.storyboard */; };
+		BB395BE41FD5174D00456FCF /* SessionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB395BE31FD5174D00456FCF /* SessionInfo.swift */; };
 		BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3AE4701FC61A8400A0470A /* Utilities.swift */; };
 		BB3AE4731FC7926B00A0470A /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3AE4721FC7926B00A0470A /* DB.swift */; };
 		E1658EF91FC27B2200DCAFD8 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1658EF81FC27B2200DCAFD8 /* Calendar.storyboard */; };
@@ -126,6 +127,7 @@
 		BB344B461FCA76D200BD890B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB344B4B1FCFA8E200BD890B /* myTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myTabBar.swift; sourceTree = "<group>"; };
 		BB344B4E1FCFAFB700BD890B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HelpLine.storyboard; sourceTree = "<group>"; };
+		BB395BE31FD5174D00456FCF /* SessionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInfo.swift; sourceTree = "<group>"; };
 		BB3AE46F1FC619A100A0470A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		BB3AE4701FC61A8400A0470A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		BB3AE4721FC7926B00A0470A /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				B75759961FB230CD006845E9 /* DataModel.swift */,
 				BB3AE4701FC61A8400A0470A /* Utilities.swift */,
 				BB3AE4721FC7926B00A0470A /* DB.swift */,
+				BB395BE31FD5174D00456FCF /* SessionInfo.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				E1658F0D1FC4B81200DCAFD8 /* CalendarTableViewShadow.swift in Sources */,
 				B73083B51FCCE969000AD305 /* DormCollectionViewCell.swift in Sources */,
 				B73083B11FCCE8F4000AD305 /* UITextFieldExtensions.swift in Sources */,
+				BB395BE41FD5174D00456FCF /* SessionInfo.swift in Sources */,
 				E29D0A0A1FCEA81000E67B04 /* DemoCell.swift in Sources */,
 				BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */,
 				BB344B4C1FCFA8E200BD890B /* myTabBar.swift in Sources */,
@@ -871,10 +875,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B5CB79S8A3;
+				DEVELOPMENT_TEAM = U6J58C8CJT;
 				INFOPLIST_FILE = FirePage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TheGargs.FirePage.rhs16;
+				PRODUCT_BUNDLE_IDENTIFIER = TheGargs.FirePage.rsh25;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = FirePage/BridgingHeader.h;
 				SWIFT_VERSION = 4.0;
@@ -888,10 +892,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B5CB79S8A3;
+				DEVELOPMENT_TEAM = U6J58C8CJT;
 				INFOPLIST_FILE = FirePage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TheGargs.FirePage.rhs16;
+				PRODUCT_BUNDLE_IDENTIFIER = TheGargs.FirePage.rsh25;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = FirePage/BridgingHeader.h;
 				SWIFT_VERSION = 4.0;

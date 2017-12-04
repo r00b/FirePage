@@ -20,7 +20,6 @@ class AccountController: UIViewController {
     @IBOutlet weak var keyField: LeftFireField!
     @IBOutlet weak var passwordField: LeftFireField!
     @IBOutlet weak var confirmField: LeftFireField!
-    
     @IBOutlet weak var firstnameField: LeftFireField!
     @IBOutlet weak var lastnameField: LeftFireField!
     

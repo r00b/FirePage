@@ -15,21 +15,45 @@ enum FireRole : String{
     case GR = "GR"
     case Student = "Student"
 }
+
+
 class Account{
     
     private var firstName = "Harshil"
     private var lastName = "Garg"
-    private var userName = "EggsD"
-    private var phoneNumber = "6666666666"
-    private var keyNum = "git idiot"
-    private var role = FireRole.Student
+    private var email = "harshil@firepage.com"
+    private var phoneNumber = "9726559320"
+    private var role = FireRole.RA
+    private var daysOnCall: [String]?
+    private var onCallGroups: [String]?
     
-    init(_ first:String, _ last:String, _ phone:String, _ key:String, _ user:String) {
+    init(_ first:String, _ last:String, _ phone:String, _ userRole:String, _ userEmail:String) {
         firstName = first
         lastName = last
-        userName = user
+        email = userEmail
         phoneNumber = phone
-        keyNum = key
+        if(userRole == "RA"){
+            role = FireRole.RA
+        }else if(userRole == "RC"){
+            role = FireRole.RC
+        }else{
+            role = FireRole.Student
+        }
+    }
+    
+    init(email: String, userAttributeDict: [String: String]){
+        firstName = userAttributeDict["firstName"]!
+        lastName = userAttributeDict["lastName"]!
+        self.email = email
+        phoneNumber = userAttributeDict["phoneNumber"]!
+        let userRole = userAttributeDict["role"]
+        if(userRole == "RA"){
+            role = FireRole.RA
+        }else if(userRole == "RC"){
+            role = FireRole.RC
+        }else{
+            role = FireRole.Student
+        }
     }
     
     func getFirstName()->String{
@@ -40,16 +64,32 @@ class Account{
         return lastName
     }
     
-    func getUserName()->String{
-        return userName
+    func getEmail()->String{
+        return email
     }
     
     func getPhoneNumber()->String{
         return phoneNumber
     }
     
-    func getkeyNum()->String{
-        return keyNum
+    func getRole()->FireRole{
+        return role
+    }
+    
+    func setDaysOnCall(daysOnCall: [String]){
+        self.daysOnCall = daysOnCall
+    }
+    
+    func getDaysOnCall()->[String]?{
+        return self.daysOnCall
+    }
+    
+    func setOnCallGroups(onCallGroups: [String]){
+        self.onCallGroups = onCallGroups
+    }
+    
+    func getOnCallGroups()->[String]?{
+        return self.onCallGroups
     }
 }
 
