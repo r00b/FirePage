@@ -92,6 +92,7 @@ class DB{
                             let helpRequest = HelpRequest(dictionary: value!)
                             helpRequests[day]!.append(helpRequest)
                             if( i == (numberOfEncodedHelpRequests - 1 )){
+                                print("idk")
                                 reloadFunction(helpRequests)
                             }
                             
