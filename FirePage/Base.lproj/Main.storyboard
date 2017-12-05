@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2GE-dP-gl1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2GE-dP-gl1">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +27,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLe-3d-jjy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1006" y="1068"/>
+            <point key="canvasLocation" x="-2434" y="1276"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="8d1-jn-B9X">
@@ -106,15 +106,19 @@
                                     <action selector="signupClick:" destination="2GE-dP-gl1" eventType="touchUpInside" id="e7U-wS-FsN"/>
                                 </connections>
                             </button>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="loginLogo" translatesAutoresizingMaskIntoConstraints="NO" id="sES-2v-UWz">
-                                <rect key="frame" x="110" y="20" width="101" height="190"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="loginLogo" translatesAutoresizingMaskIntoConstraints="NO" id="sES-2v-UWz">
+                                <rect key="frame" x="71" y="30" width="179" height="190"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="190" id="Boo-Ra-Fx3"/>
+                                    <constraint firstAttribute="width" constant="179" id="JBw-fe-I26"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gZY-tv-epu" firstAttribute="top" secondItem="ifK-CO-E8S" secondAttribute="bottom" id="1D7-TK-hoj"/>
                             <constraint firstItem="gZY-tv-epu" firstAttribute="centerX" secondItem="0w0-8I-amV" secondAttribute="centerX" id="3vF-ac-APB"/>
+                            <constraint firstItem="sES-2v-UWz" firstAttribute="top" secondItem="2XD-1P-Uqu" secondAttribute="top" constant="10" id="6fv-Vi-Uyr"/>
                             <constraint firstItem="ifK-CO-E8S" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Tfp-6P-8c4" secondAttribute="leading" id="ESu-Tk-ejy"/>
                             <constraint firstItem="ifK-CO-E8S" firstAttribute="top" secondItem="RYI-PY-cnC" secondAttribute="bottom" id="FFD-ML-Juo"/>
                             <constraint firstItem="gZY-tv-epu" firstAttribute="centerX" secondItem="93g-tK-GGM" secondAttribute="centerX" id="GI5-un-P0q"/>
@@ -124,6 +128,7 @@
                             <constraint firstAttribute="trailing" secondItem="Tfp-6P-8c4" secondAttribute="trailing" constant="21" id="LvB-VM-O6w"/>
                             <constraint firstItem="gZY-tv-epu" firstAttribute="centerX" secondItem="1QY-tq-1WA" secondAttribute="centerX" id="aJ2-or-A8O"/>
                             <constraint firstItem="RYI-PY-cnC" firstAttribute="leading" secondItem="93g-tK-GGM" secondAttribute="leading" constant="20" id="bah-hn-iml"/>
+                            <constraint firstItem="sES-2v-UWz" firstAttribute="centerX" secondItem="93g-tK-GGM" secondAttribute="centerX" id="ddi-Xq-YOF"/>
                             <constraint firstItem="0w0-8I-amV" firstAttribute="leading" secondItem="2XD-1P-Uqu" secondAttribute="leading" constant="60" id="iPh-dp-S9y"/>
                             <constraint firstItem="1QY-tq-1WA" firstAttribute="top" secondItem="0w0-8I-amV" secondAttribute="bottom" constant="36" id="nzm-4r-QFq"/>
                             <constraint firstItem="RYI-PY-cnC" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ifK-CO-E8S" secondAttribute="trailing" id="uFQ-8x-j1u"/>
@@ -332,7 +337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8rk-x5-kX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1453.125" y="-470.07042253521126"/>
+            <point key="canvasLocation" x="-1223" y="-24"/>
         </scene>
         <!--Help Line-->
         <scene sceneID="fps-AZ-ept">
@@ -520,7 +525,7 @@
                             <constraint firstItem="ZOV-hY-pfd" firstAttribute="top" secondItem="fk5-hq-TCU" secondAttribute="bottom" constant="18" id="ero-k1-tlD"/>
                             <constraint firstItem="FFn-Br-ZjZ" firstAttribute="leading" secondItem="elf-fn-Tqq" secondAttribute="leading" constant="15" id="ewj-Uh-f6S"/>
                             <constraint firstItem="DZj-aD-1Vj" firstAttribute="centerX" secondItem="ZOV-hY-pfd" secondAttribute="centerX" id="fSK-7k-0pl"/>
-                            <constraint firstItem="v9s-I1-dhM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DZj-aD-1Vj" secondAttribute="trailing" symbolic="YES" id="fsp-ev-GuN"/>
+                            <constraint firstItem="v9s-I1-dhM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DZj-aD-1Vj" secondAttribute="trailing" constant="8" symbolic="YES" id="fsp-ev-GuN"/>
                             <constraint firstItem="elf-fn-Tqq" firstAttribute="top" secondItem="BDO-qf-10B" secondAttribute="bottom" constant="19" id="gB3-Qi-SWo"/>
                             <constraint firstItem="z2D-Ck-4Uu" firstAttribute="leading" secondItem="65R-5F-7Hn" secondAttribute="leading" constant="10" id="gyk-pd-96X"/>
                             <constraint firstItem="FFn-Br-ZjZ" firstAttribute="top" secondItem="1uE-ch-rM8" secondAttribute="top" id="i28-t5-1gh"/>

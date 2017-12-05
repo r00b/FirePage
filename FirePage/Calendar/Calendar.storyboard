@@ -352,11 +352,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nce-ev-esv"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendar" id="B5Z-zb-qFd">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="lnd-Db-9gX">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Calendar" id="B5Z-zb-qFd"/>
                     <connections>
                         <outlet property="calendarView" destination="rHW-sM-Zcf" id="s1d-Oz-lyh"/>
                         <outlet property="footerView" destination="MbA-hv-Gms" id="fi3-qI-9JM"/>
@@ -390,7 +386,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hamburger" width="36" height="24"/>
         <image name="leftButtonGray" width="41" height="44"/>
         <image name="leftButtonRed" width="41" height="44"/>
         <image name="rightButtonGray" width="41" height="44"/>
