@@ -246,6 +246,7 @@
 		B757595D1FAFE81D006845E9 /* FirePage */ = {
 			isa = PBXGroup;
 			children = (
+				B75759981FB23FC6006845E9 /* Views */,
 				E2928D541FD4EFA000500626 /* Messaging */,
 				E29D0A051FCEA81000E67B04 /* HelpRequests */,
 				B73083B21FCCE931000AD305 /* HelpLine */,
@@ -285,7 +286,6 @@
 		B757598E1FB22D72006845E9 /* CustomUIObjects */ = {
 			isa = PBXGroup;
 			children = (
-				B75759981FB23FC6006845E9 /* Views */,
 				B73083931FCCE83D000AD305 /* FIreTextField.swift */,
 				B73083921FCCE83D000AD305 /* GradientView.swift */,
 				B757598F1FB22DF0006845E9 /* CustomTextField.swift */,
