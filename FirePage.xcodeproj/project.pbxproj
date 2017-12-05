@@ -32,6 +32,7 @@
 		B75759971FB230CD006845E9 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75759961FB230CD006845E9 /* DataModel.swift */; };
 		B77CCCC01FB93F2600ECAD81 /* CustomRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CCCBF1FB93F2600ECAD81 /* CustomRadioButton.swift */; };
 		B77CCCC21FB9414400ECAD81 /* RadioButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CCCC11FB9414400ECAD81 /* RadioButtonController.swift */; };
+		B785F5CD1FD7122300101B07 /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B785F5CC1FD7122300101B07 /* SignOutViewController.swift */; };
 		BB344B471FCA76D200BD890B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB344B461FCA76D200BD890B /* GoogleService-Info.plist */; };
 		BB344B4C1FCFA8E200BD890B /* myTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB344B4B1FCFA8E200BD890B /* myTabBar.swift */; };
 		BB395BE41FD5174D00456FCF /* SessionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB395BE31FD5174D00456FCF /* SessionInfo.swift */; };
@@ -118,6 +119,7 @@
 		B75759961FB230CD006845E9 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		B77CCCBF1FB93F2600ECAD81 /* CustomRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRadioButton.swift; sourceTree = "<group>"; };
 		B77CCCC11FB9414400ECAD81 /* RadioButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonController.swift; sourceTree = "<group>"; };
+		B785F5CC1FD7122300101B07 /* SignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
 		BB344B461FCA76D200BD890B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB344B4B1FCFA8E200BD890B /* myTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myTabBar.swift; sourceTree = "<group>"; };
 		BB395BE31FD5174D00456FCF /* SessionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInfo.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			children = (
 				B757598C1FB22C28006845E9 /* AccountViewController.swift */,
 				B7058C5D1FCFA10400D2368B /* LoginViewController.swift */,
+				B785F5CC1FD7122300101B07 /* SignOutViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -677,6 +680,7 @@
 				B73083B51FCCE969000AD305 /* DormCollectionViewCell.swift in Sources */,
 				B73083B11FCCE8F4000AD305 /* UITextFieldExtensions.swift in Sources */,
 				BB395BE41FD5174D00456FCF /* SessionInfo.swift in Sources */,
+				B785F5CD1FD7122300101B07 /* SignOutViewController.swift in Sources */,
 				E29D0A0A1FCEA81000E67B04 /* HelpRequestCell.swift in Sources */,
 				BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */,
 				BB344B4C1FCFA8E200BD890B /* myTabBar.swift in Sources */,

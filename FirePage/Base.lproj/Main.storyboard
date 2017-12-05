@@ -574,16 +574,37 @@
             </objects>
             <point key="canvasLocation" x="879.375" y="1403.8732394366198"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Out View Controller-->
         <scene sceneID="Fx0-cs-VQi">
             <objects>
-                <viewController id="hDF-9C-EwG" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UzE-9p-gLV">
+                <viewController id="hDF-9C-EwG" customClass="SignOutViewController" customModule="FirePage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UzE-9p-gLV" customClass="GradientView" customModule="FirePage" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXD-Ij-ASu" customClass="FireButton" customModule="FirePage" customModuleProvider="target">
+                                <rect key="frame" x="40" y="269" width="240" height="30"/>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOutClick:" destination="hDF-9C-EwG" eventType="touchUpInside" id="6f5-vh-7v3"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZXD-Ij-ASu" firstAttribute="leading" secondItem="ZfK-bm-C0y" secondAttribute="leading" constant="40" id="9RQ-6g-RiE"/>
+                            <constraint firstItem="ZXD-Ij-ASu" firstAttribute="centerY" secondItem="UzE-9p-gLV" secondAttribute="centerY" id="r1e-lV-cNq"/>
+                            <constraint firstItem="ZfK-bm-C0y" firstAttribute="trailing" secondItem="ZXD-Ij-ASu" secondAttribute="trailing" constant="40" id="u4C-bE-Nbh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ZfK-bm-C0y"/>
                     </view>
+                    <connections>
+                        <outlet property="signOutButton" destination="ZXD-Ij-ASu" id="KCc-M7-ekh"/>
+                        <segue destination="2GE-dP-gl1" kind="show" identifier="logout" id="kzQ-kS-bRi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9tq-Y4-me3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -617,4 +638,7 @@
         <image name="whitephone" width="512" height="512"/>
         <image name="whiteprofile-1" width="460" height="458"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="kzQ-kS-bRi"/>
+    </inferredMetricsTieBreakers>
 </document>
