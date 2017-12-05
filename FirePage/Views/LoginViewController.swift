@@ -23,27 +23,27 @@ class LoginViewController: UIViewController{
     // MARK: UI Actions
     
     @IBAction func loginClick(_ sender: Any) {
+        
+        try! Auth.auth().signOut()
         let email = usernameField.text
         let password = passwordField.text
-        if email != "" && password != ""{
-            Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
-                // ...
-                //print(error);
+        Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
+            let when = DispatchTime.now() + 1 // change 2 to desired number of seconds
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                if Auth.auth().currentUser != nil {
+                    let newEmail = Auth.auth().currentUser?.email;
+                    DB.getAccount(email: newEmail!, mainAppSegue: self.performSegue)
+                    //self.performSegue(withIdentifier: "signedIn", sender: self)
+                } else {
+                    let alert = UIAlertController(title: "Alert", message: "Invalid Username or Password", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
-        }
-        else{
-            try! Auth.auth().signOut()
+
         }
 
-        if Auth.auth().currentUser != nil {
-            let newEmail = Auth.auth().currentUser?.email;
-            DB.getAccount(email: newEmail!, mainAppSegue: performSegue)
-            //self.performSegue(withIdentifier: "signedIn", sender: self)
-        } else {
-            let alert = UIAlertController(title: "Alert", message: "Invalid Username or Password", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+       
     }
     
     func performSegue() -> Void{
