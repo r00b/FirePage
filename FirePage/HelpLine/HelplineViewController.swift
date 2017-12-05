@@ -110,7 +110,6 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         DB.addHelpRequest(onCallGroup: dormDic[currDorm]!, day: getDate(), helpRequest: HelpRequest(dictionary: dict as NSDictionary))
         
         
-        
     }
     
     // MARK: Phone Setup
