@@ -28,7 +28,7 @@ class HelpRequestsTableViewController: UITableViewController {
     
     let red: UIColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
     let white: UIColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
-    let gray: UIColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
+    let gray: UIColor = UIColor(red:0.59, green:0.53, blue:0.53, alpha:1.0)
     
     // Constants for cell heights depending on expansion/collapse.
     let kCloseCellHeight: CGFloat = 46
