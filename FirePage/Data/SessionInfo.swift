@@ -19,9 +19,10 @@ class SessionInfo{
     }
     
     //logs the current user out
-    static func logout(){
+    static func logout(currentViewController: UIViewController){
         account = nil
         let storyboardHelpLine = UIStoryboard(name: "Main", bundle: nil)
         let helpLineController = storyboardHelpLine.instantiateViewController(withIdentifier: "LoginViewController") as! UINavigationController
+        currentViewController.present(helpLineController, animated: true, completion: nil)
     }
 }
