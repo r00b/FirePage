@@ -24,6 +24,9 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         let storyboardHelpLine = UIStoryboard(name: "Main", bundle: nil)
         let helpLineController = storyboardHelpLine.instantiateViewController(withIdentifier: "HelpLineViewController") as! UINavigationController
         
+        let storyboardSignOut = UIStoryboard(name: "Main", bundle: nil)
+        let signOutController = storyboardHelpLine.instantiateViewController(withIdentifier: "SignOutViewController") as! UIViewController
+        
         
         let storyboardCalendar = UIStoryboard(name: "Calendar", bundle: nil)
         let calendarController = storyboardCalendar.instantiateViewController(withIdentifier: "CalendarNavigationController") as! UINavigationController
@@ -37,7 +40,7 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         let Contact = helpLineController
         let Calendar = calendarController
         let MyPages = helpRequestsController
-        let Chat = chatNavController
+        let account = signOutController
         
         //set view controller tab bar icons
         
@@ -47,35 +50,34 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         
         let icon2 = UITabBarItem()
         icon2.title = "Calendar"
-        icon2.image = #imageLiteral(resourceName: "Calendar")
-        
+        icon2.image =  #imageLiteral(resourceName: "Calendar")
         let icon3 = UITabBarItem()
         icon3.title = "Resolve"
-        icon3.image = #imageLiteral(resourceName: "Resolve")
+        icon3.image =  #imageLiteral(resourceName: "Resolve")
         
         let icon4 = UITabBarItem()
         icon4.title = "Account"
-        icon4.image = #imageLiteral(resourceName: "Settings")
+        icon4.image =  #imageLiteral(resourceName: "Settings")
         
         Contact.tabBarItem = icon1
         Calendar.tabBarItem = icon2
         MyPages.tabBarItem = icon3
-        Chat.tabBarItem = icon4
+        account.tabBarItem = icon4
         
         var controllers = [UIViewController]()
         
         //add view controllers based on role
         
         if(SessionInfo.account?.getRole() == FireRole.RA){
-            controllers = [Contact, Calendar, MyPages]
+            controllers = [Contact, Calendar, MyPages, account]
             //controllers = [Contact, Calendar, MyPages, Chat]
         }else if(SessionInfo.account?.getRole() == FireRole.RC){
-            controllers = [Contact, Calendar]
+            controllers = [Contact, Calendar, account]
         }else{
-            controllers = [Contact]
+            controllers = [Contact, account]
         }
         
-       
+        
         self.viewControllers = controllers
     }
     
@@ -91,3 +93,4 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         return true;
     }
 }
+

@@ -37,6 +37,7 @@
 		BB395BE41FD5174D00456FCF /* SessionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB395BE31FD5174D00456FCF /* SessionInfo.swift */; };
 		BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3AE4701FC61A8400A0470A /* Utilities.swift */; };
 		BB3AE4731FC7926B00A0470A /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3AE4721FC7926B00A0470A /* DB.swift */; };
+		BB8EF9F71FD7326C001E301E /* signOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8EF9F61FD7326C001E301E /* signOutViewController.swift */; };
 		E1658EF91FC27B2200DCAFD8 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1658EF81FC27B2200DCAFD8 /* Calendar.storyboard */; };
 		E1658EFA1FC27B2200DCAFD8 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1658EF81FC27B2200DCAFD8 /* Calendar.storyboard */; };
 		E1658EFB1FC27B2200DCAFD8 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1658EF81FC27B2200DCAFD8 /* Calendar.storyboard */; };
@@ -124,6 +125,7 @@
 		BB3AE46F1FC619A100A0470A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		BB3AE4701FC61A8400A0470A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		BB3AE4721FC7926B00A0470A /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
+		BB8EF9F61FD7326C001E301E /* signOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signOutViewController.swift; sourceTree = "<group>"; };
 		D2117D8DE3849B4FE649D3B7 /* Pods-FirePageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirePageTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirePageTests/Pods-FirePageTests.release.xcconfig"; sourceTree = "<group>"; };
 		E1658EF81FC27B2200DCAFD8 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		E1658F081FC3F9E500DCAFD8 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				B757596A1FAFE81D006845E9 /* Info.plist */,
 				BB3AE46F1FC619A100A0470A /* BridgingHeader.h */,
 				BB344B4B1FCFA8E200BD890B /* myTabBar.swift */,
+				BB8EF9F61FD7326C001E301E /* signOutViewController.swift */,
 			);
 			path = FirePage;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7058C5E1FCFA10400D2368B /* LoginViewController.swift in Sources */,
+				BB8EF9F71FD7326C001E301E /* signOutViewController.swift in Sources */,
 				B73083941FCCE83D000AD305 /* GradientView.swift in Sources */,
 				E19075171FBA90900038F6E9 /* CalendarExtensions.swift in Sources */,
 				E19075281FBA977A0038F6E9 /* CalendarCell.swift in Sources */,
