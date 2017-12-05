@@ -13,15 +13,18 @@ import JTAppleCalendar
 // MARK: JTAppleCalendarViewDataSource
 
 extension CalendarViewController: JTAppleCalendarViewDataSource {
+    
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         formatter.dateFormat = "yyyy MM dd"
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
+        // support calendars up to a year prior and after the current date
         startDate = Calendar.current.date(byAdding: .year, value: -1, to: Date())
         endDate = Calendar.current.date(byAdding: .year, value: 1, to: Date())
         let parameters = ConfigurationParameters(startDate: startDate!, endDate: endDate!)
         return parameters
     }
+    
 }
 
 
@@ -68,12 +71,13 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         guard let userName = userDates[cellState.date] else { return cell }
         
         // color each CalendarCell as necessary
-        if activeUsers[userName]! {
+        if selectedUsers[userName]! {
             cell.selectedView.isHidden = false
             if cellState.dateBelongsTo == .thisMonth {
                 cell.selectedView.backgroundColor = userColors[userName]
                 cell.dateLabel.textColor = selectedDayLabelColor
             } else {
+                // make indates and outdates less opaque
                 cell.selectedView.backgroundColor = userColors[userName]?.withAlphaComponent(0.35)
                 cell.dateLabel.textColor = outsideMonthLabelColor
             }
@@ -84,14 +88,16 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
         if let userName = userDates[cellState.date] {
             if selectedUser == userName {
-                resetActiveUsers()
+                resetSelectedUsers()
             } else {
                 // user not already selected
                 selectUser(userName: userName)
             }
         }
+        // update table view to show selected user
         tableView.reloadData()
     }
+    
 }
 
 
@@ -100,15 +106,16 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
 extension CalendarViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activeUsers.count
+        return selectedUsers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarTableViewCell", for: indexPath) as! CalendarTableViewCell
         
-        let user = Array(activeUsers.keys)[indexPath.row]
+        let user = Array(selectedUsers.keys)[indexPath.row]
         cell.title.text = user
         
+        // highlight cell if user is selected in calendar
         if user == selectedUser {
             cell.title.textColor = UIColor.white
             cell.titleView.backgroundColor = userColors[user]
@@ -117,9 +124,9 @@ extension CalendarViewController: UITableViewDataSource {
             cell.titleView.backgroundColor = UIColor.white
         }
         cell.accentView.backgroundColor = userColors[user]
+        
         return cell
     }
-    
     
 }
 
@@ -133,7 +140,7 @@ extension CalendarViewController: UITableViewDelegate {
         let chosenUser = cell.title.text!
         
         if selectedUser == chosenUser {
-            resetActiveUsers()
+            resetSelectedUsers()
             // color cell to show deselection
             cell.titleView.backgroundColor = UIColor.white
             cell.title.textColor = userColors[chosenUser]
@@ -147,4 +154,3 @@ extension CalendarViewController: UITableViewDelegate {
     }
     
 }
-

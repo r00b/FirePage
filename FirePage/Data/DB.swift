@@ -57,10 +57,14 @@ class DB{
         })
     }
     
-    //gets an onCallGroup's calendar and passes the dates to the reload function responsible for repopulating the vc
-    static func getCalendar(onCallGroup: String, reloadFunction: @escaping ([String:String]) -> Void){
-        
-        OnCallGroup.child(onCallGroup).child(calendar).observe(DataEventType.value, with: { (snapshot) in
+    // gets an onCallGroup's calendar and passes the dates to the reload function responsible for repopulating the vc
+    static func getCalendar(prevGroup: String?, group: String, reloadFunction: @escaping ([String:String]) -> Void){
+        // remove listener from previous onCallGroup
+        if let prev = prevGroup {
+            OnCallGroup.child(prev).child(calendar).removeAllObservers()
+        }
+        // set new listener
+        OnCallGroup.child(group).child(calendar).observe(DataEventType.value, with: { (snapshot) in
             var calendar = [String: String]()
             calendar = snapshot.value! as! [String: String]
             reloadFunction(calendar)
