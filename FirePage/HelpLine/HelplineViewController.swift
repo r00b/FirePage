@@ -183,7 +183,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         cell.cellNum = "5857979725"
         cell.dormLabel.text = eastDorms[indexPath.row]
         cells.append(cell)
-        clearSelected()
+        
         currDorm = cells[0].dorm
         cells[0].dormPhoto.layer.borderWidth = 4.0
         cells[0].dormPhoto.layer.borderColor = UIColor.white.cgColor
