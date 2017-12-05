@@ -37,17 +37,21 @@ class CalendarViewController: UIViewController {
     let insideMonthViewColor = UIColor(red:0.55, green:0.54, blue:1.00, alpha:1.0) // #8C8AFF
     let outsideMonthViewColor = UIColor(red:0.77, green:0.77, blue:1.00, alpha:1.0); // #C5C4FF
     
+    // calendar min and max dates
     var startDate: Date!
     var endDate: Date!
     
     var onCallGroups: [String]?
-    var currOnCallGroup: String?
+    var currOnCallGroup: String? {
+        willSet(newOnCallGroup) {
+            prevOnCallGroup = currOnCallGroup
+        }
+    }
+    var prevOnCallGroup: String?
     var userDates = [Date : String]()
     var userColors = [String : UIColor]()
-    var activeUsers = [String : Bool]() // users that are currently highlighted
+    var selectedUsers = [String : Bool]() // users that are currently highlighted
     var selectedUser = ""
-    
-    let ref : DatabaseReference! = Database.database().reference()
     
     
     // MARK: IBOutlets
@@ -69,12 +73,6 @@ class CalendarViewController: UIViewController {
         initDatabase()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // clean up observers
-        //ref.child("OnCallGroup").child(currOnCallGroup!).child("Calendar").removeAllObservers()
-    }
-    
     
     // MARK: Private functions
     
@@ -86,6 +84,7 @@ class CalendarViewController: UIViewController {
         calendarView.visibleDates { (visibleDates) in
             self.setCalendarViewHeader(from: visibleDates)
         }
+        // default scroll to current date
         calendarView.scrollToDate(Date(), animateScroll: false)
     }
     
@@ -95,31 +94,38 @@ class CalendarViewController: UIViewController {
         let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         // set up "Show All" footer button in table view
-        let footerGesture = UITapGestureRecognizer(target: self, action: #selector(resetActiveUsers))
+        let footerGesture = UITapGestureRecognizer(target: self, action: #selector(resetSelectedUsers))
         footerView.addGestureRecognizer(footerGesture)
     }
     
     // set up initial listeners on OnCallGroup
     func initDatabase() {
         // get list of onCallGroups associated with current user
-        let onCallGroups : [String] = (SessionInfo.account?.getOnCallGroups()!)!
-        
-        for onCallGroup in onCallGroups {
-            DB.getCalendar(onCallGroup: onCallGroup, reloadFunction: reload)
-        }
-        
-        
-//        ref.child("OnCallGroup").observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
-//            let groups = snapshot.value as? [String : AnyObject] ?? [:]
-//            self.onCallGroups = Array(groups.keys)
-//            // default group set to first in list from database
-//            self.currOnCallGroup = self.onCallGroups?[0]
-//            self.renderUserData()
-//        })
+        self.onCallGroups = SessionInfo.account?.getOnCallGroups()!
+        // default group is first in list
+        self.currOnCallGroup = self.onCallGroups?[0]
+        self.onCallGroupLabel.text = self.currOnCallGroup
+        // set database listener
+        DB.getCalendar(prevGroup: prevOnCallGroup, group: currOnCallGroup!, reloadFunction: receiveData)
     }
     
-    func reload(calendar: [String : String]) {
-        let f = ""
+    // callback for getting data from the database
+    func receiveData(calendar: [String : String]) {
+        for (date, userName) in calendar {
+            // create Date object and store it
+            formatter.dateFormat = "MM-dd-yyyy"
+            let generatedDate = formatter.date(from: date)
+            userDates[generatedDate!] = userName
+            
+            // denote user as highlighted
+            selectedUsers[userName] = true
+            
+            // assign a color to the user
+            if userColors[userName] == nil { // don't reassign colors
+                userColors[userName] = colors[userColors.count]
+            }
+        }
+        reloadViews()
     }
     
     // sets month and year labels in calendar header, called on calendar scroll
@@ -131,117 +137,100 @@ class CalendarViewController: UIViewController {
         monthLabel.text = formatter.string(from: date)
     }
     
-    // populate cells with colors for the selected OnCallGroup
-    func renderUserData() {
-        // clear out data structures
+    func clearUserData() {
         userDates = [Date : String]()
         userColors = [String : UIColor]()
-        activeUsers = [String : Bool]()
-        
-        self.onCallGroupLabel.text = self.currOnCallGroup
-        self.ref.child("OnCallGroup").child(self.currOnCallGroup!).child("Calendar").observe(DataEventType.value, with: { (snapshot) in
-            let dates = snapshot.value as? [String : String] ?? [:]
-            self.storeUserData(dates: dates)
-            self.calendarView.reloadData()
-            self.tableView.reloadData()
-        })
+        selectedUsers = [String : Bool]()
+        selectedUser = ""
     }
     
-    // store user data from the database in accessible data structures
-    func storeUserData(dates: [String : String]) {
-        for (date, userName) in dates {
-            // create Date object and store it
-            formatter.dateFormat = "MM-dd-yyyy"
-            let generatedDate = formatter.date(from: date)
-            userDates[generatedDate!] = userName
-            
-            // denote user as highlighted
-            activeUsers[userName] = true
-            
-            // assign a color to the user
-            if userColors[userName] == nil { // don't reassign colors
-                userColors[userName] = colors[userColors.count]
-            }
+    // designate a user with userName as selected
+    func selectUser(userName: String) {
+        selectedUser = userName
+        _ = selectedUsers.map({ (user: String, Bool) in
+            // only selectedUser should be active
+            selectedUsers[user] = (user == selectedUser)
+        })
+        reloadViews()
+    }
+    
+    // reset all users to be selected
+    @objc func resetSelectedUsers() {
+        selectedUser = ""
+        // user already selected, go to default view (select all)
+        selectedUsers = selectedUsers.mapValues({(Bool) -> Bool in return true})
+        reloadViews()
+    }
+    
+    // scroll the calendar forward or backward by deltaMonth months
+    func scrollCalendar(deltaMonth: Int) {
+        let currDate = calendarView.visibleDates().monthDates.first!.date
+        let currMonth = Calendar.current.component(.month, from: currDate)
+        let currYear = Calendar.current.component(.year, from: currDate)
+        
+        let startMonth = Calendar.current.component(.month, from: startDate)
+        let startYear = Calendar.current.component(.year, from: startDate)
+        let endMonth = Calendar.current.component(.month, from: endDate)
+        let endYear = Calendar.current.component(.year, from: endDate)
+        
+        if deltaMonth < 0 && currMonth == startMonth && currYear == startYear {
+            presentAlert(title: "Earliest Month Reached", message: "You've reached the earliest stored month.")
+        } else if deltaMonth > 0 && currMonth == endMonth && currYear == endYear {
+            presentAlert(title: "Farthest Month Reached", message: "You've reached the farthest stored month.")
+        } else {
+            let newDate = Calendar.current.date(byAdding: .month, value: deltaMonth, to: currDate)
+            calendarView.scrollToDate(newDate!)
         }
     }
     
+    // present a popup alert
     func presentAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
-    // designate a user with userName as selected
-    func selectUser(userName: String) {
-        selectedUser = userName
-        _ = activeUsers.map({ (user: String, Bool) in
-            // only selectedUser should be active
-            activeUsers[user] = (user == selectedUser)
-        })
-        calendarView.reloadData() // push changes to calendar view
-        tableView.reloadData() // push changes to table view
+    func changeOnCallGroup() {
+        clearUserData()
+        self.onCallGroupLabel.text = self.currOnCallGroup
+        // set database listener for new onCallGroup
+        DB.getCalendar(prevGroup: prevOnCallGroup, group: currOnCallGroup!, reloadFunction: receiveData)
     }
     
-    // reset all users to be active/selected
-    @objc func resetActiveUsers() {
-        selectedUser = ""
-        // user already selected, go to default view (select all)
-        activeUsers = activeUsers.mapValues({(Bool) -> Bool in return true})
-        calendarView.reloadData()
-        tableView.reloadData()
+    func reloadViews() {
+        // force UI reload on the main thread
+        DispatchQueue.main.async {
+            self.calendarView.reloadData()
+            self.tableView.reloadData()
+        }
     }
-    
     
     // MARK: IBActions
     
     @IBAction func scrollCalendarLeft(_ sender: UIButton) {
-        let currDate = calendarView.visibleDates().monthDates.first!.date
-        let newDate = Calendar.current.date(byAdding: .month, value: -1, to: currDate)
-        
-        let startMonth = Calendar.current.component(.month, from: startDate)
-        let newMonth = Calendar.current.component(.month, from: newDate!)
-        let startYear = Calendar.current.component(.year, from: startDate)
-        let newYear = Calendar.current.component(.year, from: newDate!)
-        if newMonth < startMonth && newYear <= startYear {
-            presentAlert(title: "Earliest Month Reached", message: "You've reached the earliest stored month.")
-        } else {
-            calendarView.scrollToDate(newDate!)
-        }
+        scrollCalendar(deltaMonth: -1)
     }
     
     @IBAction func scrollCalendarRight(_ sender: UIButton) {
-        let currDate = calendarView.visibleDates().monthDates.first!.date
-        let newDate = Calendar.current.date(byAdding: .month, value: 1, to: currDate)
-        
-        let endMonth = Calendar.current.component(.month, from: endDate)
-        let newMonth = Calendar.current.component(.month, from: newDate!)
-        let endYear = Calendar.current.component(.year, from: endDate)
-        let newYear = Calendar.current.component(.year, from: newDate!)
-        if newMonth > endMonth && newYear >= endYear {
-            presentAlert(title: "Farthest Month Reached", message: "You've reached the farthest stored month.")
-        } else {
-            calendarView.scrollToDate(newDate!)
-        }
+        scrollCalendar(deltaMonth: 1)
     }
     
     @IBAction func scrollOnCallGroupLeft(_ sender: UIButton) {
-        ref.child("OnCallGroup").child(self.currOnCallGroup!).child("Calendar").removeAllObservers()
         var nextGroupIdx = onCallGroups!.index(of: currOnCallGroup!)! - 1
         if nextGroupIdx == -1 {
             nextGroupIdx = onCallGroups!.count - 1
         }
         currOnCallGroup = onCallGroups![nextGroupIdx]
-        renderUserData()
+        changeOnCallGroup()
     }
     
     @IBAction func scrollOnCallGroupRight(_ sender: UIButton) {
-        ref.child("OnCallGroup").child(self.currOnCallGroup!).child("Calendar").removeAllObservers()
         var nextGroupIdx = onCallGroups!.index(of: currOnCallGroup!)! + 1
         if nextGroupIdx == onCallGroups!.count {
             nextGroupIdx = 0
         }
         currOnCallGroup = onCallGroups![nextGroupIdx]
-        renderUserData()
+        changeOnCallGroup()
     }
     
 }
