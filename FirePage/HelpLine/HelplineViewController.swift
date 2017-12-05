@@ -89,10 +89,10 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
  
         var dict = Dictionary<String,Any>()
         
-        //dict["date"] = getDate()
-        //dict["onCallGroup"] = dormDic[currDorm]
-        dict["date"] = "12-04-2017"
-        dict["onCallGroup"] = "N2Group"
+        dict["date"] = getDate()
+        dict["onCallGroup"] = dormDic[currDorm]
+        //dict["date"] = "12-04-2017"
+        //dict["onCallGroup"] = "N2Group"
         dict["time"] = getTime()
         dict["isResolved"] = false
         dict["description"] = subjectField.text
