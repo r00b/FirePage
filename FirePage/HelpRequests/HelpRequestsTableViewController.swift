@@ -79,6 +79,9 @@ class HelpRequestsTableViewController: UITableViewController {
     func reloadTableViewData(requests: [String: [HelpRequest]]){
         myHelpRequests = requests
         myHelpRequestsOrderedKeys = orderDates(unorderedKeys: Array(myHelpRequests.keys))
+        for key in myHelpRequestsOrderedKeys {
+            myHelpRequests[key] = sortHelpRequestByTime(requests: myHelpRequests[key]!)
+        }
         tableView.reloadData()
     }
     
@@ -398,4 +401,32 @@ extension HelpRequestsTableViewController {
         return formatter.string(from: time!)
     }
     
+    // Sorts help requests by time and then rotates array at 5PM mark
+    private func sortHelpRequestByTime(requests: [HelpRequest]) -> [HelpRequest] {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        let sorted = requests.sorted { t1, t2 in
+            let time1: Date = formatter.date(from: t1.time)!
+            let time2: Date = formatter.date(from: t2.time)!
+            return time1.compare(time2) == .orderedDescending
+        }
+        var index = 0
+        for s in sorted {
+            let s_time: Date = formatter.date(from: s.time)!
+            let onCallStart: Date = formatter.date(from: "17:00:00")!
+            if s_time < onCallStart {
+                break
+            }
+            index = index + 1
+        }
+        return shifter(shiftIndex: index, array: sorted)
+    }
+    
+    // Copied from StackOverflow for rotating arrays: https://stackoverflow.com/questions/31554670/shift-swift-array
+    // Rotates the array by some given index
+    private func shifter(shiftIndex: Int, array: [HelpRequest]) -> [HelpRequest] {
+        var newArr = array[shiftIndex..<array.count]
+        newArr += array[0..<shiftIndex]
+        return Array(newArr)
+    }
 }
