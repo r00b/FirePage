@@ -58,7 +58,8 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     @IBAction func sliderChanged(_ sender: UISlider) {
         sender.setValue(Float(lroundf(slider.value)), animated: true)
         if(Float(lroundf(slider.value))==0){
-            currPhone = phoneMap[dormDic[currDorm]!]!
+            //currPhone = phoneMap[dormDic[currDorm]!]! For demo purposes we hard code to my phone
+            currPhone = "5857979725"
         }
         if(Float(lroundf(slider.value))==1){
             currPhone = "9196842444"
@@ -85,8 +86,6 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
 
     @IBAction func callClick(_ sender: Any) {
         self.callClicked = !self.callClicked
-        //let newImage = self.callClicked ?#imageLiteral(resourceName: "hangup"): #imageLiteral(resourceName: "helpPhone")
-        //currPhone = phoneMap[dormDic[currDorm]!]!
         if let url = URL(string: "tel://\(currPhone))"), UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10, *) {
                 UIApplication.shared.open(url)
@@ -250,9 +249,6 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         var uid = ""
         var email = ""
         if let user = user {
-            // The user's ID, unique to the Firebase project.
-            // Do NOT use this value to authenticate with your backend server,
-            // if you have one. Use getTokenWithCompletion:completion: instead.
             uid = user.uid
             email = user.email!
             // ...
@@ -260,15 +256,5 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         return ["uid":uid,"email":email]
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
