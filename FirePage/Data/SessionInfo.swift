@@ -9,5 +9,6 @@
 import Foundation
 
 class SessionInfo{
+    //holds current user
     static var account: Account?
 }
