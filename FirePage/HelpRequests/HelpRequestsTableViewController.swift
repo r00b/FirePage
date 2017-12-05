@@ -257,7 +257,7 @@ extension HelpRequestsTableViewController {
         cell.foregroundTimeBackground.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
         
         // Hack to stop user from being able to expand/unfold this cell like a normal HelpRequestCell.
-        //cell.isUserInteractionEnabled = false
+        cell.isUserInteractionEnabled = false
         return cell
     }
     
