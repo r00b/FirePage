@@ -97,6 +97,13 @@ class HelpRequestsTableViewController: UITableViewController {
                 helpRequests[indexPathOfSelectedRow.row].isResolved = true
                 helpRequests[indexPathOfSelectedRow.row].resolution = selectedCell.expansionResolution.text
                 DB.addHelpRequests(onCallGroup: helpRequests[row].onCallGroup, day: day, helpRequests: helpRequests)
+                
+                // Send alert of success
+                let alert = UIAlertController(title: "Help Request resolved successfully.", message: "", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
+                    NSLog("The \"OK\" alert occured.")
+                }))
+                self.present(alert, animated: true, completion: nil)
             }
             else {
                 let alert = UIAlertController(title: "Help Request not resolved.", message: "Please enter a resolution.", preferredStyle: .alert)
@@ -403,6 +410,7 @@ extension HelpRequestsTableViewController {
     
     // Sorts help requests by time and then rotates array at 5PM mark
     private func sortHelpRequestByTime(requests: [HelpRequest]) -> [HelpRequest] {
+        // First sort times in descending order (11:59PM - 12:00AM) using DateFormatter
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss"
         let sorted = requests.sorted { t1, t2 in
@@ -410,6 +418,9 @@ extension HelpRequestsTableViewController {
             let time2: Date = formatter.date(from: t2.time)!
             return time1.compare(time2) == .orderedDescending
         }
+        // Realize that the first HelpRequest (oldest HelpRequest) is actually at 5PM
+        // In terms of newest to oldest HelpRequests, we go from 459PM to 12PM to 12AM to 5PM
+        // Find the index of first HelpRequest before 5PM so we can rotate by it
         var index = 0
         for s in sorted {
             let s_time: Date = formatter.date(from: s.time)!
