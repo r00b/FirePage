@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2GE-dP-gl1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2GE-dP-gl1">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -497,6 +497,10 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ring" translatesAutoresizingMaskIntoConstraints="NO" id="elf-fn-Tqq">
                                 <rect key="frame" x="98" y="434" width="124" height="124"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="124" id="Ez5-jq-VVb"/>
+                                    <constraint firstAttribute="width" constant="124" id="hGA-P7-GLd"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -514,16 +518,17 @@
                             <constraint firstItem="DZj-aD-1Vj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="z2D-Ck-4Uu" secondAttribute="trailing" id="MfI-Il-a4d"/>
                             <constraint firstItem="65R-5F-7Hn" firstAttribute="bottom" secondItem="elf-fn-Tqq" secondAttribute="bottom" constant="10" id="N58-UZ-SCn"/>
                             <constraint firstItem="65R-5F-7Hn" firstAttribute="trailing" secondItem="ezk-Ua-mpW" secondAttribute="trailing" constant="40" id="NQ9-Q4-XRa"/>
+                            <constraint firstItem="65R-5F-7Hn" firstAttribute="trailing" secondItem="BDO-qf-10B" secondAttribute="trailing" constant="40" id="Ppu-AU-JjO"/>
                             <constraint firstItem="DZj-aD-1Vj" firstAttribute="centerY" secondItem="z2D-Ck-4Uu" secondAttribute="centerY" id="Ra0-qu-BRm"/>
                             <constraint firstItem="fk5-hq-TCU" firstAttribute="leading" secondItem="FFn-Br-ZjZ" secondAttribute="trailing" constant="35" id="SpZ-1X-6TL"/>
                             <constraint firstItem="DZj-aD-1Vj" firstAttribute="centerX" secondItem="elf-fn-Tqq" secondAttribute="centerX" id="T1c-O3-GzP"/>
                             <constraint firstItem="65R-5F-7Hn" firstAttribute="trailing" secondItem="jFO-HH-qCV" secondAttribute="trailing" constant="30" id="TqL-04-yhi"/>
                             <constraint firstItem="ezk-Ua-mpW" firstAttribute="leading" secondItem="65R-5F-7Hn" secondAttribute="leading" constant="40" id="YNt-UC-8GP"/>
+                            <constraint firstItem="65R-5F-7Hn" firstAttribute="trailing" secondItem="ezk-Ua-mpW" secondAttribute="trailing" constant="40" id="Z2D-R6-dBf"/>
                             <constraint firstItem="65R-5F-7Hn" firstAttribute="trailing" secondItem="fk5-hq-TCU" secondAttribute="trailing" constant="71" id="Z4Y-9Q-9PN"/>
                             <constraint firstItem="ilD-RQ-kcE" firstAttribute="top" secondItem="BDO-qf-10B" secondAttribute="bottom" constant="41" id="bft-d2-PyT"/>
                             <constraint firstAttribute="trailing" secondItem="v9s-I1-dhM" secondAttribute="trailing" constant="10" id="cdw-9b-wuc"/>
                             <constraint firstItem="ZOV-hY-pfd" firstAttribute="top" secondItem="fk5-hq-TCU" secondAttribute="bottom" constant="18" id="ero-k1-tlD"/>
-                            <constraint firstItem="FFn-Br-ZjZ" firstAttribute="leading" secondItem="elf-fn-Tqq" secondAttribute="leading" constant="15" id="ewj-Uh-f6S"/>
                             <constraint firstItem="DZj-aD-1Vj" firstAttribute="centerX" secondItem="ZOV-hY-pfd" secondAttribute="centerX" id="fSK-7k-0pl"/>
                             <constraint firstItem="v9s-I1-dhM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DZj-aD-1Vj" secondAttribute="trailing" constant="8" symbolic="YES" id="fsp-ev-GuN"/>
                             <constraint firstItem="elf-fn-Tqq" firstAttribute="top" secondItem="BDO-qf-10B" secondAttribute="bottom" constant="19" id="gB3-Qi-SWo"/>
