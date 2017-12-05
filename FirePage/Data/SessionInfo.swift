@@ -22,7 +22,7 @@ class SessionInfo{
     static func logout(currentViewController: UIViewController){
         account = nil
         let storyboardHelpLine = UIStoryboard(name: "Main", bundle: nil)
-        let helpLineController = storyboardHelpLine.instantiateViewController(withIdentifier: "LoginViewController") as! UINavigationController
+        let helpLineController = storyboardHelpLine.instantiateViewController(withIdentifier: "LoginViewController") as! UIViewController
         currentViewController.present(helpLineController, animated: true, completion: nil)
     }
 }
