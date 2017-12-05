@@ -26,12 +26,16 @@ import FoldingCell
 
 class HelpRequestsTableViewController: UITableViewController {
     
+    let red: UIColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
+    let white: UIColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
+    let gray: UIColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
+    
     // Constants for cell heights depending on expansion/collapse.
     let kCloseCellHeight: CGFloat = 46
     let kOpenCellHeight: CGFloat = 311
     
     // Keeps track of HelpRequest cell heights.
-    var cellHeights: [CGFloat] = []
+    var cellHeights: [IndexPath: CGFloat] = [:]
     
     // These two variables facilitate resolving of HelpRequests, and store the selected HelpRequest.
     var indexPathOfSelectedRow: IndexPath!
@@ -67,7 +71,6 @@ class HelpRequestsTableViewController: UITableViewController {
     }
     
     private func setupTableView() {
-        cellHeights = Array(repeating: kCloseCellHeight, count: 100)
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.backgroundColor = UIColor(red: 239/255, green: 232/255, blue: 231/255, alpha: 255/255)
@@ -76,8 +79,6 @@ class HelpRequestsTableViewController: UITableViewController {
     func reloadTableViewData(requests: [String: [HelpRequest]]){
         myHelpRequests = requests
         myHelpRequestsOrderedKeys = orderDates(unorderedKeys: Array(myHelpRequests.keys))
-        print("myHelpRequestsOrderedKeys \(myHelpRequestsOrderedKeys)")
-        print(cellHeights)
         tableView.reloadData()
     }
     
@@ -146,19 +147,29 @@ extension HelpRequestsTableViewController {
         if indexPath.section % 2 == 0 {
             return
         }
+        print("WILLDISPLAY")
+        print(cellHeights)
+        print("\n")
         guard case let cell as HelpRequestCell = cell else {
             return
         }
         cell.backgroundColor = .clear
-        if cellHeights[indexPath.row] == kCloseCellHeight {
+        if cellHeights[indexPath] == nil {
+            cellHeights[indexPath] = kCloseCellHeight
+            cell.unfold(false, animated: false, completion:nil)
+        } else if cellHeights[indexPath] == kCloseCellHeight {
             cell.unfold(false, animated: false, completion:nil)
         } else {
             cell.unfold(true, animated: false, completion: nil)
         }
+        cell.isUserInteractionEnabled = true
     }
     
     // Creates a cell given the row, be it DateDisplayCell or HelpRequestCell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("CELLROWAT")
+        print(cellHeights)
+        print("\n")
         // Create header cell for date display if section number is even, since each section of help requests
         // has a corresponding DateDisplayCell as the header.
         if (indexPath.section % 2 == 0) {
@@ -177,7 +188,7 @@ extension HelpRequestsTableViewController {
         
         // We can now handle all remaining individual normal HelpRequest cells, so retreive the specific HelpRequest.
         let helpRequest: HelpRequest = helpRequests[indexPath.row]
-        print("hello \(helpRequest) \(indexPath.section)")
+        cellHeights[indexPath] = kCloseCellHeight
         return createHelpRequestCell(tableView: tableView, indexPath: indexPath, helpRequest: helpRequest)
     }
     
@@ -187,18 +198,21 @@ extension HelpRequestsTableViewController {
         if (indexPath.section % 2 == 0) {
             return 25
         }
-        return cellHeights[indexPath.row]
+        if (cellHeights[indexPath] == nil) {
+            cellHeights[indexPath] = kCloseCellHeight
+        }
+        return cellHeights[indexPath]!
     }
     
     // Handles the expansion/collapse of a HelpRequestCell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // DateDisplayCell
-        print(indexPath.section)
-        print("bananas")
         if indexPath.section % 2 == 0 {
             return
         }
-        
+        print("SELECTROWMETHOD")
+        print(cellHeights)
+        print("\n")
         indexPathOfSelectedRow = indexPath
         let cell = tableView.cellForRow(at: indexPath) as! HelpRequestCell
         selectedCell = cell
@@ -206,13 +220,13 @@ extension HelpRequestsTableViewController {
             return
         }
         var duration = 0.0
-        let cellIsCollapsed = cellHeights[indexPath.row] == kCloseCellHeight
+        let cellIsCollapsed = (cellHeights[indexPath] == kCloseCellHeight || cellHeights[indexPath] == nil)
         if cellIsCollapsed {
-            cellHeights[indexPath.row] = kOpenCellHeight
+            cellHeights[indexPath] = kOpenCellHeight
             cell.unfold(true, animated: true, completion: nil)
             duration = 0.5
         } else {
-            cellHeights[indexPath.row] = kCloseCellHeight
+            cellHeights[indexPath] = kCloseCellHeight
             cell.unfold(false, animated: true, completion: nil)
             duration = 0.5
         }
@@ -220,6 +234,7 @@ extension HelpRequestsTableViewController {
             tableView.beginUpdates()
             tableView.endUpdates()
         }, completion: nil)
+        cell.isUserInteractionEnabled = true
     }
     
     /**
@@ -255,7 +270,7 @@ extension HelpRequestsTableViewController {
         cell.foregroundBackground.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
         cell.foregroundTime.text = ""
         cell.foregroundTimeBackground.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
-        
+        cell.foregroundLabel.textColor = UIColor.white
         // Hack to stop user from being able to expand/unfold this cell like a normal HelpRequestCell.
         cell.isUserInteractionEnabled = false
         return cell
@@ -277,31 +292,34 @@ extension HelpRequestsTableViewController {
         
         if (helpRequest.resolution != nil) {
             cell.expansionResolution.text = helpRequest.resolution!
+            if (helpRequest.resolution?.contains("Resident running around"))! {
+                print("UM")
+                print(indexPath.section)
+                print(indexPath.row)
+                print(helpRequest)
+                print("CLOSE")
+            }
         }
-        
-        if (helpRequest.isResolved) {
+         if (helpRequest.isResolved) {
             cell.resolveButton.setTitle("SAVE", for: .normal)
-            
-            cell.foregroundBackground.backgroundColor = UIColor.white
-            cell.foregroundLabel.textColor = UIColor(red:0.59, green:0.53, blue:0.53, alpha:1.0)
-            cell.foregroundTimeBackground.backgroundColor = UIColor.white
-            cell.foregroundTimeLabel.textColor = UIColor(red:0.59, green:0.53, blue:0.53, alpha:1.0)
-            
-            cell.barView.backgroundColor = UIColor.white
-            cell.expansionLabel.textColor = UIColor(red:0.59, green:0.53, blue:0.53, alpha:1.0)
-            cell.backgroundTimeLabel.textColor = UIColor(red:0.59, green:0.53, blue:0.53, alpha:1.0)
+            cell.foregroundBackground.backgroundColor = white
+            cell.foregroundLabel.textColor = gray
+            cell.foregroundTimeBackground.backgroundColor = white
+            cell.foregroundTimeLabel.textColor = gray
+            cell.barView.backgroundColor = white
+            cell.expansionLabel.textColor = gray
+            cell.backgroundTimeLabel.textColor = gray
         } else {
             cell.resolveButton.setTitle("RESOLVE", for: .normal)
-            
-            cell.foregroundBackground.backgroundColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
-            cell.foregroundLabel.textColor = UIColor.white
-            cell.foregroundTimeBackground.backgroundColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
-            cell.foregroundTimeLabel.textColor = UIColor.white
-            
-            cell.barView.backgroundColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
-            cell.expansionLabel.textColor = UIColor.white
-            cell.backgroundTimeLabel.textColor = UIColor.white
+            cell.foregroundBackground.backgroundColor = red
+            cell.foregroundLabel.textColor = white
+            cell.foregroundTimeBackground.backgroundColor = red
+            cell.foregroundTimeLabel.textColor = white
+            cell.barView.backgroundColor = red
+            cell.expansionLabel.textColor = white
+            cell.backgroundTimeLabel.textColor = white
         }
+        cell.isUserInteractionEnabled = true
         return cell
     }
     
