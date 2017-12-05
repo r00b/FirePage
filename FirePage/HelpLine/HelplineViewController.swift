@@ -66,7 +66,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         if(Float(lroundf(slider.value))==2){
             currPhone = "9195608287"
         }
-        print(currPhone);
+        //print(currPhone);
     }
     
     @IBAction func campusClick(_ sender: Any) {
