@@ -5,7 +5,7 @@
 //  Created by Theodore Franceschi on 11/21/17.
 //  Copyright © 2017 Theodore Franceschi. All rights reserved.
 //
-
+// Based on stack overflow post: https://stackoverflow.com/questions/27903500/swift-add-icon-image-in-uitextfield
 import Foundation
 import UIKit
 
