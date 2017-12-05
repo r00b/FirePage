@@ -39,7 +39,7 @@ class HelpRequestCell: FoldingCell {
     }
   
     override func animationDuration(_ itemIndex: NSInteger, type: FoldingCell.AnimationType) -> TimeInterval {
-        let durations = [0.15, 0.14, 0.13, 0.12, 0.11, 0.1]
+        let durations = [0.12, 0.12, 0.12, 0.12, 0.12, 0.12]
         return durations[itemIndex]
     }
   

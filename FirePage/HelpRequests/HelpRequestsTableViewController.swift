@@ -26,9 +26,11 @@ import FoldingCell
 
 class HelpRequestsTableViewController: UITableViewController {
     
+    // UIColors
     let red: UIColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
     let white: UIColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
     let gray: UIColor = UIColor(red:0.59, green:0.53, blue:0.53, alpha:1.0)
+    let navy: UIColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
     
     // Constants for cell heights depending on expansion/collapse.
     let kCloseCellHeight: CGFloat = 46
@@ -53,7 +55,7 @@ class HelpRequestsTableViewController: UITableViewController {
     override func viewDidLoad() {
         DB.getHelpRequests(RA: RA, reloadFunction: reloadTableViewData)
         super.viewDidLoad()
-
+        
         styleNavigationBar()
         registerCellsAndXib()
         setupTableView()
@@ -120,19 +122,16 @@ class HelpRequestsTableViewController: UITableViewController {
 extension HelpRequestsTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        print("Number of sections \(myHelpRequestsOrderedKeys.count*2)")
         return myHelpRequestsOrderedKeys.count*2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Prevent IndexOutOfBounds
         if (myHelpRequestsOrderedKeys.count*2 <= section) {
-            print("A \(section)")
             return 0
         }
         // Return 1 if we are dealing with DateDisplayCells in the section.
         if (section % 2 == 0) {
-            print("1 \(section)")
             return 1
         }
         // HelpRequestCells
@@ -140,14 +139,11 @@ extension HelpRequestsTableViewController {
             // No Help Request were found, so return 1 so we can make a fake HelpRequestCell to state none were found.
             // See createNoHelpRequestsCell
             if (numRows.count == 0) {
-                print("C \(section)")
                 return 1
             }
             // Otherwise return the number of HelpRequests found
-            print("\(numRows) \(section)")
             return numRows.count
         } else {
-            print("E \(section)")
             return 0
         }
     }
@@ -157,9 +153,7 @@ extension HelpRequestsTableViewController {
         if indexPath.section % 2 == 0 {
             return
         }
-        print("WILLDISPLAY")
-        print(cellHeights)
-        print("\n")
+        
         guard case let cell as HelpRequestCell = cell else {
             return
         }
@@ -177,9 +171,7 @@ extension HelpRequestsTableViewController {
     
     // Creates a cell given the row, be it DateDisplayCell or HelpRequestCell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("CELLROWAT")
-        print(cellHeights)
-        print("\n")
+        
         // Create header cell for date display if section number is even, since each section of help requests
         // has a corresponding DateDisplayCell as the header.
         if (indexPath.section % 2 == 0) {
@@ -220,9 +212,7 @@ extension HelpRequestsTableViewController {
         if indexPath.section % 2 == 0 {
             return
         }
-        print("SELECTROWMETHOD")
-        print(cellHeights)
-        print("\n")
+        
         indexPathOfSelectedRow = indexPath
         let cell = tableView.cellForRow(at: indexPath) as! HelpRequestCell
         selectedCell = cell
@@ -277,10 +267,10 @@ extension HelpRequestsTableViewController {
         
         // Change background and edit message.
         cell.foregroundDescription.text = "No Help Requests"
-        cell.foregroundBackground.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
+        cell.foregroundBackground.backgroundColor = navy
         cell.foregroundTime.text = ""
-        cell.foregroundTimeBackground.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
-        cell.foregroundLabel.textColor = UIColor.white
+        cell.foregroundTimeBackground.backgroundColor = navy
+        cell.foregroundLabel.textColor = white
         // Hack to stop user from being able to expand/unfold this cell like a normal HelpRequestCell.
         cell.isUserInteractionEnabled = false
         return cell
@@ -302,15 +292,9 @@ extension HelpRequestsTableViewController {
         
         if (helpRequest.resolution != nil) {
             cell.expansionResolution.text = helpRequest.resolution!
-            if (helpRequest.resolution?.contains("Resident running around"))! {
-                print("UM")
-                print(indexPath.section)
-                print(indexPath.row)
-                print(helpRequest)
-                print("CLOSE")
-            }
         }
-         if (helpRequest.isResolved) {
+        
+        if (helpRequest.isResolved) {
             cell.resolveButton.setTitle("SAVE", for: .normal)
             cell.foregroundBackground.backgroundColor = white
             cell.foregroundLabel.textColor = gray
@@ -328,6 +312,8 @@ extension HelpRequestsTableViewController {
             cell.barView.backgroundColor = red
             cell.expansionLabel.textColor = white
             cell.backgroundTimeLabel.textColor = white
+            
+            cell.expansionResolution.text = ""
         }
         cell.isUserInteractionEnabled = true
         return cell
