@@ -25,15 +25,24 @@ class LoginViewController: UIViewController{
     @IBAction func loginClick(_ sender: Any) {
         let email = usernameField.text
         let password = passwordField.text
-        Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
-            // ...
+        if email != "" && password != ""{
+            Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
+                // ...
+                print(error);
+            }
         }
+        else{
+            try! Auth.auth().signOut()
+        }
+
         if Auth.auth().currentUser != nil {
-            print("signed in")
-            DB.getAccount(email: email!, mainAppSegue: performSegue)
+            let newEmail = Auth.auth().currentUser?.email;
+            DB.getAccount(email: newEmail!, mainAppSegue: performSegue)
             //self.performSegue(withIdentifier: "signedIn", sender: self)
         } else {
-            print("Invalid Password or Account")
+            let alert = UIAlertController(title: "Alert", message: "Invalid Username or Password", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -68,6 +77,9 @@ class LoginViewController: UIViewController{
         view.addGestureRecognizer(tap)
         usernameField.useUnderline()
         passwordField.useUnderline()
+        navigationController?.navigationBar.barTintColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
+        let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     @objc func dismissBoard(){
