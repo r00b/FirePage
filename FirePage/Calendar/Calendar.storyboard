@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -360,6 +360,8 @@
                         <outlet property="onCallGroupLabel" destination="RxX-A0-G6W" id="JHw-cX-Yya"/>
                         <outlet property="tableView" destination="Ohb-8Z-msS" id="apR-D2-0Jc"/>
                         <outlet property="yearLabel" destination="x4w-BM-GJm" id="1b7-c7-k05"/>
+                        <outletCollection property="groupButtons" destination="6Cl-Hi-NvJ" collectionClass="NSMutableArray" id="QNj-FV-XRI"/>
+                        <outletCollection property="groupButtons" destination="LgM-Vp-Xaz" collectionClass="NSMutableArray" id="Jbp-Pk-wbw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PeO-CQ-4jI" userLabel="First Responder" sceneMemberID="firstResponder"/>

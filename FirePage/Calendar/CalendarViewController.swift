@@ -57,6 +57,7 @@ class CalendarViewController: UIViewController {
     // MARK: IBOutlets
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
+    @IBOutlet var groupButtons: [UIButton]!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var onCallGroupLabel: UILabel!
@@ -102,6 +103,12 @@ class CalendarViewController: UIViewController {
     func initDatabase() {
         // get list of onCallGroups associated with current user
         self.onCallGroups = SessionInfo.account?.getOnCallGroups()!
+        // show arrow buttons for onCallGroup only if user has more than 1
+        if onCallGroups!.count > 1 {
+            groupButtons = groupButtons.map { $0.isHidden = false; return $0 }
+        } else {
+            groupButtons = groupButtons.map { $0.isHidden = true; return $0 }
+        }
         // default group is first in list
         self.currOnCallGroup = self.onCallGroups?[0]
         self.onCallGroupLabel.text = self.currOnCallGroup
