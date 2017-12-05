@@ -28,7 +28,7 @@ class LoginViewController: UIViewController{
         if email != "" && password != ""{
             Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
                 // ...
-                print(error);
+                //print(error);
             }
         }
         else{
@@ -77,9 +77,6 @@ class LoginViewController: UIViewController{
         view.addGestureRecognizer(tap)
         usernameField.useUnderline()
         passwordField.useUnderline()
-        navigationController?.navigationBar.barTintColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
-        let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     @objc func dismissBoard(){

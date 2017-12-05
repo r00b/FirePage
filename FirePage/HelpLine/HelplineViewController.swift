@@ -57,7 +57,16 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     
     @IBAction func sliderChanged(_ sender: UISlider) {
         sender.setValue(Float(lroundf(slider.value)), animated: true)
-        //currPhone = self.phoneList[Int(sender.value)]
+        if(Float(lroundf(slider.value))==0){
+            currPhone = phoneMap[dormDic[currDorm]!]!
+        }
+        if(Float(lroundf(slider.value))==1){
+            currPhone = "9196842444"
+        }
+        if(Float(lroundf(slider.value))==2){
+            currPhone = "9195608287"
+        }
+        print(currPhone);
     }
     
     @IBAction func campusClick(_ sender: Any) {
@@ -77,7 +86,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     @IBAction func callClick(_ sender: Any) {
         self.callClicked = !self.callClicked
         //let newImage = self.callClicked ?#imageLiteral(resourceName: "hangup"): #imageLiteral(resourceName: "helpPhone")
-        currPhone = phoneMap[dormDic[currDorm]!]!
+        //currPhone = phoneMap[dormDic[currDorm]!]!
         if let url = URL(string: "tel://\(currPhone))"), UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10, *) {
                 UIApplication.shared.open(url)
@@ -98,7 +107,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         dict["Location"] = "\(currDorm) \(locationField.text ?? "")"
         dict["fromPerson"] = getUserData()["email"]
         
-        DB.addHelpRequest(onCallGroup: "N2Group", day: "12-04-2017", helpRequest: HelpRequest(dictionary: dict as NSDictionary))
+        DB.addHelpRequest(onCallGroup: dormDic[currDorm]!, day: getDate(), helpRequest: HelpRequest(dictionary: dict as NSDictionary))
         
         
         
@@ -122,25 +131,19 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
         self.currPhone = "9726559320"
         DB.getDormsMap(reloadFunction: setDormDic)
         DB.getPhoneNumbersMap(reloadFunction: fillPhoneMap)
-        /*
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            self.dormDic = ["Epworth":"N2Group"]
-            print("reload me")
-            self.eastDorms = []
-            self.dormMenu.reloadData()
-        }
-         */
         dormMenu.reloadData()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissBoard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        // set navigation bar background and text color
+        navigationController?.navigationBar.barTintColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
+        let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         
-        //Do any additional setup after loading the view.
     }
     
     func setDormDic(dictionary: [String: String]){
         dormDic = dictionary
-        //print(dictionary)
         eastDorms = Array(dormDic.keys)
         dormMenu.reloadData()
         cells = [DormCollectionViewCell]()
@@ -169,7 +172,6 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //print("reloaded")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! DormCollectionViewCell
         cell.dorm = eastDorms[indexPath.row]
         cell.dormPhoto.image = dormPhotos[indexPath.row]
@@ -192,8 +194,6 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //phoneList[0] = eastPhones[indexPath.row]
-        
         clearSelected()
         cells[indexPath.row].dormPhoto.layer.borderWidth = 4.0
         cells[indexPath.row].dormPhoto.layer.borderColor = UIColor.white.cgColor
