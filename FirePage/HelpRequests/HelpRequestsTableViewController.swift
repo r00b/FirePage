@@ -210,11 +210,11 @@ extension HelpRequestsTableViewController {
         if cellIsCollapsed {
             cellHeights[indexPath.row] = kOpenCellHeight
             cell.unfold(true, animated: true, completion: nil)
-            duration = 5
+            duration = 0.5
         } else {
             cellHeights[indexPath.row] = kCloseCellHeight
             cell.unfold(false, animated: true, completion: nil)
-            duration = 5
+            duration = 0.5
         }
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { () -> Void in
             tableView.beginUpdates()
