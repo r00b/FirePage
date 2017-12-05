@@ -32,7 +32,7 @@
         <!--Login View Controller-->
         <scene sceneID="8d1-jn-B9X">
             <objects>
-                <viewController id="2GE-dP-gl1" customClass="LoginViewController" customModule="FirePage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2GE-dP-gl1" customClass="LoginViewController" customModule="FirePage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="93g-tK-GGM" customClass="GradientView" customModule="FirePage" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

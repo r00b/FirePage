@@ -7,8 +7,21 @@
 //
 
 import Foundation
+import UIKit
 
 class SessionInfo{
     //holds current user
     static var account: Account?
+    
+    //sets current user
+    static func login(user: Account){
+        account = user
+    }
+    
+    //logs the current user out
+    static func logout(){
+        account = nil
+        let storyboardHelpLine = UIStoryboard(name: "Main", bundle: nil)
+        let helpLineController = storyboardHelpLine.instantiateViewController(withIdentifier: "LoginViewController") as! UINavigationController
+    }
 }
