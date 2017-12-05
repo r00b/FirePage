@@ -24,6 +24,7 @@ class DB{
     static let calendar = "Calendar"
     static let helpRequestsDirectory = "HelpRequests"
     static let onCallGroupDirectory = "onCallGroup"
+    static let phoneNumberDirectory = "phoneNumber"
     
     //lets developer see if they are connected to firebase
     static func testConnection(){
@@ -223,6 +224,27 @@ class DB{
         
     }
     
+    //get phoneNumbers from each on call group in database
+    static func getPhoneNumbersMap(reloadFunction: @escaping ([String: String]) -> Void){
+        Dorms.observeSingleEvent(of: .value, with: { (snapshot) in
+            let dormsMap = snapshot.value as! [String: String]
+            var numbersMap = [String: String]()
+            let onCallGroups = Array(Set(dormsMap.values))
+            for onCallGroupName in onCallGroups{
+                OnCallGroup.child(onCallGroupName).child(phoneNumberDirectory).observeSingleEvent(of: .value, with: { (snapshot) in
+                   
+                    let onCallGroupNumber = (snapshot.value as! Int).description
+                    numbersMap[onCallGroupName] = onCallGroupNumber
+                    if(onCallGroupName == onCallGroups[onCallGroups.count - 1]){
+                        reloadFunction(numbersMap)
+                    }
+                })
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+            
+        }
+    }
     
 
 }

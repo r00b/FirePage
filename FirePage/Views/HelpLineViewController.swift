@@ -42,7 +42,7 @@ class HelpLineViewController: UIViewController {
         dictionary["date"] = "11-12-2017"
         dictionary["Location"] = "RN302"
         dictionary["isResolved"] = "false"
-        dictionary["description"] = "poopie"
+        dictionary["description"] = "ems in the common room"
         //DB.addHelpRequest(onCallGroup: "RandolphGroup", day: "11-12-2017",helpRequest: HelpRequest(dictionary: dictionary as NSDictionary))
         //DB.getHelpRequests(onCallGroup: "N2Group", day: "11-12-2017", reloadFunction: printArray)
         DB.getAllRAHelpRequests(RA: "Ritwik", reloadFunction: printHelpReq)

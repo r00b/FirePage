@@ -57,7 +57,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     
     @IBAction func sliderChanged(_ sender: UISlider) {
         sender.setValue(Float(lroundf(slider.value)), animated: true)
-        currPhone = self.phoneList[Int(sender.value)]
+        //currPhone = self.phoneList[Int(sender.value)]
     }
     
     @IBAction func campusClick(_ sender: Any) {
@@ -77,9 +77,8 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     @IBAction func callClick(_ sender: Any) {
         self.callClicked = !self.callClicked
         //let newImage = self.callClicked ?#imageLiteral(resourceName: "hangup"): #imageLiteral(resourceName: "helpPhone")
-        //callButton.setImage(newImage, for: .normal)
-        
-        if let url = URL(string: "tel://\(currPhone)"), UIApplication.shared.canOpenURL(url) {
+        currPhone = phoneMap[dormDic[currDorm]!]!
+        if let url = URL(string: "tel://\(currPhone))"), UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10, *) {
                 UIApplication.shared.open(url)
             } else {
@@ -106,18 +105,23 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     }
     
     // MARK: Phone Setup
-    private var phoneList = ["5857979725","5857979725","5857979725"]
+    private var phoneMap = [String:String]()
     private var currPhone: String = ""
     private var handle: AuthStateDidChangeListenerHandle?
     let reuseIdentifier = "dormCell"
+    
+    func fillPhoneMap(phoneMap: [String: String]){
+        self.phoneMap = phoneMap
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         subjectField.useUnderline()
         locationField.useUnderline()
         updateLabels()
-        self.currPhone = phoneList[1]
+        self.currPhone = "9726559320"
         DB.getDormsMap(reloadFunction: setDormDic)
+        DB.getPhoneNumbersMap(reloadFunction: fillPhoneMap)
         /*
         DispatchQueue.main.asyncAfter(deadline: when) {
             self.dormDic = ["Epworth":"N2Group"]
@@ -189,7 +193,7 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //phoneList[0] = eastPhones[indexPath.row]
-        phoneList[0] = "5857979725"
+        
         clearSelected()
         cells[indexPath.row].dormPhoto.layer.borderWidth = 4.0
         cells[indexPath.row].dormPhoto.layer.borderColor = UIColor.white.cgColor

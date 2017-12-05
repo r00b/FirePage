@@ -19,6 +19,8 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.tintColor = .red
         
         
+        //Get all the view controllers
+        
         let storyboardHelpLine = UIStoryboard(name: "Main", bundle: nil)
         let helpLineController = storyboardHelpLine.instantiateViewController(withIdentifier: "HelpLineViewController") as! UINavigationController
         
@@ -36,6 +38,8 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         let Calendar = calendarController
         let MyPages = helpRequestsController
         let Chat = chatNavController
+        
+        //set view controller tab bar icons
         
         let icon1 = UITabBarItem()
         icon1.title = "Contact"
@@ -60,6 +64,8 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         
         var controllers = [UIViewController]()
         
+        //add view controllers based on role
+        
         if(SessionInfo.account?.getRole() == FireRole.RA){
             controllers = [Contact, Calendar, MyPages]
             //controllers = [Contact, Calendar, MyPages, Chat]
@@ -69,7 +75,7 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
             controllers = [Contact]
         }
         
-        // print(master.level)
+       
         self.viewControllers = controllers
     }
     
@@ -81,7 +87,7 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
     
     //Delegate methods
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        // print("Should select viewController: \(viewController.title) ?")
+        
         return true;
     }
 }
