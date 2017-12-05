@@ -58,8 +58,8 @@ class HelplineViewController: UIViewController,UICollectionViewDataSource,UIColl
     @IBAction func sliderChanged(_ sender: UISlider) {
         sender.setValue(Float(lroundf(slider.value)), animated: true)
         if(Float(lroundf(slider.value))==0){
-            //currPhone = phoneMap[dormDic[currDorm]!]! For demo purposes we hard code to my phone
-            currPhone = "5857979725"
+            currPhone = phoneMap[dormDic[currDorm]!]!
+            //currPhone = "5857979725"
         }
         if(Float(lroundf(slider.value))==1){
             currPhone = "9196842444"

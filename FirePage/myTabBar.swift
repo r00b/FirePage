@@ -24,8 +24,8 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         let storyboardHelpLine = UIStoryboard(name: "Main", bundle: nil)
         let helpLineController = storyboardHelpLine.instantiateViewController(withIdentifier: "HelpLineViewController") as! UINavigationController
         
-        let storyboardSignOut = UIStoryboard(name: "Main", bundle: nil)
-        let signOutController = storyboardHelpLine.instantiateViewController(withIdentifier: "SignOutViewController") as! UIViewController
+        _ = UIStoryboard(name: "Main", bundle: nil)
+        let signOutController = storyboardHelpLine.instantiateViewController(withIdentifier: "SignOutViewController")
         
         
         let storyboardCalendar = UIStoryboard(name: "Calendar", bundle: nil)
@@ -35,7 +35,7 @@ class myTabBar: UITabBarController, UITabBarControllerDelegate {
         let helpRequestsController = storyboardHelpRequests.instantiateViewController(withIdentifier: "HelpRequestsNavigationController") as! UINavigationController
         
         let storyboardMessaging = UIStoryboard(name: "Messaging", bundle: nil)
-        let chatNavController = storyboardMessaging.instantiateViewController(withIdentifier: "ChatNavigationController") as! UINavigationController
+        _ = storyboardMessaging.instantiateViewController(withIdentifier: "ChatNavigationController") as! UINavigationController
         
         let Contact = helpLineController
         let Calendar = calendarController
