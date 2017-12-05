@@ -140,8 +140,11 @@ class DB{
     static func addHelpRequest(onCallGroup: String, day: String,  helpRequest: HelpRequest){
         HelpRequests.child(helpRequest.getHash()).setValue(helpRequest.getDictionary())
     OnCallGroup.child(onCallGroup).child(helpRequestsDirectory).child(day).observeSingleEvent(of: .value, with: { (snapshot) in
-            var helpRequests = snapshot.value as! [String]
-            helpRequests.append(helpRequest.getHash())
+            var helpRequests = snapshot.value as? [String]
+        if(helpRequests == nil){
+            helpRequests = [String]()
+        }
+            helpRequests!.append(helpRequest.getHash())
             OnCallGroup.child(onCallGroup).child(helpRequestsDirectory).child(day).setValue(helpRequests)
         })
     }
