@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+//used to delineate roles between user accounts
 enum FireRole : String{
     case RA = "RA"
     case RC = "RC"
@@ -16,7 +16,7 @@ enum FireRole : String{
     case Student = "Student"
 }
 
-
+//stores account info
 class Account{
     
     private var firstName = "Harshil"
@@ -41,6 +41,7 @@ class Account{
         }
     }
     
+    //used to instantiate account from firebase data
     init(email: String, userAttributeDict: [String: String]){
         firstName = userAttributeDict["firstName"]!
         lastName = userAttributeDict["lastName"]!
@@ -93,20 +94,6 @@ class Account{
     }
 }
 
-struct PhoneCall{
-    private var subject = "none"
-    private var caller: String
-    private var campus: String
-    private var dorm: String
-    
-    init(_ subj:String,_ calling:String,_ camp:String,_ dorm:String) {
-        self.subject = subj
-        self.caller = calling
-        self.campus = camp
-        self.dorm = dorm
-    }
-}
-
 struct HelpRequest: CustomStringConvertible{
     public var time: String
     public var fromPerson: String
@@ -149,11 +136,14 @@ struct HelpRequest: CustomStringConvertible{
         self.description = ""
     }
     
+    //used to encode reference to helprequest
+    
     public func getHash() -> String{
         let full: String = (self.time + self.fromPerson + self.onCallGroup + self.date + self.location + "\(self.isResolved)" + self.description)
         return full.sha256()
     }
     
+    //used in order to pass data to firebase
     public func getDictionary() -> [String: String]{
         var dictionary = [String: String]()
         dictionary["time"] = self.time
