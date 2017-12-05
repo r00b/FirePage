@@ -11,7 +11,6 @@
 		8CF9F198A1F02EFFFAC76B6D /* Pods_FirePageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8349D411B12345576663A /* Pods_FirePageTests.framework */; };
 		9152CDF08F8E58F300BBBE2B /* Pods_FirePageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9F824EE1739DDE026B9E3A /* Pods_FirePageUITests.framework */; };
 		B7058C5E1FCFA10400D2368B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7058C5D1FCFA10400D2368B /* LoginViewController.swift */; };
-		B7058C601FCFA15000D2368B /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7058C5F1FCFA15000D2368B /* AccountController.swift */; };
 		B7058C621FCFA19D00D2368B /* LeftFireField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7058C611FCFA19D00D2368B /* LeftFireField.swift */; };
 		B7058C641FCFA28B00D2368B /* FireButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7058C631FCFA28B00D2368B /* FireButton.swift */; };
 		B7194FEE1FB36346000A954E /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7194FED1FB36346000A954E /* CustomLabel.swift */; };
@@ -23,7 +22,6 @@
 		B73083B51FCCE969000AD305 /* DormCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73083B31FCCE969000AD305 /* DormCollectionViewCell.swift */; };
 		B73083B61FCCE969000AD305 /* HelplineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73083B41FCCE969000AD305 /* HelplineViewController.swift */; };
 		B757595F1FAFE81D006845E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B757595E1FAFE81D006845E9 /* AppDelegate.swift */; };
-		B75759611FAFE81D006845E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75759601FAFE81D006845E9 /* ViewController.swift */; };
 		B75759641FAFE81D006845E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B75759621FAFE81D006845E9 /* Main.storyboard */; };
 		B75759661FAFE81D006845E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B75759651FAFE81D006845E9 /* Assets.xcassets */; };
 		B75759691FAFE81D006845E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B75759671FAFE81D006845E9 /* LaunchScreen.storyboard */; };
@@ -32,12 +30,11 @@
 		B757598D1FB22C28006845E9 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B757598C1FB22C28006845E9 /* AccountViewController.swift */; };
 		B75759901FB22DF0006845E9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B757598F1FB22DF0006845E9 /* CustomTextField.swift */; };
 		B75759971FB230CD006845E9 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75759961FB230CD006845E9 /* DataModel.swift */; };
-		B77CCCBE1FB916A200ECAD81 /* HelpLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CCCBD1FB916A200ECAD81 /* HelpLineViewController.swift */; };
 		B77CCCC01FB93F2600ECAD81 /* CustomRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CCCBF1FB93F2600ECAD81 /* CustomRadioButton.swift */; };
 		B77CCCC21FB9414400ECAD81 /* RadioButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CCCC11FB9414400ECAD81 /* RadioButtonController.swift */; };
+		B785F5CD1FD7122300101B07 /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B785F5CC1FD7122300101B07 /* SignOutViewController.swift */; };
 		BB344B471FCA76D200BD890B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB344B461FCA76D200BD890B /* GoogleService-Info.plist */; };
 		BB344B4C1FCFA8E200BD890B /* myTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB344B4B1FCFA8E200BD890B /* myTabBar.swift */; };
-		BB344B4D1FCFAFB700BD890B /* HelpLine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB344B4F1FCFAFB700BD890B /* HelpLine.storyboard */; };
 		BB395BE41FD5174D00456FCF /* SessionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB395BE31FD5174D00456FCF /* SessionInfo.swift */; };
 		BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3AE4701FC61A8400A0470A /* Utilities.swift */; };
 		BB3AE4731FC7926B00A0470A /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3AE4721FC7926B00A0470A /* DB.swift */; };
@@ -95,7 +92,6 @@
 		9DA8349D411B12345576663A /* Pods_FirePageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirePageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB54A5AE134096A053D4FAD3 /* Pods-FirePage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirePage.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirePage/Pods-FirePage.release.xcconfig"; sourceTree = "<group>"; };
 		B7058C5D1FCFA10400D2368B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		B7058C5F1FCFA15000D2368B /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
 		B7058C611FCFA19D00D2368B /* LeftFireField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftFireField.swift; sourceTree = "<group>"; };
 		B7058C631FCFA28B00D2368B /* FireButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireButton.swift; sourceTree = "<group>"; };
 		B7194FED1FB36346000A954E /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
@@ -108,7 +104,6 @@
 		B73083B41FCCE969000AD305 /* HelplineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelplineViewController.swift; sourceTree = "<group>"; };
 		B757595B1FAFE81D006845E9 /* FirePage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirePage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B757595E1FAFE81D006845E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B75759601FAFE81D006845E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B75759631FAFE81D006845E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B75759651FAFE81D006845E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B75759681FAFE81D006845E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -122,12 +117,11 @@
 		B757598C1FB22C28006845E9 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B757598F1FB22DF0006845E9 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		B75759961FB230CD006845E9 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
-		B77CCCBD1FB916A200ECAD81 /* HelpLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpLineViewController.swift; sourceTree = "<group>"; };
 		B77CCCBF1FB93F2600ECAD81 /* CustomRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRadioButton.swift; sourceTree = "<group>"; };
 		B77CCCC11FB9414400ECAD81 /* RadioButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonController.swift; sourceTree = "<group>"; };
+		B785F5CC1FD7122300101B07 /* SignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
 		BB344B461FCA76D200BD890B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB344B4B1FCFA8E200BD890B /* myTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myTabBar.swift; sourceTree = "<group>"; };
-		BB344B4E1FCFAFB700BD890B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HelpLine.storyboard; sourceTree = "<group>"; };
 		BB395BE31FD5174D00456FCF /* SessionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInfo.swift; sourceTree = "<group>"; };
 		BB3AE46F1FC619A100A0470A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		BB3AE4701FC61A8400A0470A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -215,7 +209,6 @@
 			children = (
 				B73083B31FCCE969000AD305 /* DormCollectionViewCell.swift */,
 				B73083B41FCCE969000AD305 /* HelplineViewController.swift */,
-				BB344B4F1FCFAFB700BD890B /* HelpLine.storyboard */,
 			);
 			path = HelpLine;
 			sourceTree = "<group>";
@@ -313,11 +306,9 @@
 		B75759981FB23FC6006845E9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B75759601FAFE81D006845E9 /* ViewController.swift */,
 				B757598C1FB22C28006845E9 /* AccountViewController.swift */,
-				B77CCCBD1FB916A200ECAD81 /* HelpLineViewController.swift */,
 				B7058C5D1FCFA10400D2368B /* LoginViewController.swift */,
-				B7058C5F1FCFA15000D2368B /* AccountController.swift */,
+				B785F5CC1FD7122300101B07 /* SignOutViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -474,7 +465,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E228CA151FD502C000767C94 /* Messaging.storyboard in Resources */,
-				BB344B4D1FCFAFB700BD890B /* HelpLine.storyboard in Resources */,
 				E29D0A161FD073E700E67B04 /* DateDisplayCell.xib in Resources */,
 				B75759691FAFE81D006845E9 /* LaunchScreen.storyboard in Resources */,
 				B75759661FAFE81D006845E9 /* Assets.xcassets in Resources */,
@@ -677,7 +667,6 @@
 				E19075281FBA977A0038F6E9 /* CalendarCell.swift in Sources */,
 				E29D0A0B1FCEA81000E67B04 /* HelpRequestsTableViewController.swift in Sources */,
 				B77CCCC01FB93F2600ECAD81 /* CustomRadioButton.swift in Sources */,
-				B7058C601FCFA15000D2368B /* AccountController.swift in Sources */,
 				B75759971FB230CD006845E9 /* DataModel.swift in Sources */,
 				E29D0A171FD073E700E67B04 /* DateDisplayCell.swift in Sources */,
 				B7194FEE1FB36346000A954E /* CustomLabel.swift in Sources */,
@@ -685,19 +674,18 @@
 				BB3AE4731FC7926B00A0470A /* DB.swift in Sources */,
 				E228CA131FD4F07100767C94 /* ChatViewController.swift in Sources */,
 				B77CCCC21FB9414400ECAD81 /* RadioButtonController.swift in Sources */,
-				B77CCCBE1FB916A200ECAD81 /* HelpLineViewController.swift in Sources */,
 				E1658F091FC3F9E500DCAFD8 /* CalendarTableViewCell.swift in Sources */,
 				B7058C621FCFA19D00D2368B /* LeftFireField.swift in Sources */,
 				E1658F0D1FC4B81200DCAFD8 /* CalendarTableViewShadow.swift in Sources */,
 				B73083B51FCCE969000AD305 /* DormCollectionViewCell.swift in Sources */,
 				B73083B11FCCE8F4000AD305 /* UITextFieldExtensions.swift in Sources */,
 				BB395BE41FD5174D00456FCF /* SessionInfo.swift in Sources */,
+				B785F5CD1FD7122300101B07 /* SignOutViewController.swift in Sources */,
 				E29D0A0A1FCEA81000E67B04 /* HelpRequestCell.swift in Sources */,
 				BB3AE4711FC61A8400A0470A /* Utilities.swift in Sources */,
 				BB344B4C1FCFA8E200BD890B /* myTabBar.swift in Sources */,
 				B7058C641FCFA28B00D2368B /* FireButton.swift in Sources */,
 				B73083951FCCE83D000AD305 /* FIreTextField.swift in Sources */,
-				B75759611FAFE81D006845E9 /* ViewController.swift in Sources */,
 				E190751C1FBA90D30038F6E9 /* CalendarViewController.swift in Sources */,
 				B73083B61FCCE969000AD305 /* HelplineViewController.swift in Sources */,
 				B7194FF51FB38146000A954E /* CustomButton.swift in Sources */,
@@ -763,14 +751,6 @@
 				B75759681FAFE81D006845E9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		BB344B4F1FCFAFB700BD890B /* HelpLine.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BB344B4E1FCFAFB700BD890B /* Base */,
-			);
-			name = HelpLine.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
