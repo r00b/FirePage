@@ -17,7 +17,7 @@
 4. There is currently no signout page.  Close the app to exit.
 
 
-## Other Accounts
+## Other Accounts for testing
 1. Student: user: teddytfranceschi@gmail.com password: 99339Vcs
 2. RA: user: ritwik@firepage.com password: firepage
 3. RC: user: madison@firepage.com password: firepage
