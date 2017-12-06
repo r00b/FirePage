@@ -15,3 +15,9 @@
 2. When using the simulator the above bug is not present but only occurs when you use an iphone and place the call.
 3. Log in takes 2 seconds, not a bug but keep in mind when trying to sign on.
 4. There is currently no signout page.  Close the app to exit.
+
+
+## Other Accounts
+1. Student: user: teddytfranceschi@gmail.com password: 99339Vcs
+2. RA: user: ritwik@firepage.com password: firepage
+3. RC: user: madison@firepage.com password: firepage
