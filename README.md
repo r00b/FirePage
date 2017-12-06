@@ -1,22 +1,28 @@
 # FirePage
 
-## Testing (If downloading from git, start at 1, if from app store, skip to 6)
-1. Clone repo
-2. Pod update
-3. Pod install
-4. To access project on xcode, open the FirePage.xcworkspace
-5. Build
-6. Login info is as follows: Username = madison@firepage.com, Password: firepage
-7. You should now have access to HelpLine, HelpRequests, and Calendar Views
+## Testing (If cloning from GitLab, start at 1; if downloading from the app store, skip to 6)
+1. Clone down `git@gitlab.oit.duke.edu:ECE564_F17/Gargs/Project.git` and `cd` into the repository
+2. Run `pod install && pod update && pod repo update` in the root directory of the repository
+3. _Note: You may encounter a warning in Xcode telling you to update project settings; this is caused by `pod install` and can be resolved by clicking the warning and clicking "Fix"_
+4. Open the project in Xcode via the `FirePage.xcworkspace` file (**the project will not build if you open the xcodeproj file**)
+5. The application should now build and run; will work on any simulator, but designed with iPhone 5S
+6. Log in via credentials below, separated according to role
 
+#### RA (access to HelpLine, HelpRequests, and Calendar)
+Username: `ritwik@firepage.com`
+
+Password: `firepage`
+
+#### RC (access to HelpLine and Calendar with all on-call groups)
+Username: `madison@firepage.com`
+
+Password: `firepage`
+
+#### Student (access to HelpLine)
+Username: `teddytfranceschi@gmail.com`
+
+Password: `99339Vcs`
 
 ## Known Bugs
-1. Sometimes after a call, selection of dorm buttons lags and sometimes doesn't highlight the correct dorm.
-2. When using the simulator the above bug is not present but only occurs when you use an iphone and place the call.
-3. Log in takes 2 seconds, not a bug but keep in mind when trying to sign on.
-
-
-## Other Accounts for testing
-1. Student: user: teddytfranceschi@gmail.com password: 99339Vcs
-2. RA: user: ritwik@firepage.com password: firepage
-3. RC: user: madison@firepage.com password: firepage
+1. After a call, selection of dorm buttons sometimes lags and may not highlight the correct dorm (only applies to physical device)
+2. Log-in has a built-in delay of 2 seconds to allow authentication (technically not a bug)
