@@ -8,6 +8,8 @@
 5. The application should now build and run; will work on any simulator, but designed with iPhone 5S
 6. Log in via credentials below, separated according to role
 
+**Important note:** To test the HelpLine calling functionality, you must run the application on an iPhone.
+
 #### RA (access to HelpLine, HelpRequests, and Calendar)
 Username: `ritwik@firepage.com`
 
