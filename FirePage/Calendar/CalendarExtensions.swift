@@ -15,7 +15,6 @@ import JTAppleCalendar
 extension CalendarViewController: JTAppleCalendarViewDataSource {
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-        formatter.dateFormat = "yyyy MM dd"
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
         // support calendars up to a year prior and after the current date
@@ -44,6 +43,7 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         return calendarCell(newCell, cellState)
     }
     
+    // called on date selected
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelected(view: cell, cellState: cellState)
     }
@@ -53,8 +53,10 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         setCalendarViewHeader(from: visibleDates)
     }
     
+    
     // MARK: Private functions
     
+    // handles rendering a date cell in calendar view
     @discardableResult
     func calendarCell(_ cell: CalendarCell, _ cellState: CellState) -> CalendarCell {
         cell.dateLabel.text = cellState.text
@@ -94,8 +96,10 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
                 selectUser(userName: userName)
             }
         }
-        // update table view to show selected user
-        tableView.reloadData()
+        // update table view to show selected user, force to main thread
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
 }
@@ -124,7 +128,6 @@ extension CalendarViewController: UITableViewDataSource {
             cell.titleView.backgroundColor = UIColor.white
         }
         cell.accentView.backgroundColor = userColors[user]
-        
         return cell
     }
     

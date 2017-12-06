@@ -5,7 +5,6 @@
 //  Created by Robert Steilberg on 11/13/17.
 //  Copyright © 2017 Theodore Franceschi. All rights reserved.
 //
-// Original dates: 11/12 - 12/04
 
 import UIKit
 import JTAppleCalendar
@@ -69,6 +68,7 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initNavigationBar()
         initCalendarView()
         initTableView()
         initDatabase()
@@ -77,23 +77,27 @@ class CalendarViewController: UIViewController {
     
     // MARK: Private functions
     
+    func initNavigationBar() {
+        // set navigation bar background and text color
+        navigationController?.navigationBar.barTintColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
+        let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+    }
+    
     // set basic properties on the calendar UI, only called once
     func initCalendarView() {
+        // selected view spacing
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
         calendarView.scrollingMode = .stopAtEachCalendarFrame
         calendarView.visibleDates { (visibleDates) in
             self.setCalendarViewHeader(from: visibleDates)
         }
-        // default scroll to current date
+        // on default scroll to current date
         calendarView.scrollToDate(Date(), animateScroll: false)
     }
     
     func initTableView() {
-        // set navigation bar background and text color
-        navigationController?.navigationBar.barTintColor = UIColor(red:0.85, green:0.11, blue:0.07, alpha:1.0)
-        let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
         // set up "Show All" footer button in table view
         let footerGesture = UITapGestureRecognizer(target: self, action: #selector(resetSelectedUsers))
         footerView.addGestureRecognizer(footerGesture)
@@ -170,7 +174,7 @@ class CalendarViewController: UIViewController {
     }
     
     // scroll the calendar forward or backward by deltaMonth months
-    func scrollCalendar(deltaMonth: Int) {
+    func scrollCalendar(changeInMonth: Int) {
         let currDate = calendarView.visibleDates().monthDates.first!.date
         let currMonth = Calendar.current.component(.month, from: currDate)
         let currYear = Calendar.current.component(.year, from: currDate)
@@ -180,12 +184,12 @@ class CalendarViewController: UIViewController {
         let endMonth = Calendar.current.component(.month, from: endDate)
         let endYear = Calendar.current.component(.year, from: endDate)
         
-        if deltaMonth < 0 && currMonth == startMonth && currYear == startYear {
+        if changeInMonth < 0 && currMonth == startMonth && currYear == startYear {
             presentAlert(title: "Earliest Month Reached", message: "You've reached the earliest stored month.")
-        } else if deltaMonth > 0 && currMonth == endMonth && currYear == endYear {
+        } else if changeInMonth > 0 && currMonth == endMonth && currYear == endYear {
             presentAlert(title: "Farthest Month Reached", message: "You've reached the farthest stored month.")
         } else {
-            let newDate = Calendar.current.date(byAdding: .month, value: deltaMonth, to: currDate)
+            let newDate = Calendar.current.date(byAdding: .month, value: changeInMonth, to: currDate)
             calendarView.scrollToDate(newDate!)
         }
     }
@@ -200,7 +204,7 @@ class CalendarViewController: UIViewController {
     func changeOnCallGroup() {
         clearUserData()
         self.onCallGroupLabel.text = self.currOnCallGroup
-        // set database listener for new onCallGroup
+        // set new database listener for new onCallGroup
         DB.getCalendar(prevGroup: prevOnCallGroup, group: currOnCallGroup!, reloadFunction: receiveData)
     }
     
@@ -212,14 +216,15 @@ class CalendarViewController: UIViewController {
         }
     }
     
+    
     // MARK: IBActions
     
     @IBAction func scrollCalendarLeft(_ sender: UIButton) {
-        scrollCalendar(deltaMonth: -1)
+        scrollCalendar(changeInMonth: -1)
     }
     
     @IBAction func scrollCalendarRight(_ sender: UIButton) {
-        scrollCalendar(deltaMonth: 1)
+        scrollCalendar(changeInMonth: 1)
     }
     
     @IBAction func scrollOnCallGroupLeft(_ sender: UIButton) {
