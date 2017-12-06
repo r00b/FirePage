@@ -59,6 +59,13 @@ class HelpRequestsTableViewController: UITableViewController {
         styleNavigationBar()
         registerCellsAndXib()
         setupTableView()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissBoard))
+        tap.cancelsTouchesInView = false
+    }
+    
+    @objc func dismissBoard(){
+        view.endEditing(true)
     }
     
     private func styleNavigationBar() {
@@ -208,6 +215,7 @@ extension HelpRequestsTableViewController {
     
     // Handles the expansion/collapse of a HelpRequestCell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        view.endEditing(true)
         // DateDisplayCell
         if indexPath.section % 2 == 0 {
             return
