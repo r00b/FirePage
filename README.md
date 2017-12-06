@@ -26,3 +26,9 @@ Password: `99339Vcs`
 ## Known Bugs
 1. After a call, selection of dorm buttons sometimes lags and may not highlight the correct dorm (only applies to physical device)
 2. Log-in has a built-in delay of 2 seconds to allow authentication (technically not a bug)
+
+## Roles
+* Robert: Calendar
+* Teddy: HelpLine
+* Harshil: HelpRequests
+* Ritwik: Database, navigation
