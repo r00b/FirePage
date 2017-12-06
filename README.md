@@ -34,3 +34,7 @@ Password: `99339Vcs`
 * Teddy: HelpLine
 * Harshil: HelpRequests
 * Ritwik: Database, navigation
+
+## Release
+
+Firepage can be built into a released application bundle via `xcodebuild -workspace FirePage.xcworkspace -scheme FirePage clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO`
