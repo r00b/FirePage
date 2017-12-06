@@ -5,9 +5,9 @@
 2. Run `pod install && pod update && pod repo update` in the root directory of the repository
 
 _Note: You may encounter a warning in Xcode telling you to update project settings; this is caused by `pod install` and can be resolved by clicking the warning and clicking "Fix"_
-4. Open the project in Xcode via the `FirePage.xcworkspace` file (**the project will not build if you open the xcodeproj file**)
-5. The application should now build and run; will work on any simulator, but designed with iPhone 5S
-6. Log in via credentials below, separated according to role
+3. Open the project in Xcode via the `FirePage.xcworkspace` file (**the project will not build if you open the xcodeproj file**)
+4. The application should now build and run; will work on any simulator, but designed with iPhone 5S
+5. Log in via credentials below, separated according to role
 
 #### RA (access to HelpLine, HelpRequests, and Calendar)
 Username: `ritwik@firepage.com`
