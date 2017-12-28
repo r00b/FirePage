@@ -34,10 +34,10 @@ Password: `99339Vcs`
 2. Log-in has a built-in delay of 2 seconds to allow authentication (technically not a bug)
 
 ## Roles
-* Robert: Calendar
-* Teddy: HelpLine
-* Harshil: HelpRequests
-* Ritwik: Database, navigation
+* Robert Steilberg: Calendar
+* Teddy Franchesci: HelpLine
+* Harshil Garg: HelpRequests
+* Ritwik Heda: Database, navigation
 
 ## Release
 
