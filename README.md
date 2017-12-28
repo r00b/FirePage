@@ -1,6 +1,8 @@
 # FirePage
 
-## Testing (If cloning from GitLab, start at 1; if downloading from the app store, skip to 6)
+FirePage is an iOS application for managing the RA-on-call system at Duke University. The application can track emergency requests from residents, manage the RA-on-call calendar, and help users get in touch with first responders.
+
+## Installation
 1. Clone down `git@gitlab.oit.duke.edu:ECE564_F17/Gargs/Project.git` and `cd` into the repository
 2. Run `pod install && pod update && pod repo update` in the root directory of the repository
 3. _Note: You may encounter a warning in Xcode telling you to update project settings; this is caused by `pod install` and can be resolved by clicking the warning and clicking "Fix"_
@@ -9,6 +11,8 @@
 6. Log in via credentials below, separated according to role
 
 **Important note:** To test the HelpLine calling functionality, you must run the application on an iPhone.
+
+## Credentials
 
 #### RA (access to HelpLine, HelpRequests, and Calendar)
 Username: `ritwik@firepage.com`
